@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>コマンドラインオプション &mdash; Soyokaze 0.42.2</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="利用ライブラリ" href="3rdlibs.html" />
+    <link rel="prev" title="候補欄のコマンド表示順序" href="about-matching.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">コマンドラインオプション</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="command-line-options">
+<h1>コマンドラインオプション<a class="headerlink" href="#command-line-options" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>/ChangeDir=<em>ディレクトリ</em></p>
+<ul>
+<li><p>カレントディレクトリを指定したディレクトリに変更する</p></li>
+</ul>
+</li>
+<li><p>/Runcommand=<em>コマンド名</em> または -c <em>コマンド名</em></p>
+<ul>
+<li><p>指定したコマンドを実行する(複数指定可能)</p></li>
+<li><p>例: <code class="docutils literal notranslate"><span class="pre">/Runcommand=chrome</span></code> または <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">chrome</span></code></p></li>
+</ul>
+</li>
+<li><p>/Hide</p>
+<ul>
+<li><p>起動中(かつ表示中)の入力画面を非表示にする</p></li>
+<li><p>bluewindにはこのオプションの対となる<code class="docutils literal notranslate"><span class="pre">/Activate</span></code>というのがあったが、<code class="docutils literal notranslate"><span class="pre">/Activate</span></code>はとくに実装していない</p>
+<ul>
+<li><p>というのも、そもそも何も指定せずにアプリを実行すると<code class="docutils literal notranslate"><span class="pre">/Activate</span></code>相当の動作になるので</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>ファイルパス</em></p>
+<ul>
+<li><p>そのファイルを登録する(コマンド登録画面を表示する)</p></li>
+</ul>
+</li>
+<li><p>/Paste</p></li>
+<li><p>後続のパラメータを入力欄に入力した状態で起動する</p>
+<ul>
+<li><p>例 : <code class="docutils literal notranslate"><span class="pre">/Paste</span> <span class="pre">c:\</span></code><br />
+→入力欄に <code class="docutils literal notranslate"><span class="pre">c:\</span></code>という文字列が入力される</p></li>
+</ul>
+</li>
+<li><p>/SelStart=</p>
+<ul>
+<li><p>カーソル位置を指定する。</p>
+<ul>
+<li><p>例 : <code class="docutils literal notranslate"><span class="pre">/SelStart=2</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/Paste</span></code>や<code class="docutils literal notranslate"><span class="pre">/SelLength</span></code>と組み合わせ使う</p></li>
+</ul>
+</li>
+<li><p>/SelLength=</p>
+<ul>
+<li><p>選択範囲の長さを指定する。</p>
+<ul>
+<li><p>例 : <code class="docutils literal notranslate"><span class="pre">/SelLength=2</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/Paste</span></code>や<code class="docutils literal notranslate"><span class="pre">/SelStart</span></code>と組み合わせ使う</p></li>
+<li><p>負の値を指定すると、先頭方向に向かって選択する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/SelStart</span></code>なし、かつ、<code class="docutils literal notranslate"><span class="pre">/SelLength</span></code>が負の値の場合、テキスト末尾からの選択を行う</p>
+<ul>
+<li><p>例: <code class="docutils literal notranslate"><span class="pre">/Paste</span> <span class="pre">home</span> <span class="pre">/SelLength=-3</span></code> → &quot;ome&quot;部分が選択される</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>なお、上記のコマンドラインオプションによる実行は、事前に本アプリが起動している状態で行う必要がある<br />
+(起動していない状態で実行した場合、単にアプリが起動するだけ)</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about-matching.html" class="btn btn-neutral float-left" title="候補欄のコマンド表示順序" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3rdlibs.html" class="btn btn-neutral float-right" title="利用ライブラリ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

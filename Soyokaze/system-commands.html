@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>システムコマンド &mdash; Soyokaze 0.42.2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="マクロ" href="macros.html" />
+    <link rel="prev" title="fileプロトコルをローカルパスに変換" href="adhoc-command/file-pathconvert.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">システムコマンド</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cd">cd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copyclip">copyclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displayoff">displayoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#edit">edit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#emptyrecyclebin">emptyrecyclebin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exit">exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lockscreen">lockscreen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logoff">logoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maindir">maindir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manager">manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new">new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#newsnippet">newsnippet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reboot">reboot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registwin">registwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reload">reload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restart">restart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting">setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shutdown">shutdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standby">standby</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#suspend">suspend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#userdir">userdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version">version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#edit-system-command">システムコマンドの編集</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">システムコマンド</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-command">
+<h1>システムコマンド<a class="headerlink" href="#system-command" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>概要<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>システムコマンドとは、本アプリに最初から登録済のキーワードのこと。</p>
+<p>削除することはできないが、名前を変更することはできる。<br />
+また、一部のコマンドについては無効化することができる。<br />
+無効化すると、<a class="reference internal" href="usage/how_to_use.html#open-input-window"><span class="std std-ref">入力画面</span></a>でキーワードを入力しても候補として表示されず実行もできなくなる。</p>
+<p>名前の変更や無効化は<a class="reference internal" href="window/keyword-manager.html"><span class="doc std std-doc">キーワードマネージャ</span></a>で設定することができる。</p>
+</section>
+<hr class="docutils" />
+<section id="cd">
+<h2>cd<a class="headerlink" href="#cd" title="Link to this heading"></a></h2>
+<p>実行中のランチャーアプリプロセスのカレントディレクトリを変更する</p>
+</section>
+<hr class="docutils" />
+<section id="copyclip">
+<h2>copyclip<a class="headerlink" href="#copyclip" title="Link to this heading"></a></h2>
+<p>コマンド名の後に指定した文字列をクリップボードにコピーする</p>
+</section>
+<hr class="docutils" />
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading"></a></h2>
+<p>コマンドを削除する。</p>
+<ul class="simple">
+<li><p>例: <code class="docutils literal notranslate"><span class="pre">delete</span> <span class="pre">hoge</span></code> → hogeコマンドを削除する</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="displayoff">
+<h2>displayoff<a class="headerlink" href="#displayoff" title="Link to this heading"></a></h2>
+<p>モニター(ディスプレイ)の電源を切る。<br />
+マルチモニター環境の場合、すべての電源を切る。</p>
+</section>
+<hr class="docutils" />
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading"></a></h2>
+<p>既存コマンドの編集画面またはキーワードマネージャ画面を表示する<br />
+後続パラメータにコマンド名を表示を指定した場合、そのコマンドの編集画面を表示する。<br />
+後続パラメータとして何も指定しなかった場合はキーワードマネージャ画面を表示する。</p>
+<section id="example">
+<h3>例<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">edit</span> <span class="pre">hoge</span></code> → <code class="docutils literal notranslate"><span class="pre">hoge</span></code>コマンドの設定画面を表示する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edit</span></code> → キーワードマネージャ画面を表示する</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="emptyrecyclebin">
+<h2>emptyrecyclebin<a class="headerlink" href="#emptyrecyclebin" title="Link to this heading"></a></h2>
+<p>ごみ箱を空にする。<br />
+コマンド設定にて、空にする前の確認の有無を設定することができる。(初期状態は確認なし)</p>
+</section>
+<hr class="docutils" />
+<section id="exit">
+<h2>exit<a class="headerlink" href="#exit" title="Link to this heading"></a></h2>
+<p>本アプリを終了する。</p>
+</section>
+<hr class="docutils" />
+<section id="lockscreen">
+<h2>lockscreen<a class="headerlink" href="#lockscreen" title="Link to this heading"></a></h2>
+<p>スクリーンロックする。</p>
+</section>
+<hr class="docutils" />
+<section id="logoff">
+<h2>logoff<a class="headerlink" href="#logoff" title="Link to this heading"></a></h2>
+<p>Windowsからログオフ(サインアウト)する。</p>
+</section>
+<hr class="docutils" />
+<section id="maindir">
+<h2>maindir<a class="headerlink" href="#maindir" title="Link to this heading"></a></h2>
+<p>本アプリの実行ファイルが置かれているフォルダをエクスプローラーまたはファイラーで表示する。</p>
+<p><a class="reference internal" href="window/app-settings.html#comand-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
+設定していない場合はエクスプローラーで開く。</p>
+</section>
+<hr class="docutils" />
+<section id="manager">
+<h2>manager<a class="headerlink" href="#manager" title="Link to this heading"></a></h2>
+<p>キーワードマネージャ画面を表示する。</p>
+</section>
+<hr class="docutils" />
+<section id="new">
+<h2>new<a class="headerlink" href="#new" title="Link to this heading"></a></h2>
+<p>新規コマンド登録画面を表示する。</p>
+</section>
+<hr class="docutils" />
+<section id="newsnippet">
+<h2>newsnippet<a class="headerlink" href="#newsnippet" title="Link to this heading"></a></h2>
+<p>現在クリップボードにあるテキストを定型文として登録するための登録画面を表示する。</p>
+</section>
+<hr class="docutils" />
+<section id="reboot">
+<h2>reboot<a class="headerlink" href="#reboot" title="Link to this heading"></a></h2>
+<p>PCを再起動する。</p>
+</section>
+<hr class="docutils" />
+<section id="registwin">
+<h2>registwin<a class="headerlink" href="#registwin" title="Link to this heading"></a></h2>
+<p>直前にアクティブなウインドウをコマンドとして登録する。</p>
+</section>
+<hr class="docutils" />
+<section id="reload">
+<h2>reload<a class="headerlink" href="#reload" title="Link to this heading"></a></h2>
+<p>設定ファイルの再読み込みを行う。<br />
+(テキストエディタで直接キーワード編集を行ったときにリロードするためもの)</p>
+<p>当アプリの初期のバージョンではコマンド編集のためのUIを実装していなかったため、その頃の名残として存在しているものであるが、現在は使う必要はない。</p>
+</section>
+<hr class="docutils" />
+<section id="restart">
+<h2>restart<a class="headerlink" href="#restart" title="Link to this heading"></a></h2>
+<p>アプリの再起動を行う。</p>
+<p>初期状態では無効になっている。キーワードマネージャのコマンド設定画面から有効にすると使用できる。</p>
+</section>
+<hr class="docutils" />
+<section id="setting">
+<h2>setting<a class="headerlink" href="#setting" title="Link to this heading"></a></h2>
+<p>アプリケーション設定画面を表示する。</p>
+</section>
+<hr class="docutils" />
+<section id="shutdown">
+<h2>shutdown<a class="headerlink" href="#shutdown" title="Link to this heading"></a></h2>
+<p>システムをシャットダウンする。</p>
+</section>
+<hr class="docutils" />
+<section id="standby">
+<h2>standby<a class="headerlink" href="#standby" title="Link to this heading"></a></h2>
+<p>PCをスタンバイ状態にする。</p>
+</section>
+<hr class="docutils" />
+<section id="suspend">
+<h2>suspend<a class="headerlink" href="#suspend" title="Link to this heading"></a></h2>
+<p>PCをサスペンド状態にする。</p>
+</section>
+<hr class="docutils" />
+<section id="userdir">
+<h2>userdir<a class="headerlink" href="#userdir" title="Link to this heading"></a></h2>
+<p>設定ファイルの保存先フォルダをエクスプローラーまたはファイラーで表示する。</p>
+<p><a class="reference internal" href="window/app-settings.html#comand-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
+設定していない場合はエクスプローラーで開く。</p>
+<p>設定ファイルの保存先については <a class="reference internal" href="usage/setup.html#configuration-directory"><span class="std std-ref">アプリデータの保存フォルダ</span></a> を参照のこと</p>
+</section>
+<hr class="docutils" />
+<section id="version">
+<h2>version<a class="headerlink" href="#version" title="Link to this heading"></a></h2>
+<p>バージョン情報ダイアログを表示する</p>
+</section>
+<section id="edit-system-command">
+<h2>システムコマンドの編集<a class="headerlink" href="#edit-system-command" title="Link to this heading"></a></h2>
+<p>一部の<a class="reference internal" href="#"><span class="xref myst">システムコマンド</span></a>は機能を無効化することができる。<br />
+無効化すると、入力欄にコマンド名を入力しても候補として表示されなくなる。</p>
+<p>キーワードマネージャ上でシステムコマンドを選択し、<code class="docutils literal notranslate"><span class="pre">編集</span></code>ボタンを選択すると下記の画面が表示される。</p>
+<p><img alt="" src="_images/edit-builtincommand.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code></p>
+<ul>
+<li><p>コマンドの名前を変更することができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの説明</span></code></p>
+<ul>
+<li><p>コマンドの機能を説明するテキスト。読み取り専用。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドを有効にする</span></code></p>
+<ul>
+<li><p>チェックを外すと、当該コマンドが候補欄に表示されなくなる(実行もできない)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">実行前に確認する</span></code></p>
+<ul>
+<li><p>チェックすると、コマンド実行前に確認ダイアログを表示する。</p></li>
+<li><p>誤って実行されるのを防止するための機能</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="adhoc-command/file-pathconvert.html" class="btn btn-neutral float-left" title="fileプロトコルをローカルパスに変換" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macros.html" class="btn btn-neutral float-right" title="マクロ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

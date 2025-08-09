@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>マクロ &mdash; Soyokaze 0.42.2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="高度な使い方" href="others/advanced-usage.html" />
+    <link rel="prev" title="システムコマンド" href="system-commands.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">マクロ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#app">app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#syntax">記法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#basename">basename</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">記法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#clipboard">clipboard</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">記法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#date">date</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">記法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#format">日付の書式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offset">オフセット</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restrictions">制限</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#env">env</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">記法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#explorer">explorer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">記法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#random">random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">記法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#afxw">afxw</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">記法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#powerstatus">powerstatus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">記法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">マクロ</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="macros">
+<h1>マクロ<a class="headerlink" href="#macros" title="Link to this heading"></a></h1>
+<p>コマンドのパラメータとしてマクロを使用することができる。<br />
+マクロを使うと、クリップボード/時刻/環境変数の値など、その時々や環境に応じて変化する動的な値に置き換えることができる。</p>
+<p>マクロは<code class="docutils literal notranslate"><span class="pre">${macroName</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...}</span></code> のような書式で指定する。</p>
+<p>引数がないマクロの場合は<code class="docutils literal notranslate"><span class="pre">$macroName</span></code>という書式も可能</p>
+<ul class="simple">
+<li><p>マクロの一覧</p></li>
+<li><p><a class="reference internal" href="#app"><span class="xref myst">app</span></a></p></li>
+<li><p><a class="reference internal" href="#basename"><span class="xref myst">basename</span></a></p></li>
+<li><p><a class="reference internal" href="#clipboard"><span class="xref myst">clipboard</span></a></p></li>
+<li><p><a class="reference internal" href="#date"><span class="xref myst">date</span></a></p></li>
+<li><p><a class="reference internal" href="#env"><span class="xref myst">env</span></a></p></li>
+<li><p><a class="reference internal" href="#explorer"><span class="xref myst">explorer</span></a></p></li>
+<li><p><a class="reference internal" href="#random"><span class="xref myst">random</span></a></p></li>
+<li><p><a class="reference internal" href="#afxw"><span class="xref myst">afxw</span></a></p></li>
+<li><p><a class="reference internal" href="#powerstatus"><span class="xref myst">powerstatus</span></a></p></li>
+</ul>
+<hr class="docutils" />
+<section id="app">
+<h2>app<a class="headerlink" href="#app" title="Link to this heading"></a></h2>
+<p>アプリケーション名やアプリケーションのバージョン、ビルド日時を得る</p>
+<section id="syntax">
+<h3>記法<a class="headerlink" href="#syntax" title="Link to this heading"></a></h3>
+<p>以下のいずれかを指定できる。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${app}</span></code></p>
+<ul>
+<li><p>アプリ名を得る</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${app</span> <span class="pre">name}</span></code></p>
+<ul>
+<li><p>アプリ名を得る</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${app</span> <span class="pre">version}</span></code></p>
+<ul>
+<li><p>バージョン番号を得る</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${app</span> <span class="pre">builddate}</span></code></p>
+<ul>
+<li><p>ビルド日を得る</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${app</span> <span class="pre">buildtime}</span></code></p>
+<ul>
+<li><p>ビルド時刻を得る</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="example">
+<h3>例<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># アプリ名を得る
+${app}   → (アプリ名)
+${app name}   → (アプリ名)
+# バージョン番号を得る
+${app version}   → 0.30.0
+# ビルド日を得る
+${app builddate}   → 2024/11/08
+# ビルド時刻を得る
+${app builddate}   → 01:23:45
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="basename">
+<h2>basename<a class="headerlink" href="#basename" title="Link to this heading"></a></h2>
+<p>引数で与えたパスからファイル名を除去する</p>
+<section id="id1">
+<h3>記法<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">${basename</span> <span class="pre">パス文字列}</span></code>の形式で指定する。</p>
+</section>
+<section id="id2">
+<h3>例<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ディレクトリパスを得る
+${basename c:\dir\a.txt }   → c:\dir
+
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="clipboard">
+<h2>clipboard<a class="headerlink" href="#clipboard" title="Link to this heading"></a></h2>
+<p>クリップボードに入っている値に置き換えることができる。</p>
+<section id="id3">
+<h3>記法<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">${clipboard}</span></code>の形式で指定する。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="date">
+<h2>date<a class="headerlink" href="#date" title="Link to this heading"></a></h2>
+<p>現在の日付・時刻に置き換えることができる。</p>
+<p>日付・時刻に置き換える際の書式を指定したり、現在時刻に対して任意のオフセット(時間差分)を指定できる。</p>
+<section id="id4">
+<h3>記法<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">${date</span> <span class="pre">[format</span> <span class="pre">[offset]]}</span></code>の形式で指定する。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format</span></code>で日付の書式を指定できる。</p>
+<p>書式を指定しない場合は、時分秒(<code class="docutils literal notranslate"><span class="pre">%H:%M:%S</span></code>)を表示する</p>
+<p><code class="docutils literal notranslate"><span class="pre">offset</span></code>でオフセットを指定する。</p>
+<p>オフセットを指定しない場合は現在時刻を表示する。</p>
+</section>
+<section id="format">
+<h3>日付の書式<a class="headerlink" href="#format" title="Link to this heading"></a></h3>
+<p>strftimeの書式をそのまま指定する。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>コード</p></th>
+<th class="head"><p>意味</p></th>
+<th class="head"><p>例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%a</span></code></p></td>
+<td><p>ロケールでの曜日</p></td>
+<td><p>火</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%A</span></code></p></td>
+<td><p>ロケールでの曜日(完全)</p></td>
+<td><p>火曜日</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%b</span></code></p></td>
+<td><p>ロケールでの月</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%B</span></code></p></td>
+<td><p>ロケールでの月(完全)</p></td>
+<td><p>11月</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%c</span></code></p></td>
+<td><p>ロケールでの日付と時刻</p></td>
+<td><p>2024/11/19 12:34:45</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%C</span></code></p></td>
+<td><p>西暦上二桁</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p>月の日付(1-31)</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%D</span></code></p></td>
+<td><p>%m/%d/%y</p></td>
+<td><p>11/19/24</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%e</span></code></p></td>
+<td><p>月の日付、右寄せ二桁</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%e</span></code></p></td>
+<td><p>月の日付、右寄せ二桁</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%F</span></code></p></td>
+<td><p>%Y-%m-%d</p></td>
+<td><p>2024-11-19</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%g</span></code></p></td>
+<td><p>西暦の年の下二桁</p></td>
+<td><p>24</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%G</span></code></p></td>
+<td><p>西暦の年</p></td>
+<td><p>2024</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%h</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%b</span></code>と同じ</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%H</span></code></p></td>
+<td><p>24 時間形式の時(00-23)</p></td>
+<td><p>14</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%I</span></code></p></td>
+<td><p>12 時間形式の時(01-12)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%j</span></code></p></td>
+<td><p>年の通算日 (001 - 366)</p></td>
+<td><p>324</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%m</span></code></p></td>
+<td><p>月 (01 - 12)</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%M</span></code></p></td>
+<td><p>分 (00 - 59)</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%n</span></code></p></td>
+<td><p>改行文字</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%p</span></code></p></td>
+<td><p>ロケールでの午前/午後表記</p></td>
+<td><p>午前</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%r</span></code></p></td>
+<td><p>ロケールでのAM/PM形式の時刻</p></td>
+<td><p>xxx</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%R</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%H:%M</span></code>と同じ</p></td>
+<td><p>14:09</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%S</span></code></p></td>
+<td><p>秒(00 - 59)</p></td>
+<td><p>48</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%t</span></code></p></td>
+<td><p>タブ文字</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%T</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%H:%M:%S</span></code>と同じ</p></td>
+<td><p>14:10:59</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%u</span></code></p></td>
+<td><p>曜日を表す数値(1 - 7、月曜日が 1)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%U</span></code></p></td>
+<td><p>年の週数(0-53)。週の初日は日曜</p></td>
+<td><p>46</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%V</span></code></p></td>
+<td><p>年の週数(1-53)。週の初日は日曜</p></td>
+<td><p>46</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%w</span></code></p></td>
+<td><p>曜日を表す数値(0 - 6、日曜日が 0)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%W</span></code></p></td>
+<td><p>年の週数(00-53)、週の初日は月曜</p></td>
+<td><p>46</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%x</span></code></p></td>
+<td><p>ロケールでの日付表現</p></td>
+<td><p>2024/11/19</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%X</span></code></p></td>
+<td><p>ロケールでの時刻表現</p></td>
+<td><p>14:43:56</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%y</span></code></p></td>
+<td><p>西暦下二桁(00 - 99)</p></td>
+<td><p>24</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%Y</span></code></p></td>
+<td><p>西暦四桁(00 - 99)</p></td>
+<td><p>2024</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%z</span></code></p></td>
+<td><p>時差。UTCからのオフセット</p></td>
+<td><p>+0900</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%Z</span></code></p></td>
+<td><p>ロケールでのタイム ゾーン名称</p></td>
+<td><p>東京(標準時)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%%</span></code></p></td>
+<td><p>パーセント記号</p></td>
+<td><p>%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="offset">
+<h3>オフセット<a class="headerlink" href="#offset" title="Link to this heading"></a></h3>
+<p>以下の形式で指定する。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">S</span><span class="p">](</span><span class="o">+</span> <span class="ow">or</span> <span class="o">-</span><span class="p">)(</span><span class="n">オフセット値</span><span class="p">)(</span><span class="n">Y</span> <span class="ow">or</span> <span class="n">M</span> <span class="ow">or</span> <span class="n">D</span> <span class="ow">or</span> <span class="n">h</span> <span class="ow">or</span> <span class="n">m</span> <span class="ow">or</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>先頭に<code class="docutils literal notranslate"><span class="pre">S</span></code>を指定した場合、その週の日曜日をベースにオフセット計算をする</p></li>
+<li><p>符号<code class="docutils literal notranslate"><span class="pre">+</span></code>を指定すると、ベース時刻に対して<code class="docutils literal notranslate"><span class="pre">オフセット値</span></code>ぶんの時間を進める<br />
+逆に、符号<code class="docutils literal notranslate"><span class="pre">-</span></code>を指定すると、時間を戻す</p></li>
+<li><p>単位</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code>:年</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code>:月</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code>:日</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h</span></code>:時</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>:分</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>:秒</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+1d</span></code> → 1日後</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-5h</span></code> → 5時間前</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+30s</span></code> → 30秒後</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+3M</span></code> → 3カ月後</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-1Y</span></code> → 1年前</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>例<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># マクロ実行日時が 2024/11/18(月) 12:34:45 だったとする
+
+${date}
+  → 12:34:45
+
+${date &quot;%Y/%m/%d&quot; +1D}
+  → 2024/11/19 (翌日の年月日)
+
+${date &quot;%Y/%m/%d&quot; S+1D}
+  → 2024/11/18 (日曜日11/17の1日後の年月日)
+</pre></div>
+</div>
+</section>
+<section id="restrictions">
+<h3>制限<a class="headerlink" href="#restrictions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>オフセットで日付を計算する際にうるう年を考慮していない(手抜き)</p></li>
+<li><p>オフセットの複数単位の同時指定には対応していない(例: 1.5日<code class="docutils literal notranslate"><span class="pre">+1d+12h</span></code>)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="env">
+<h2>env<a class="headerlink" href="#env" title="Link to this heading"></a></h2>
+<p>環境変数の値に置き換えることができる。</p>
+<section id="id6">
+<h3>記法<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">${env</span> <span class="pre">環境変数名}</span></code>の形式で指定する。</p>
+</section>
+<section id="id7">
+<h3>例<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ユーザーのホームディレクトリのパスを取得する
+${env USERPROFILE}
+ → C:\Users\username
+
+# ユーザー名を取得する
+${env USERNAME}
+ → username
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="explorer">
+<h2>explorer<a class="headerlink" href="#explorer" title="Link to this heading"></a></h2>
+<p>表示中のエクスプローラの現在パスや選択中のファイルパスを取得・展開することができる。</p>
+<section id="id8">
+<h3>記法<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>エクスプローラで表示中のフォルダパスに展開する場合は
+<code class="docutils literal notranslate"><span class="pre">${explorer</span> <span class="pre">location_path}</span></code>と記載する。</p></li>
+<li><p>エクスプローラで選択している項目のファイルパスを展開したい場合は
+<code class="docutils literal notranslate"><span class="pre">${explorer</span> <span class="pre">selection_path</span> <span class="pre">[index]}</span></code>と記載する。<br />
+<code class="docutils literal notranslate"><span class="pre">index</span></code>を指定した場合、<code class="docutils literal notranslate"><span class="pre">index</span></code>番目のパスに置き換える(0～)。<br />
+<code class="docutils literal notranslate"><span class="pre">index</span></code>を指定しなかった場合、選択中のすべての要素に置き換える。</p></li>
+<li><p>該当する要素が存在しない場合は空文字列に置換される</p>
+<ul>
+<li><p>例: エクスプローラを開いていない、ファイルを選択していない、等</p></li>
+</ul>
+</li>
+<li><p>表示中のエクスプローラのウインドウが複数ある場合は、最も前面にあるウインドウの情報を取得する。</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>例<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># エクスプローラで現在表示しているフォルダパスを取得する
+${explorer location_path}
+ → &quot;C:\Program Files(x86)&quot;
+
+# エクスプローラで選択している一つ目のファイルパスを取得する
+${explorer selection_path 0}
+ → &quot;C:\Users\usename\AppData\Local\Microsoft\WindowsApps\mspaint.exe&quot;
+
+# エクスプローラで選択している全てのファイルパスを取得する
+${explorer selection_path}
+ → &quot;C:\Users\usename\AppData\Local\Microsoft\WindowsApps\ms-teams.exe&quot; &quot;C:\Users\usename\AppData\Local\Microsoft\WindowsApps\mspaint.exe&quot;
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="random">
+<h2>random<a class="headerlink" href="#random" title="Link to this heading"></a></h2>
+<p>乱数を生成する系の処理を行うためのマクロ。<br />
+現在はuuidの生成のみをサポートする。</p>
+<section id="id10">
+<h3>記法<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">${random</span> <span class="pre">種類}</span></code>の形式で指定する。</p>
+</section>
+<section id="id11">
+<h3>例<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># UUIDを生成する
+${random uuid}
+  → 36128e01-947e-4bd2-864c-16a234c32a8d
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="afxw">
+<h2>afxw<a class="headerlink" href="#afxw" title="Link to this heading"></a></h2>
+<p>外部ファイラとして<a class="reference external" href="https://afxw.sakura.ne.jp/akt_afxw.html">あふw</a>を利用している場合に、あふw側で表示しているカレントディレクトリを取得することができる。</p>
+<p>このマクロを使うにあたり、あふw側の設定でオートメーションサーバ登録しておく必要がある。</p>
+<section id="id12">
+<h3>記法<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">${afxw</span> <span class="pre">currentdir}</span></code>と記述する。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="powerstatus">
+<h2>powerstatus<a class="headerlink" href="#powerstatus" title="Link to this heading"></a></h2>
+<p>【試作】<br />
+電源状態に関する情報を取得し表示することができる。</p>
+<section id="id13">
+<h3>記法<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">${powerstatus</span> <span class="pre">format}</span></code>の形式で記述する。</p>
+<p><code class="docutils literal notranslate"><span class="pre">format</span></code>部分に表示する情報を表す指定子のいずれかを記述する。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>指定子</p></th>
+<th class="head"><p>意味</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%l</span></code></p></td>
+<td><p>バッテリー残量を表すパーセント(<code class="docutils literal notranslate"><span class="pre">0-100%</span></code>)、バッテリー駆動でない場合は<code class="docutils literal notranslate"><span class="pre">(不明)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%a</span></code></p></td>
+<td><p>AC電源に接続されているかの状態 <code class="docutils literal notranslate"><span class="pre">オンライン</span></code>、<code class="docutils literal notranslate"><span class="pre">オフライン</span></code>、<code class="docutils literal notranslate"><span class="pre">不明</span></code>のいずれか</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="system-commands.html" class="btn btn-neutral float-left" title="システムコマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="others/advanced-usage.html" class="btn btn-neutral float-right" title="高度な使い方" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

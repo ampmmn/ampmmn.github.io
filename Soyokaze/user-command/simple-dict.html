@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>簡易辞書コマンド &mdash; Soyokaze 0.42.2</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="フォルダ更新検知コマンド" href="watch-path.html" />
+    <link rel="prev" title="ウインドウ整列コマンド" href="align-window.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bookmarks.html">ブックマーク検索コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhistory.html">ブラウザ履歴コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="directoryindex.html">DirectoryIndexコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regexp.html">正規表現コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter.html">フィルタコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activate-window.html">ウインドウ切替コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align-window.html">ウインドウ整列コマンド</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">簡易辞書コマンド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#use-cases">用途・活用例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">設定画面</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#post-action-run-command">実行する処理 - 他のコマンドを実行する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-action-run-program">実行する処理 - プログラムを実行する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-action-copy-to-clipboard">実行する処理 - クリップボードにコピーする</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-guide">設定の手引き</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remarks">動作の説明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restrictions">制限事項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#per-key-behavior">実行時の動作</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="watch-path.html">フォルダ更新検知コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volume.html">音量調節コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eject.html">取り外しコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="split.html">振り分けコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user-commands.html">登録型のコマンド</a></li>
+      <li class="breadcrumb-item active">簡易辞書コマンド</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="excel-dict-command">
+<h1>簡易辞書コマンド<a class="headerlink" href="#excel-dict-command" title="Link to this heading"></a></h1>
+<p>Excelワークブックファイル(<code class="docutils literal notranslate"><span class="pre">*.xlsx,*.xls</span></code>)の任意の範囲のデータを簡易的な辞書データ(キーと値のペアの集合)として利用するコマンド。<br />
+辞書データ(キー、値)をインクリメンタルに検索することができる。</p>
+<p>Excelファイルをデータソースにできるので、データのメンテナンスをExcelでお手軽にできるのがメリット</p>
+<p>Excelを利用するため、実行環境にExcelがインストールされている必要がある。</p>
+<section id="use-cases">
+<h2>用途・活用例<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>お使いの環境(組織)にて使われる、何らかの対応表の相互変換</p>
+<ul>
+<li><p>Excelで台帳管理されているものがあれば、それをそのままデータソースとして活用できる可能性がある</p>
+<ul>
+<li><p>あるいはPowerQueryを使って、加工したうえで使うとか...</p></li>
+</ul>
+</li>
+<li><p>製品開発の現場における、製品の正式名称(外向け)と開発名称(内向け)の相互変換とか</p></li>
+</ul>
+</li>
+<li><p>(<a class="reference internal" href="snippet-group.html"><span class="doc std std-doc">定型文グループコマンド</span></a>と被るが)定型文をExcelで管理して、定型文として呼び出すような使い方ができる</p>
+<ul>
+<li><p>定型文に対して任意の名前を付けて、名前で定型文を呼び出す、みたいな</p></li>
+</ul>
+</li>
+<li><p>その他、一般的な変換</p>
+<ul>
+<li><p>例: 郵便番号と地名、MACアドレスとベンダー、企業名と企業コード</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="description">
+<h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/edit-simpledictcommand.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンド名</span></code></p>
+<ul>
+<li><p>入力画面からコマンドを実行するためのキーワード</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">説明</span></code></p>
+<ul>
+<li><p>何のためのコマンドかを記載しておくための説明欄</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">データの取得元</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code></p>
+<ul>
+<li><p>辞書データとして利用したいExcelワークブックファイルのパスを指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">シート名</span></code></p>
+<ul>
+<li><p>辞書データとして利用したいデータを含むシート名を指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">キーのデータ範囲</span></code></p>
+<ul>
+<li><p>辞書データの「キー」として利用したいデータの範囲を指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">取得</span></code></p>
+<ul>
+<li><p>クリックすると、現在Excelで表示・選択している範囲の情報を、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>、<code class="docutils literal notranslate"><span class="pre">シート名</span></code>、<code class="docutils literal notranslate"><span class="pre">キーのデータ範囲</span></code>に反映する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">値のデータ範囲</span></code></p>
+<ul>
+<li><p>辞書データの「値」として利用したいデータの範囲を指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">取得</span></code></p>
+<ul>
+<li><p>クリックすると、現在Excelで表示・選択している範囲の情報を、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>、<code class="docutils literal notranslate"><span class="pre">シート名</span></code>、<code class="docutils literal notranslate"><span class="pre">値のデータ範囲</span></code>に反映する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">値2のデータ範囲</span></code></p>
+<ul>
+<li><p>辞書データの「値2」として利用したいデータの範囲を指定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">値2</span></code>は補助用の領域。設定は任意。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">取得</span></code></p>
+<ul>
+<li><p>クリックすると、現在Excelで表示・選択している範囲の情報を、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>、<code class="docutils literal notranslate"><span class="pre">シート名</span></code>、<code class="docutils literal notranslate"><span class="pre">値のデータ範囲</span></code>に反映する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">一行目をヘッダ行として扱う</span></code></p>
+<ul>
+<li><p>チェックすると、選択範囲の先頭行をヘッダとみなし、辞書データに含めない</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ファイル更新時に通知を行う</span></code></p>
+<ul>
+<li><p>チェックすると、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>で指定したファイルが更新されたときに、トースト通知する</p>
+<ul>
+<li><p>ファイルサーバ上で他の人と共有しているExcelファイルを使っている場合に、他者によるファイル更新に気づくことができる</p></li>
+<li><p>ただし、ファイルがURL経由である場合は更新検知できない</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">取得内容確認</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>/<code class="docutils literal notranslate"><span class="pre">シート名</span></code>/<code class="docutils literal notranslate"><span class="pre">キーのデータ範囲</span></code>/<code class="docutils literal notranslate"><span class="pre">値のデータ範囲</span></code>の内容に基づいて辞書データを読み込み、プレビュー欄に表示する</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補の表示・マッチング</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">説明欄の書式</span></code></p>
+<ul>
+<li><p>候補を選択したときに説明欄に表示するテキストの書式を設定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補欄の書式</span></code></p>
+<ul>
+<li><p>候補欄に表示するテキストの書式を設定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンド名を入力しなくても候補を表示する</span></code></p>
+<ul>
+<li><p>チェックすると、コマンド名を入力しなくても、入力ワードにマッチする値を候補欄に表示する</p>
+<ul>
+<li><p>この場合<a class="reference internal" href="../others/about-matching.html#weak-match"><span class="std std-ref">弱一致</span></a>扱いとなる</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">値でのマッチングも行う</span></code></p>
+<ul>
+<li><p>チェックすると、キーと値を逆転したマッチングを有効にする(値でマッチングし、キーを結果とする）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">選択後の処理</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">実行する処理</span></code><br />
+選択後に実行する処理の実行方法を選択する<br />
+以下の3つから選ぶことができる</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">他のコマンドを実行する</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">他のプログラムを実行する</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">クリップボードにコピーする</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">マクロを展開する</span></code></p>
+<ul>
+<li><p>コマンド実行時に<a class="reference internal" href="../macros.html"><span class="doc std std-doc">マクロ</span></a>を展開する</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>なお、逆引き検索でヒットした場合、<code class="docutils literal notranslate"><span class="pre">$key</span></code>と<code class="docutils literal notranslate"><span class="pre">$value</span></code>も逆になる</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code></p>
+<ul>
+<li><p>コマンドを呼び出すキーバインドを設定できる。<br />
+設定したキーを押下すると、入力欄が表示され、コマンド名が入力された(キーワードで絞り込みができる）状態になる</p></li>
+<li><p>他のコマンドにおけるホットキーはコマンド実行として作用するが、このコマンドに関しては短縮入力みたいな位置づけ</p></li>
+</ul>
+</li>
+</ul>
+<section id="post-action-run-command">
+<h3>実行する処理 - 他のコマンドを実行する<a class="headerlink" href="#post-action-run-command" title="Link to this heading"></a></h3>
+<p><img alt="" src="../_images/edit-simpledictcommand-postfilter-command.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンド</span></code></p>
+<ul>
+<li><p>実行するコマンドを選択する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code></p>
+<ul>
+<li><p>コマンドに渡すパラメータを指定する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="post-action-run-program">
+<h3>実行する処理 - プログラムを実行する<a class="headerlink" href="#post-action-run-program" title="Link to this heading"></a></h3>
+<p><img alt="" src="../_images/edit-simpledictcommand-postfilter-subprocess.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">実行ファイル</span></code></p>
+<ul>
+<li><p>実行するプログラムのパスを指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code></p>
+<ul>
+<li><p>プログラムに渡すパラメータを指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">作業フォルダ</span></code></p>
+<ul>
+<li><p>実行するときのカレントディレクトリを指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">表示方法</span></code></p>
+<ul>
+<li><p>通常表示/最大表示/最小表示 を選ぶことができる</p></li>
+<li><p>起動するプログラムによっては指定が効かないこともある</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="post-action-copy-to-clipboard">
+<h3>実行する処理 - クリップボードにコピーする<a class="headerlink" href="#post-action-copy-to-clipboard" title="Link to this heading"></a></h3>
+<p><img alt="" src="../_images/edit-simpledictcommand-postfilter-clipboard.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code></p>
+<ul>
+<li><p>クリップボードにコピーするテキストの書式を指定する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="setup-guide">
+<h2>設定の手引き<a class="headerlink" href="#setup-guide" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Excelアプリケーションを起動し、辞書として利用したいワークシートを選択しておく<br />
+<img alt="" src="../_images/simpledict_tebiki_step1.png" /></p></li>
+<li><p>Excel側でキーとして使うセル範囲を選択する。次に、本アプリ側でキー範囲取得ボタンを押す<br />
+<img alt="" src="../_images/simpledict_tebiki_step2.png" /></p></li>
+<li><p>Excel側で値として使うセル範囲を選択する。次に、本アプリ側で値範囲取得ボタンを押す<br />
+<img alt="" src="../_images/simpledict_tebiki_step3.png" /></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">取得内容確認</span></code>ボタンを押下し、取得されるキーと値の内容を確認する<br />
+<img alt="" src="../_images/simpledict_tebiki_step4.png" /></p></li>
+<li><p>キーと値の内容に問題なければ、<code class="docutils literal notranslate"><span class="pre">選択後の処理</span></code>の設定をして、<code class="docutils literal notranslate"><span class="pre">OK</span></code>ボタンを押下してコマンドを作成する</p></li>
+</ol>
+</section>
+<section id="remarks">
+<h2>動作の説明<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>アプリ起動後にバックグラウンドで辞書データの読み込みを行う</p>
+<ul>
+<li><p>読み込みが完了するまでは候補に表示されない</p></li>
+</ul>
+</li>
+<li><p>データソースとなるExcelファイルが更新された場合、自動で再読み込みを行う</p></li>
+</ul>
+</section>
+<section id="restrictions">
+<h2>制限事項<a class="headerlink" href="#restrictions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>クエリのタイムアウトを100msecとしている</p>
+<ul>
+<li><p>設定したデータの規模によっては検索に時間がかかる可能性があり、操作性に影響する可能性があるため</p></li>
+</ul>
+</li>
+<li><p>表示する候補の上限は20件</p>
+<ul>
+<li><p>これも操作性への影響を考慮して件数を絞っている</p></li>
+<li><p>最終的にはキーワード入力で1件に絞り込むので途中の候補としては20件もあれば足りるでしょう、という考え</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="example">
+<h2>例<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>日本の上場企業の会社名をキー、証券コードを値にする</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/simple_dict_example.png"><img alt="../_images/simple_dict_example.png" src="../_images/simple_dict_example.png" style="width: 534.0px; height: 395.25px;" />
+</a>
+</figure>
+<p>「せいてつ」というキーワードで会社名での絞り込みを行い、証券コードをクリップボードにコピーする
+<img alt="" src="../_images/simple_dict_example2.gif" /></p>
+</section>
+<section id="per-key-behavior">
+<h2>実行時の動作<a class="headerlink" href="#per-key-behavior" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>押下キー</p></th>
+<th class="head"><p>動作</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code></p></td>
+<td><p>コマンド設定画面で指定したアクションを実行する<br>(コピー or 他のコマンド実行 or プログラム実行)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Shift-Enter</span></code></p></td>
+<td><p>キーをコピー</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code></p></td>
+<td><p>値をコピー</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="align-window.html" class="btn btn-neutral float-left" title="ウインドウ整列コマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="watch-path.html" class="btn btn-neutral float-right" title="フォルダ更新検知コマンド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

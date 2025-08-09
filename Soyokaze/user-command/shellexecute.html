@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>通常コマンド &mdash; Soyokaze 0.42.2</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="定型文コマンド" href="snippet.html" />
+    <link rel="prev" title="登録型のコマンド" href="../user-commands.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">通常コマンド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment">環境変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others">その他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#per-key-behavior">実行時の動作</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bookmarks.html">ブックマーク検索コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhistory.html">ブラウザ履歴コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="directoryindex.html">DirectoryIndexコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regexp.html">正規表現コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter.html">フィルタコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activate-window.html">ウインドウ切替コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align-window.html">ウインドウ整列コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simple-dict.html">簡易辞書コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="watch-path.html">フォルダ更新検知コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volume.html">音量調節コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eject.html">取り外しコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="split.html">振り分けコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user-commands.html">登録型のコマンド</a></li>
+      <li class="breadcrumb-item active">通常コマンド</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shell-execute-command">
+<h1>通常コマンド<a class="headerlink" href="#shell-execute-command" title="Link to this heading"></a></h1>
+<p>通常コマンドはファイルやURLを関連付けられたプログラムで表示するためのコマンドである。<br />
+よく使うプログラムやファイル、URLに対して任意の名前を設定し、その名前で実行することができる。</p>
+<section id="general">
+<h2>基本<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/edit.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code><br />
+入力画面からコマンドを実行するためのキーワード</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの説明</span></code><br />
+入力画面でのキーワード入力時にコメント表示欄に記載される文字列。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コメント表示欄のテキストを検索に使用する</span></code><br />
+チェックすると、<code class="docutils literal notranslate"><span class="pre">コマンドの説明</span></code>に入力したテキストもコマンドの絞り込みに使用する<br />
+例えば上の図の場合、「起動」と入力した場合にも、コマンドが候補にあがるようになる</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">実行ファイル・URLなど</span></code><br />
+実行ファイル(<code class="docutils literal notranslate"><span class="pre">*.exe</span></code>)を指定すると、その実行ファイルが実行される<br />
+URL(<code class="docutils literal notranslate"><span class="pre">http://...</span></code> <code class="docutils literal notranslate"><span class="pre">https://...</span></code>)を指定すると、ブラウザでそのURLを表示する<br />
+その他の拡張子のファイルを指定した場合、拡張子に関連付けられたプログラムでそのファイルを開く</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code><br />
+実行ファイル(.exe)を指定したときに、実行ファイルに渡すパラメータを指定する</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">$*</span></code> : 入力欄でコマンド名の後にスペース区切りで入力した全ての文字列に置換する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$1</span></code>/<code class="docutils literal notranslate"><span class="pre">$2</span></code>/<code class="docutils literal notranslate"><span class="pre">$3</span></code> ... : 入力欄でコマンド名の後にスペース区切りで入力した1番目/2番目/3番目...の文字列に置換する</p></li>
+<li><p>そのほかに<a class="reference internal" href="../macros.html"><span class="doc std std-doc">マクロ</span></a>を利用することが可能</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">作業フォルダ</span></code><br />
+実行するときのカレントディレクトリを指定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">表示方法</span></code><br />
+通常表示/最大表示/最小表示 を選ぶことができる<br />
+起動するプログラムによっては指定が効かないこともある</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">管理者権限で実行</span></code><br />
+チェックすると、管理者権限でプロセスを起動する<br />
+<code class="docutils literal notranslate"><span class="pre">.exe</span></code>、<code class="docutils literal notranslate"><span class="pre">.bat</span></code>のときのみ選択可能</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
+<a class="reference internal" href="../window/command-hotkey.html"><span class="doc std std-doc">コマンドを呼び出すキー</span></a>を設定できる。設定したキーを押下すると、コマンドを実行できる。<br />
+<img alt="" src="../_images/hotkeyForCommand.png" /></p></li>
+<li><p>左上のアイコン欄<br />
+アイコン欄を右クリックすると、コンテキストメニューが表示される。<br />
+<img alt="" src="../_images/websearchcommand-contextmenu.png" /></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">アイコンを変更する</span></code><br />
+選択すると、ファイルを選択するダイアログが表示される。画像ファイルを選択すると、その画像をアイコンとして使用することができる。<br />
+PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">アイコンを初期状態に戻す</span></code><br />
+選択すると、変更したアイコンを元に戻すことができる</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="environment">
+<h2>環境変数<a class="headerlink" href="#environment" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/shellexec-envlist.png" /></p>
+<p>起動するプログラムに対して環境変数を追加定義することができる。<br />
+既存の環境変数と同じ名前を定義した場合は値を上書きする。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">追加する環境変数の一覧</span></code><br />
+追加する環境変数のリスト</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code><br />
+クリックすると、変数を追加する画面が表示される<br />
+<img alt="" src="../_images/shellexec-envadd.png" /></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code><br />
+クリックすると、リスト上で選択している変数を編集する画面が表示される<br />
+<img alt="" src="../_images/shellexec-envedit.png" /></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code><br />
+クリックすると、リスト上で選択している変数を削除する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">一括追加</span></code><br />
+クリックすると、環境変数を一括で追加するための画面(下記)を表示する<br />
+<img alt="" src="../_images/shellexec-envbulkadd.png" /></p></li>
+</ul>
+</section>
+<section id="others">
+<h2>その他<a class="headerlink" href="#others" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/edit-detail.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">実行時引数あり/なしで起動するファイルを分ける</span></code><br />
+入力欄で、コマンド名の後に文字列を入力した場合とそうでない場合とで、実行するファイルを分けるときにチェックする<br />
+【実行時引数なし】直下に、コマンド名のみを入力した場合に実行するファイル(やパラメータ)を指定する</p>
+<ul>
+<li><p>想定する使い方<br />
+パラメータがある場合→検索、ない場合→検索サイトのトップページを表示</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">キーワードが完全一致し、かつ、候補が一つのときに自動でコマンドを実行する</span></code><br />
+入力欄に入力したキーワードがコマンド名に完全一致し、他の候補がない場合に、コマンド実行を自動確定(実行)する</p></li>
+</ul>
+</section>
+<section id="per-key-behavior">
+<h2>実行時の動作<a class="headerlink" href="#per-key-behavior" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>押下キー</p></th>
+<th class="head"><p>動作</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code></p></td>
+<td><p>ファイルを実行する or ディレクトリを開く or URLを開く</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code></p></td>
+<td><p>パス(ファイルが存在するディレクトリ)を開く</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Shift-Ctrl-Enter</span></code></p></td>
+<td><p>管理者権限で実行する</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../user-commands.html" class="btn btn-neutral float-left" title="登録型のコマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="snippet.html" class="btn btn-neutral float-right" title="定型文コマンド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

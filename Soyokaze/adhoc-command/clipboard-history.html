@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>クリップボード履歴 &mdash; Soyokaze 0.42.2</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="git-bashパス変換" href="git-bash-pashconvert.html" />
+    <link rel="prev" title="Windowsの設定" href="windowssettings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="calclator.html">電卓</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri-decode.html">URIデコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">環境変数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base64-decode.html">Base64デコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="char-escape.html">8進数/16進数/Unicodeエスケープシーケンス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipaddress.html">IPアドレス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timespan.html">簡易時間計算</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit-converter.html">単位変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eraname-converter.html">西暦和暦変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorcode-converter.html">カラーコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailto.html">メールを送る</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pathfind.html">ファイル名を指定して実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware-player-mru.html">VMware Workstation PlayerのVM実行履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slide-jump.html">PowerPoint スライド表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activate-window.html">ウインドウ選択切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="startmenu.html">スタートメニュー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recentfiles.html">最近使ったファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uwpapplication.html">UWPアプリケーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windowssettings.html">Windowsの設定</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">クリップボード履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-bash-pashconvert.html">git-bashパス変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-pathconvert.html">fileプロトコルをローカルパスに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adhoc-commands.html#other-features">その他の機能</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+      <li class="breadcrumb-item active">クリップボード履歴</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="clipboard-history">
+<h1>クリップボード履歴<a class="headerlink" href="#clipboard-history" title="Link to this heading"></a></h1>
+<p>クリップボードに保存されたテキストの履歴を候補として表示する機能。<br />
+候補を選択すると、それをクリップボードに再コピーしたり、コピペしたりなどすることができる。</p>
+<p><img alt="" src="../_images/clipboardhistory-prefix.png" /></p>
+<p>プレフィックスとなる文字列を入力すると、クリップボードに保存されたテキストが候補として表示される。
+(上記の例だと、<code class="docutils literal notranslate"><span class="pre">cb</span></code>がプレフィックス)</p>
+<p>各種設定は<a class="reference internal" href="../window/app-settings.html#extensions-clipboard-history"><span class="std std-ref">アプリ設定</span></a>から設定することができる。</p>
+<p>デフォルトでこの機能は無効化されており、利用するには、アプリ設定から有効化する必要がある。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="windowssettings.html" class="btn btn-neutral float-left" title="Windowsの設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="git-bash-pashconvert.html" class="btn btn-neutral float-right" title="git-bashパス変換" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

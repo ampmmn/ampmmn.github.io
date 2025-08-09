@@ -1,0 +1,1149 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アプリケーション設定 &mdash; Soyokaze 0.42.2</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="コマンドのホットキー設定画面" href="command-hotkey.html" />
+    <link rel="prev" title="キーワードマネージャ" href="keyword-manager.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../window.html">画面の説明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="keyword-manager.html">キーワードマネージャ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">アプリケーション設定</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app">基本</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app-hotkey">ランチャー呼び出しキー 設定画面</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#app-shortcut">基本＞ショートカット登録</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-sound-effects">基本＞効果音</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keyword-input">入力</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keyword-input-key-config">入力＞キー割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keyword-input-history">入力＞履歴</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comand-execute">実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comand-execute-path">実行＞パス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-execute-exclude-files">実行＞除外するファイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-execute-priority">実行＞優先度</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">優先度の例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#restrictions">制限事項</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#appearance">表示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appearance-colors">表示＞配色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions">拡張機能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions-switch-window">拡張機能＞ウインドウ切替</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions-clipboard-history">拡張機能＞クリップボード履歴</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extension-path-conversion">拡張機能＞パス変換</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">その他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others">その他の設定画面</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#application-hotkey">アプリ表示用ホットキー</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-assignment">キー割り当て</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hotkey-type">ホットキーの種別</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constraints-related-to-sands">SandSに関する制限事項</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="command-hotkey.html">コマンドのホットキー設定画面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasktray.html">タスクトレイ</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../window.html">画面の説明</a></li>
+      <li class="breadcrumb-item active">アプリケーション設定</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="application-settings">
+<h1>アプリケーション設定<a class="headerlink" href="#application-settings" title="Link to this heading"></a></h1>
+<p>アプリケーションの動作に関する設定を行うための画面。</p>
+<p>下記のいずれかの操作を行うと、アプリケーション設定を表示することができる。</p>
+<ul class="simple">
+<li><p>入力画面で<code class="docutils literal notranslate"><span class="pre">setting</span></code>コマンドを実行する</p></li>
+<li><p>タスクトレイのアイコンを右クリックし、<code class="docutils literal notranslate"><span class="pre">アプリケーションの設定</span></code>を選択する</p></li>
+</ul>
+<section id="app">
+<h2>基本<a class="headerlink" href="#app" title="Link to this heading"></a></h2>
+<p>ランチャーの基本動作にかかわる設定をする画面<br />
+主に入力画面を表示する際の動作の設定を行う。</p>
+<p><img alt="" src="../_images/setting.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ランチャー呼び出しキー</span></code></p>
+<ul>
+<li><p>入力画面を表示するためのホットキーを設定することができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面を非表示にして起動する</span></code></p>
+<ul>
+<li><p>チェックすると、起動直後に入力画面を表示しない</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面を最前面に表示</span></code></p>
+<ul>
+<li><p>入力画面を表示するとき、入力画面を他のウインドウより前面に表示するようにする</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面の表示位置</span></code><br />
+入力画面を表示するときの位置を以下の3つから選択できる</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">前回の表示位置</span></code><br />
+前回と同じ位置に入力画面を表示する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">マウスカーソル位置</span></code><br />
+入力画面を表示するタイミングでのマウスカーソル位置に入力画面を表示する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">アクティブウインドウの中央</span></code><br />
+アクティブなウインドウの中央に表示する<br />
+ただし、アクティブなウインドウがない場合は前回と同じ位置に表示する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">すでにアクティブなときに呼び出しキーを押したら隠れる</span></code></p>
+<ul>
+<li><p>チェックすると、ランチャー呼び出しキーを押すたびに入力画面の表示/非表示が切り替わる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">フォーカスを失ったらウインドウを隠す</span></code></p>
+<ul>
+<li><p>チェックすると、入力画面がフォーカスを失ったときに、入力画面を非表示にする</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">隠れるときに入力文字列を消去しない</span></code></p>
+<ul>
+<li><p>チェックすると、コマンドを実行せずに入力画面を非表示にする際に入力文字列を消去しない</p>
+<ul>
+<li><p>入力画面を次回再表示した際に、前回入力していた内容が維持される</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="app-hotkey">
+<h3>ランチャー呼び出しキー 設定画面<a class="headerlink" href="#app-hotkey" title="Link to this heading"></a></h3>
+<p>ランチャーアプリの入力ウインドウを呼び出すためのキー設定画面</p>
+<p><img alt="" src="../_images/hotkeyForApp.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ホットキーを設定する</span></code><br />
+修飾キー(<code class="docutils literal notranslate"><span class="pre">Alt</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> <code class="docutils literal notranslate"><span class="pre">Shift</span></code> <code class="docutils literal notranslate"><span class="pre">Win</span></code>) + 任意のキーを同時押しすることによりアプリを表示する</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">修飾キー</span></code><br />
+修飾キーを選択するためのもの。</p></li>
+<li><p>例: <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>のみチェックし、キーとして<code class="docutils literal notranslate"><span class="pre">A</span></code>を選択した場合<br />
+Ctrl+A</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">キー</span></code><br />
+文字を選択する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">修飾キーの組み合わせ入力</span></code><br />
+修飾キー(<code class="docutils literal notranslate"><span class="pre">Alt</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> <code class="docutils literal notranslate"><span class="pre">Shift</span></code> <code class="docutils literal notranslate"><span class="pre">Win</span></code>)を二つ組み合わせ入力することによりアプリを表示する方式<br />
+同じキーを2回押す、あるいは、異なるキーを同時押しすることでアプリを起動することができる<br />
+例: <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>キーの2回押し、あるいは、<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Alt</span></code>キーの同時押し</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">一つ目の入力</span></code><br />
+一つ目に入力する修飾キーを選択する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">二つ目の入力</span></code><br />
+二つ目に入力する修飾キーを選択する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="app-shortcut">
+<h2>基本＞ショートカット登録<a class="headerlink" href="#app-shortcut" title="Link to this heading"></a></h2>
+<p>各種ショートカット登録をするための画面<br />
+いずれもチェックすると登録され、チェックを外すと登録が解除される</p>
+<p><img alt="" src="../_images/setting2.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">「送る」から登録できるようにする</span></code></p>
+<ul>
+<li><p>チェックすると、本アプリにコマンドを登録するためのメニューが、エクスプローラのコンテキストメニューの「送る」に追加される
+<img alt="" src="../_images/sendto.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">スタートメニューに登録する</span></code></p>
+<ul>
+<li><p>チェックすると、本アプリを起動するためのメニューがスタートメニューに登録される</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">デスクトップに登録する</span></code></p>
+<ul>
+<li><p>チェックすると、本アプリを起動するためのショートカットがデスクトップに配置される</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">スタートアップに登録する</span></code></p>
+<ul>
+<li><p>チェックすると、Windowsにログオン(サインイン)した後に自動で本アプリを起動する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">作成したショートカットをすべて削除する</span></code></p>
+<ul>
+<li><p>上記で作成したショートカットをすべて削除する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="app-sound-effects">
+<h2>基本＞効果音<a class="headerlink" href="#app-sound-effects" title="Link to this heading"></a></h2>
+<p>画面操作時に効果音を鳴らす設定をするための画面<br />
+もし、音を鳴らせる環境で作業しているのであれば、気分が上がる効果音を設定すると、作業効率がアップするかもしれない。</p>
+<p>mp3ファイルのみ指定可能(他の音声ファイルには非対応)</p>
+<p><img alt="" src="../_images/setting7.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">入力欄への文字入力</span></code></p>
+<ul>
+<li><p>入力欄に文字を入力したときに再生するmp3ファイルを指定する。空欄の場合は何も再生しない。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補欄の選択項目変更</span></code></p>
+<ul>
+<li><p>候補欄の選択項目を変更したときに再生するmp3ファイルを指定する。空欄の場合は何も再生しない。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンド実行</span></code></p>
+<ul>
+<li><p>コマンドを実行するときに再生するmp3ファイルを指定する。空欄の場合は何も再生しない。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="keyword-input">
+<h2>入力<a class="headerlink" href="#keyword-input" title="Link to this heading"></a></h2>
+<p>入力画面のキーワード入力回りの動作に影響する設定を行うための画面</p>
+<p><img alt="" src="../_images/setting3.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面を表示するときにIMEをオフにする</span></code></p>
+<ul>
+<li><p>チェックすると、入力画面を表示したタイミングでIMEをオフにする</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ネットワークパスを無視する</span></code></p>
+<ul>
+<li><p>チェックすると、<code class="docutils literal notranslate"><span class="pre">\\(コンピュータ名)</span></code>で始まるパスを本アプリでは開かないようにする</p>
+<ul>
+<li><p>環境によっては、ネットワークパスの情報を参照したときに数十秒ほど固まることがあるため</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C/Migemoによるローマ字検索を有効にする</span></code></p>
+<ul>
+<li><p><a class="reference external" href="https://www.kaoriya.net/software/cmigemo/">C/Migemo</a> という外部ライブラリを用いて、ローマ字でのキーワード絞り込みをできるようにする</p>
+<ul>
+<li><p>たとえば、<code class="docutils literal notranslate"><span class="pre">jikoku</span></code>というキーワードで<code class="docutils literal notranslate"><span class="pre">時刻</span></code>や<code class="docutils literal notranslate"><span class="pre">自国</span></code>という文言にマッチするようになる</p></li>
+<li><p>配布元(上記リンク先)からライブラリを入手し、配置する必要がある</p></li>
+</ul>
+</li>
+<li><p>下記のような構成になるように配置する。</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>アプリ配置フォルダ/
+    (アプリ名).exe
+    dict/
+      utf-8/    ※ dictフォルダ内にあるutf-8の方の辞書を参照する
+    migemo.dll
+</pre></div>
+</div>
+<p>なお、バージョン0.42.2現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
+</section>
+<section id="keyword-input-key-config">
+<h2>入力＞キー割り当て<a class="headerlink" href="#keyword-input-key-config" title="Link to this heading"></a></h2>
+<p>入力画面の操作に関するキーを設定する画面<br />
+独自のキーバインドで上下左右の移動や決定操作を行うアプリケーションがある。(例: Emacsの<code class="docutils literal notranslate"><span class="pre">Ctrl-N</span></code> <code class="docutils literal notranslate"><span class="pre">Ctr-P</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl-M</span></code>など）。<br />
+それらのアプリの使用感に寄せるための設定</p>
+<p><img alt="" src="../_images/appsetting-key.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">入力キーの画面割り当て</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">上へ</span></code></p>
+<ul>
+<li><p>候補欄の選択項目を一つ上へ移動するキーを割り当てる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">下へ</span></code></p>
+<ul>
+<li><p>候補欄の選択項目を一つ下へ移動するキーを割り当てる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">決定</span></code></p>
+<ul>
+<li><p>入力画面での入力内容を確定させるキーを割り当てる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">補完</span></code></p>
+<ul>
+<li><p>入力画面での入力内容を補完するキーを割り当てる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">メニュー表示</span></code></p>
+<ul>
+<li><p>選択している候補のコンテキストメニューを表示するキーを割り当てる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">テキストをコピー</span></code></p>
+<ul>
+<li><p>入力欄に入力された文字列をクリップボードにコピーする<br />
+コピーした後、入力欄は非表示になる</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面のウインドウ移動</span></code><br />
+入力画面を一時的に上下左右に移動するキーの割り当てを行う(次回表示時は元の位置に戻る)。<br />
+入力画面の後ろにあるテキストをランチャーに手入力するにあたり、入力画面を一時的に移動したい、というケースで使う</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">上へ移動</span></code></p>
+<ul>
+<li><p>入力画面を上方向に移動する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">下へ移動</span></code></p>
+<ul>
+<li><p>入力画面を下方向に移動する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">左へ移動</span></code></p>
+<ul>
+<li><p>入力画面を左方向に移動する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">右へ移動</span></code></p>
+<ul>
+<li><p>入力画面を右方向に移動する</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">初期設定に戻す</span></code></p>
+<ul>
+<li><p>上記のキー割り当てをすべて解除する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="keyword-input-history">
+<h2>入力＞履歴<a class="headerlink" href="#keyword-input-history" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/appsetting-inputhistory.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">履歴機能を使う</span></code></p>
+<ul>
+<li><p><a class="reference internal" href="../adhoc-command/history.html"><span class="doc std std-doc">履歴</span></a>機能の有無を設定できる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">履歴件数</span></code></p>
+<ul>
+<li><p>履歴として登録する件数の上限を設定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">履歴の削除</span></code></p>
+<ul>
+<li><p>ボタンをクリックすると全ての履歴をクリアする</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="comand-execute">
+<h2>実行<a class="headerlink" href="#comand-execute" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/setting4.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">フォルダを開くファイラーを指定</span></code></p>
+<ul>
+<li><p>チェックすると、エクスプローラ以外のファイラーを使うことができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ファイラーのパス</span></code></p>
+<ul>
+<li><p>起動する外部ファイラーの実行ファイルのパスを指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ファイラーのパス</span></code>で指定したファイラーを起動するときのパラメータを指定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$target</span></code>が実際に開かれる対象(ファイルやフォルダ)のパスに置き換えられる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">「ファイル名を指定して実行」機能を使用する</span></code></p>
+<ul>
+<li><p>チェックすると、 <a class="reference internal" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%A6%E5%AE%9F%E8%A1%8C"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドを有効にする。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">未登録キーワード入力時の動作</span></code><br />
+コマンドとして登録されていない（かつ、<a class="reference internal" href="../adhoc-commands.html"><span class="doc std std-doc">コマンドとして登録していなくても実行できる機能</span></a> として作用しない） キーワードを入力したときの動作を指定する<br />
+以下の3つから選択できる。</p>
+<ul>
+<li><p>何もしない</p></li>
+<li><p>クリップボードにコピー</p></li>
+<li><p>キーワードをコマンド登録</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">管理者特権で起動する</span></code></p>
+<ul>
+<li><p>ランチャーアプリを起動するときに管理者権限で起動する<br />
+管理者権限で実行することにより、他の管理者権限プロセスがアクティブな状況でもランチャーのホットキーが効くようになる。<br />
+(ランチャーを通常ユーザー権限で実行している場合、管理者権限で動作するプロセス(のウインドウ)がアクティブになっている状況においてホットキーが効かない)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">【管理者特権で実行時】コマンドを通常ユーザ権限で起動する</span></code></p>
+<ul>
+<li><p>管理者特権でアプリケーションを実行している状況において、ランチャーから起動するコマンドを一般ユーザー権限で実行する</p>
+<ul>
+<li><p>ランチャー自体は管理者権限で実行したいけれど、一方で、(セキュリティ上の理由により)コマンド実行により起動するアプリケーションを管理者権限で動かしたくない場合に使う</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="comand-execute-path">
+<h2>実行＞パス<a class="headerlink" href="#comand-execute-path" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../adhoc-command/pathfind.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドにおける、実行ファイルを検索するフォルダを追加で指定することができる。<br />
+検索の優先順位としては環境変数PATHで設定されたフォルダ、次に追加のディレクトリ、の順で検索を行う。<br />
+リストの上にある項目が優先される。</p>
+<p><img alt="" src="../_images/appsetting-path.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">環境変数PATHで設定されたディレクトリ</span></code></p>
+<ul>
+<li><p>システムの環境設定で指定されたディレクトリが表示される</p>
+<ul>
+<li><p>このリストは参照専用</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code></p>
+<ul>
+<li><p>システム設定で指定されたもの以外に検索したいディレクトリを登録する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code></p>
+<ul>
+<li><p>クリックすると、ディレクトリ選択ダイアログが表示される。選択したディレクトリが<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>に追加される</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目のパスを変更することができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を削除することができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">上へ</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を一つ上に移動する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">下へ</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を一つ下に移動する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="command-execute-exclude-files">
+<h2>実行＞除外するファイル<a class="headerlink" href="#command-execute-exclude-files" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../adhoc-command/pathfind.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドにおいて、対象外とするファイルを指定することができる。</p>
+<p><img alt="" src="../_images/appsetting-excludefile.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">除外するファイル</span></code></p>
+<ul>
+<li><p>ここで登録したファイルが候補としてマッチした場合でも、候補に表示しないようにする。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code></p>
+<ul>
+<li><p>クリックすると、ファイル選択ダイアログが表示される。選択したファイルが<code class="docutils literal notranslate"><span class="pre">除外するファイル</span></code>に追加される</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目のパスを変更することができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を削除することができる</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="command-execute-priority">
+<h2>実行＞優先度<a class="headerlink" href="#command-execute-priority" title="Link to this heading"></a></h2>
+<p>コマンドの優先度を設定することにより、候補欄に表示されるコマンドの順序を制御するための画面。</p>
+<p><img alt="" src="../_images/appsetting-commandpriority.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの優先度</span></code></p>
+<ul>
+<li><p>コマンドごとの優先度が表示されたリスト</p></li>
+<li><p>優先度の数値が高いものほど先に表示される。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">フィルター</span></code></p>
+<ul>
+<li><p>リスト上に表示するコマンドの絞り込みを行うことができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">優先度変更</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの優先度</span></code>リストで選択した項目の優先度を変更する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">すべてリセット</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの優先度</span></code>リスト上に表示されたすべての項目の優先度を0にする</p></li>
+</ul>
+</li>
+</ul>
+<section id="example">
+<h3>優先度の例<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<p>たとえば、下記の設定がされていた場合、
+入力欄に「b」と打った場合に、<code class="docutils literal notranslate"><span class="pre">bookmark</span></code> <code class="docutils literal notranslate"><span class="pre">blog-hatena</span></code> <code class="docutils literal notranslate"><span class="pre">board</span></code> の順に表示される。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>コマンド</p></th>
+<th class="head"><p>優先度</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>blog-hatena</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>board</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>bookmark</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="restrictions">
+<h3>制限事項<a class="headerlink" href="#restrictions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>利用者が<a class="reference internal" href="../usage/how_to_use.html#register-command"><span class="std std-ref">登録したコマンド</span></a>に対してのみ、コマンドの優先度を設定することができる</p>
+<ul>
+<li><p><a class="reference internal" href="../adhoc-commands.html"><span class="doc std std-doc">コマンドとして登録していなくても実行できる機能</span></a> に由来するコマンドに対して優先度を設定することはできない</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="appearance">
+<h2>表示<a class="headerlink" href="#appearance" title="Link to this heading"></a></h2>
+<p>入力画面の外観にかかわる設定を行う。</p>
+<p><img alt="" src="../_images/setting5.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面のフォント</span></code></p>
+<ul>
+<li><p>入力画面のフォントを指定する</p></li>
+<li><p>初期値は<code class="docutils literal notranslate"><span class="pre">Noto</span> <span class="pre">Sans</span> <span class="pre">JP</span></code>フォント(利用できない場合は<code class="docutils literal notranslate"><span class="pre">Tahoma</span></code>)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">サイズ</span></code></p>
+<ul>
+<li><p>入力画面のフォントサイズをポイント単位で指定する</p></li>
+<li><p>初期値は9</p></li>
+<li><p>設定できる範囲は6～128</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">既定値を使用</span></code></p>
+<ul>
+<li><p>入力画面のフォント/フォントサイズを初期値に戻す</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コメント表示欄の初期表示テキスト</span></code></p>
+<ul>
+<li><p>入力画面を表示した直後のコメント欄のテキストを設定する</p></li>
+<li><p>テキストに<a class="reference internal" href="../macros.html"><span class="doc std std-doc">マクロ</span></a>を使うことができる<br />
+<img alt="" src="../_images/defaultcomment.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面のアイコンを表示する</span></code></p>
+<ul>
+<li><p>入力画面上のアイコン表示欄を表示する</p></li>
+</ul>
+</li>
+<li><p>アイコン欄</p>
+<ul>
+<li><p>アイコン欄をダブルクリック、または、右クリックからコンテキストメニュー<code class="docutils literal notranslate"><span class="pre">アイコンを変更する</span></code>を選択すると、ファイル選択ダイアログを表示する。ファイルを選択すると、初期表示アイコンを変更することかできる</p>
+<ul>
+<li><p>使用可能なファイル形式は<code class="docutils literal notranslate"><span class="pre">.ico</span></code>のみ</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">デフォルトのアイコンに戻す</span></code></p>
+<ul>
+<li><p>変更した初期表示アイコンをアプリ本来のアイコンに戻す</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面のプレースホルダーを表示する</span></code></p>
+<ul>
+<li><p>入力欄に何も文字を入力していない状態のときにテキストを表示する<br />
+<img alt="" src="../_images/placeholder.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">操作ガイド欄を表示する</span></code></p>
+<ul>
+<li><p>チェックすると、コメント表示欄の下に操作ガイド欄を表示する<br />
+<img alt="" src="../_images/guidelabel.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補欄にコマンド種別を表示する</span></code></p>
+<ul>
+<li><p>チェックすると、コマンドの種別を候補リストに表示する<br />
+<img alt="" src="../_images/showcmdtype.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補欄の背景色を交互に変える</span></code></p>
+<ul>
+<li><p>チェックすると、候補欄の奇数行と偶数行の背景色を変えて表示を行う<br />
+<img alt="" src="../_images/alternatecolor.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補欄の各項目のアイコンを表示する</span></code></p>
+<ul>
+<li><p>チェックすると、候補欄の項目ごとにアイコンを表示する</p></li>
+<li><p>左: アイコンを表示する場合  右:表示しない場合<br />
+<img alt="" src="../_images/showicon.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力欄の透過表示</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">半透明</span></code><br />
+入力画面を半透明にするタイミングの設定。以下の3つから選択する。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">非アクティブなときに半透明</span></code><br />
+入力画面がフォーカスを失ったときに半透明表示にする</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">いつでも半透明</span></code><br />
+フォーカスの有無にかかわらず常に入力画面を半透明表示にする</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">半透明にしない</span></code><br />
+フォーカスの有無にかかわらず常に入力画面を半透明表示にしない</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">透明度</span></code></p>
+<ul>
+<li><p>入力画面を透過表示するときの透明度を0～255の範囲で指定する</p></li>
+<li><p>0は完全に透明</p>
+<ul>
+<li><p>255は完全に不透明</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="appearance-colors">
+<h2>表示＞配色<a class="headerlink" href="#appearance-colors" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/appsetting-color.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">システムの色設定を使用する</span></code></p>
+<ul>
+<li><p>チェックすると、Windowsのシステム設定の配色でウインドウを描画する</p></li>
+<li><p>チェックしない場合は、アプリで独自設定した色を使用する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">システムの色設定に戻す</span></code></p>
+<ul>
+<li><p>色設定を初期値に戻す</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ウインドウ</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">テキスト</span></code><br />
+ウインドウのコメント欄、ガイド欄の文字色を設定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">背景</span></code><br />
+ウインドウの背景色を設定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力欄</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">テキスト</span></code><br />
+入力欄の文字色を設定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">背景</span></code><br />
+入力欄の背景色を設定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補欄</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">テキスト</span></code><br />
+候補欄の文字色を設定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">背景</span></code><br />
+候補欄の背景色を設定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">背景(交互)</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">候補欄の背景色を交互に変える</span></code>をチェックしたときの候補欄の偶数行目の背景色を設定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">選択テキスト</span></code><br />
+候補欄の選択行の文字色を設定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">選択背景</span></code><br />
+候補欄の選択行の背景色を設定する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="extensions">
+<h2>拡張機能<a class="headerlink" href="#extensions" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/setting6.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">簡易電卓機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">有効にする</span></code></p>
+<ul>
+<li><p>チェックすると、入力画面に入力したテキストを数式として評価して、その計算結果を表示する<br />
+<img alt="" src="../_images/calculator.png" /></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code>キーを押すと、計算結果をクリップボードにコピーする</p></li>
+<li><p><a class="reference external" href="https://www.python.org/">Python3</a>が必要</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">簡易電卓機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">DLLのパス</span></code></p>
+<ul>
+<li><p>PCにインストールした<code class="docutils literal notranslate"><span class="pre">Python3</span></code>の本体DLLへのパスを指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">システム関連の機能</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">コントロールパネル項目を候補として表示する</span></code></p>
+<ul>
+<li><p>チェックすると、コントロールパネル項目を候補として表示し、それを実行したら、該当するコントロールパネル項目を開く<br />
+<img alt="" src="../_images/controlpanel-command.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">スタートメニュー／最近使ったファイルを候補として表示する</span></code></p>
+<ul>
+<li><p>チェックすると、ファイルを候補として表示・実行する</p>
+<ul>
+<li><p>スタートメニューに登録されたプログラム</p></li>
+<li><p>Windowsの<code class="docutils literal notranslate"><span class="pre">最近使ったファイル</span></code>に登録されたファイル</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">アプリケーション(UWPアプリなど)を候補として表示する</span></code></p>
+<ul>
+<li><p>チェックすると、実行環境にインストールされているアプリケーション(UWPアプリを含む)を候補として表示・実行する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MMCスナップインを候補として表示する</span></code></p>
+<ul>
+<li><p>チェックすると、実行環境にインストールされている<a class="reference internal" href="../adhoc-command/mmcsnapin.html"><span class="doc std std-doc">MMCスナップイン</span></a>を候補として表示する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Windowsの設定を候補として表示する</span></code></p>
+<ul>
+<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/windowssettings.html"><span class="doc std std-doc">Windows設定</span></a>の各ページ項目を候補として表示する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">環境変数を候補として表示する</span></code></p>
+<ul>
+<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/env.html"><span class="doc std std-doc">環境変数</span></a>の一覧を候補として表示する</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="extensions-switch-window">
+<h2>拡張機能＞ウインドウ切替<a class="headerlink" href="#extensions-switch-window" title="Link to this heading"></a></h2>
+<p>ウインドウ切替関連機能に関する設定を行う画面</p>
+<p><img alt="" src="../_images/appsetting-switchwindow.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ウインドウタイトルによる選択を有効にする</span></code><br />
+画面に表示されているウインドウのタイトルを候補として表示し、それを実行したら該当するウインドウをアクティブにする<br />
+<img alt="" src="../_images/activate_window.png" /></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">ウインドウタイトルによる選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
+キーワードを入力した時点で、ウインドウの一覧が表示される(上図参照)<br />
+初期値は<code class="docutils literal notranslate"><span class="pre">wl</span></code> (<code class="docutils literal notranslate"><span class="pre">w</span></code>indow<code class="docutils literal notranslate"><span class="pre">l</span></code>ist の略)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExcelやLibreOffice</span> <span class="pre">Calcのシート名による選択を有効にする</span></code><br />
+入力画面を表示した時点で開いているExcel / LibreOffice Calcのシート名の一覧を候補として検索し、それを実行したら該当するシートをアクティブにする</p>
+<ul>
+<li><p>機能を利用するためにはExcel(デスクトップ版) または LibreOfficeがインストールされている必要がある</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">ExcelやLibreOffice</span> <span class="pre">Calcのシート名による選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
+キーワードを入力した時点で、シートの一覧が表示される
+初期値は<code class="docutils literal notranslate"><span class="pre">xj</span></code> (e<code class="docutils literal notranslate"><span class="pre">x</span></code>cel <code class="docutils literal notranslate"><span class="pre">j</span></code>ump の略)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PowerPointのスライドタイトルによる選択を有効にする</span></code><br />
+入力画面を表示した時点でアクティブなPowerPointプレゼンテーションのスライドタイトルを候補として検索し、それを実行したら該当するシートをアクティブにする</p>
+<ul>
+<li><p>機能を利用するためにはPowerPoint(デスクトップ版)がインストールされている必要がある</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">PowerPointのスライドタイトルによる選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
+キーワードを入力した時点で、スライドの一覧が表示される
+初期値は<code class="docutils literal notranslate"><span class="pre">pj</span></code> (<code class="docutils literal notranslate"><span class="pre">p</span></code>owerpoint <code class="docutils literal notranslate"><span class="pre">j</span></code>ump の略)</p></li>
+</ul>
+</section>
+<section id="extensions-clipboard-history">
+<h2>拡張機能＞クリップボード履歴<a class="headerlink" href="#extensions-clipboard-history" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../adhoc-command/clipboard-history.html"><span class="doc std std-doc">クリップボード履歴</span></a>機能に関する設定を行う画面</p>
+<p><img alt="" src="../_images/appsetting-clipboardhistory.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">有効にする</span></code></p>
+<ul>
+<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/clipboard-history.html"><span class="doc std std-doc">クリップボード履歴</span></a>機能を有効にする</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code></p>
+<ul>
+<li><p>クリップボード履歴を候補として表示するためのキーワードを指定する<br />
+<img alt="" src="../_images/clipboardhistory-prefix.png" /></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">検索結果表示件数</span></code></p>
+<ul>
+<li><p>候補に表示する件数の上限を指定する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">登録時の1件あたり上限サイズ</span></code></p>
+<ul>
+<li><p>クリップボードが更新されたとき、テキストのサイズが指定サイズを超過する場合は履歴に追加しない</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">履歴件数の上限</span></code></p>
+<ul>
+<li><p>履歴の件数が上限を超過したら、古いものから履歴を削除する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">次の記録を有効にするまでの間隔</span></code></p>
+<ul>
+<li><p>前回のクリップボード更新から、指定した時間が経過しないうちに更新が再度行われた場合は履歴に追加しない</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">無視するパターン</span></code></p>
+<ul>
+<li><p>指定した正規表現パターンに合致するテキストを履歴に追加しない</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">クリップボード履歴ではC/Migemoを使用しない</span></code></p>
+<ul>
+<li><p>チェックすると、クリップボード履歴の候補の絞り込みにおいて、C/Migemoによる正規表現マッチングを使用しない</p>
+<ul>
+<li><p>現状のアプリの実装だと、クリップボード履歴の絞り込みにおいてC/Migemoが生成した正規表現を使ってマッチングをすると、すこし遅い感じがあるため無効化できるようにする</p></li>
+<li><p>チェックを外した場合は<a class="reference internal" href="#keyword-input"><span class="std std-ref">入力</span></a>設定に従う</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="extension-path-conversion">
+<h2>拡張機能＞パス変換<a class="headerlink" href="#extension-path-conversion" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/appsetting-pathconvert.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git-bashパスをローカルパス表記に変換する</span></code></p>
+<ul>
+<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/git-bash-pashconvert.html"><span class="doc std std-doc">git-bashパス変換</span></a>を有効にする</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file://...をローカルパス表記に変換する</span></code></p>
+<ul>
+<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/file-pathconvert.html"><span class="doc std std-doc">fileプロトコルをローカルパスに変換</span></a>を有効にする</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="logging">
+<h2>その他<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/appsetting-other.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ログ出力レベル</span></code></p>
+<ul>
+<li><p>デバッグ用機能。デバッグ用ログファイルへの出力対象とするログ種別を選択することができる</p></li>
+<li><p>下のものほど情報量が多くなる</p></li>
+<li><p>ログファイルの出力先は<code class="docutils literal notranslate"><span class="pre">&lt;設定ファイルの保存先&gt;/per_machine/&lt;PC名&gt;/&lt;アプリ名&gt;.log</span></code></p></li>
+</ul>
+</li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>選択肢</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>なし</p></td>
+<td><p>ログを一切出力しない</p></td>
+</tr>
+<tr class="row-odd"><td><p>エラー</p></td>
+<td><p>エラーログのみ出力する</p></td>
+</tr>
+<tr class="row-even"><td><p>警告</p></td>
+<td><p>エラーと警告ログを出力する</p></td>
+</tr>
+<tr class="row-odd"><td><p>通常</p></td>
+<td><p>エラーと警告と通常ログを出力する</p></td>
+</tr>
+<tr class="row-even"><td><p>デバッグ</p></td>
+<td><p>デバッグ用出力も含めたすべてのログを出力する</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">性能ログを出力する</span></code></p>
+<ul>
+<li><p>デバッグ用機能。内部処理の処理時間に関するログを専用のログファイルに出力する。<br />
+出力先は<code class="docutils literal notranslate"><span class="pre">&lt;設定ファイルの保存先&gt;/per_machine/&lt;PC名&gt;/perf.log</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">連続で作業していたら警告する</span></code></p>
+<ul>
+<li><p>チェックすると、<code class="docutils literal notranslate"><span class="pre">警告を表示するまでの時間</span></code>で設定した時刻を超えて連続稼働(スクリーンロックを挟まずにPCを起動)した場合に警告メッセージを表示する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">警告を表示するまでの時間</span></code></p>
+<ul>
+<li><p>警告を表示するまでの時間を分数で指定する(デフォルトは90分)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="others">
+<h2>その他の設定画面<a class="headerlink" href="#others" title="Link to this heading"></a></h2>
+<section id="application-hotkey">
+<h3>アプリ表示用ホットキー<a class="headerlink" href="#application-hotkey" title="Link to this heading"></a></h3>
+<p>ランチャーアプリの入力ウインドウを呼び出すためのキー設定画面</p>
+<p><img alt="" src="../_images/hotkeyForApp.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ホットキーを設定する</span></code><br />
+修飾キー(<code class="docutils literal notranslate"><span class="pre">Alt</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> <code class="docutils literal notranslate"><span class="pre">Shift</span></code> <code class="docutils literal notranslate"><span class="pre">Win</span></code>) + 任意のキーを同時押しすることによりアプリを表示する</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">修飾キー</span></code><br />
+修飾キーを選択するためのもの。</p></li>
+<li><p>例: <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>のみチェックし、キーとして<code class="docutils literal notranslate"><span class="pre">A</span></code>を選択した場合<br />
+Ctrl+A</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">キー</span></code><br />
+文字を選択する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">修飾キーの組み合わせ入力</span></code><br />
+修飾キー(<code class="docutils literal notranslate"><span class="pre">Alt</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> <code class="docutils literal notranslate"><span class="pre">Shift</span></code> <code class="docutils literal notranslate"><span class="pre">Win</span></code>)を二つ組み合わせ入力することによりアプリを表示する方式<br />
+同じキーを2回押す、あるいは、異なるキーを同時押しすることでアプリを起動することができる<br />
+例: <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>キーの2回押し、あるいは、<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Alt</span></code>キーの同時押し</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">一つ目の入力</span></code><br />
+一つ目に入力する修飾キーを選択する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">二つ目の入力</span></code><br />
+二つ目に入力する修飾キーを選択する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="key-assignment">
+<h2>キー割り当て<a class="headerlink" href="#key-assignment" title="Link to this heading"></a></h2>
+<p>コマンドに対するキー割り当てを行うための画面。<br />
+割り当てたキーを押すとコマンドを実行することができる。</p>
+<p><img alt="" src="../_images/hotkeyForCommand.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ホットキーを設定する</span></code><br />
+コマンドに対してキー割り当てを行う場合はチェックする</p></li>
+<li><p>種別</p>
+<ul>
+<li><p>以下の3つのいずれかを選択する。<br />
+<code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効</span></code> or <code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効(SandS)</span></code>  or <code class="docutils literal notranslate"><span class="pre">常駐時いつでも有効</span></code></p></li>
+<li><p>種別の説明は<a class="reference internal" href="../others/hotkey.html"><span class="doc std std-doc">ホットキーの種別について</span></a>を参照</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">修飾キー</span></code></p>
+<ul>
+<li><p>修飾キーを選択するためのもの。</p></li>
+<li><p>例: <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>のみチェックし、キーとして<code class="docutils literal notranslate"><span class="pre">A</span></code>を選択した場合 → Ctrl+A</p></li>
+<li><p>種別として<code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効(SandS)</span></code>を選択した場合は以下の5つのいずれかを選択することができる。<br />
+<code class="docutils literal notranslate"><span class="pre">Space</span></code> <code class="docutils literal notranslate"><span class="pre">CapsLock</span></code> <code class="docutils literal notranslate"><span class="pre">変換</span></code> <code class="docutils literal notranslate"><span class="pre">無変換</span></code> <code class="docutils literal notranslate"><span class="pre">かな</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">キー</span></code></p>
+<ul>
+<li><p>修飾キーと組み合わせる文字を選択する</p></li>
+</ul>
+</li>
+</ul>
+<section id="hotkey-type">
+<h3>ホットキーの種別<a class="headerlink" href="#hotkey-type" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>ホットキーの種別として以下の3つを選択できる</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効(SandS)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">常駐時いつでも有効</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効</span></code>と<code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効(SandS)</span></code>は入力画面が表示されているときだけ機能する。
+一方、<code class="docutils literal notranslate"><span class="pre">常駐時いつでも有効</span></code>は入力画面が表示されていないときでも機能する。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効(SandS)</span></code>の<code class="docutils literal notranslate"><span class="pre">SandS</span></code>は「Space and Shift」の略で、単体でキーを押したときは文字キー(→Space)として機能し、<br />
+他のキーと同時押ししたときは修飾キー(→Shift)として機能する、という概念のこと</p>
+<ul>
+<li><p>ランチャー呼び出しキーの修飾キーと<code class="docutils literal notranslate"><span class="pre">SandS</span></code>の修飾キーを同じキーとして設定することにより、スムーズにコマンドを呼び出すことができる</p>
+<ul>
+<li><p>例:<br />
+ランチャー呼び出しのホットキーを<code class="docutils literal notranslate"><span class="pre">CapsLock</span></code>にして、コマンドのホットキーを<code class="docutils literal notranslate"><span class="pre">CapsLock</span></code>+<code class="docutils literal notranslate"><span class="pre">J</span></code>に設定していたとすると、以下のような動きになる<br />
+<img alt="" src="../_images/sands-example.png" /></p></li>
+<li><p>つまり、他アプリとのキー割り当ての干渉をあまり気にすることなく、グローバルホットキー的な機能が実現できる</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="hotkey-type-comparison">
+<h4>ホットキー種別の比較<a class="headerlink" href="#hotkey-type-comparison" title="Link to this heading"></a></h4>
+<p>それぞれ実現している仕組みが異なる。<br />
+<code class="docutils literal notranslate"><span class="pre">常駐時いつでも有効</span></code>はシステムのホットキーに登録するため、登録したキーを使って、いつでも呼び出せる一方で、ほかのアプリ内においてそのキーを使うことができなくなる</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>種別</p></th>
+<th class="head"><p>メリット</p></th>
+<th class="head"><p>デメリット</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効</span></code></p></td>
+<td><p>他アプリに干渉しない<br>他アプリへの干渉を気にする必要がないのでキー選択の幅が広い</p></td>
+<td><p>まずアクティブにする(入力画面を表示する)必要がある</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">アクティブ時のみ有効(SandS)</span></code></p></td>
+<td><p>SandSの修飾キーを<a class="reference internal" href="#app"><span class="std std-ref">ランチャー呼び出しキー</span></a>の修飾キーと合わせることにより、スムーズな運指が実現できる</p></td>
+<td><p>まずアクティブにする(入力画面を表示する)必要がある</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">常駐時いつでも有効</span></code></p></td>
+<td><p>いつでも呼び出せる</p></td>
+<td><p>登録したキーを他アプリで使えなくなってしまう<br>他アプリに干渉することをふまえて割り当てるキーを慎重に選択する必要がある</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="constraints-related-to-sands">
+<h3>SandSに関する制限事項<a class="headerlink" href="#constraints-related-to-sands" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>SandSの修飾キーとして選択したキーを押しっぱなしにした場合、普通の文字入力としてキーリピートする。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> <code class="docutils literal notranslate"><span class="pre">Alt</span></code> <code class="docutils literal notranslate"><span class="pre">Win</span></code>などのような純粋な修飾キーのような動きにはならない</p></li>
+</ul>
+</li>
+<li><p>SandSを実現するためにキーフックを利用している。キーフックの仕組みを用いた別のソフトが同時に動いている場合、競合してうまく動作しない場合がある</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="keyword-manager.html" class="btn btn-neutral float-left" title="キーワードマネージャ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="command-hotkey.html" class="btn btn-neutral float-right" title="コマンドのホットキー設定画面" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
