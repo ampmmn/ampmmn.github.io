@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soyokaze 0.43.0 マニュアル &mdash; Soyokaze 0.43.0</title>
+  <title>Soyokaze 0.44.0 マニュアル &mdash; Soyokaze 0.44.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -87,7 +87,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Soyokaze 0.43.0 マニュアル</li>
+      <li class="breadcrumb-item active">Soyokaze 0.44.0 マニュアル</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -96,8 +96,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="soyokaze-0-43-0-manual">
-<h1>Soyokaze 0.43.0 マニュアル<a class="headerlink" href="#soyokaze-0-43-0-manual" title="Link to this heading"></a></h1>
+  <section id="soyokaze-0-44-0-manual">
+<h1>Soyokaze 0.44.0 マニュアル<a class="headerlink" href="#soyokaze-0-44-0-manual" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">はじめに</a><ul>
@@ -148,8 +148,6 @@
 <li class="toctree-l2"><a class="reference internal" href="user-command/snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/websearch.html">Web検索コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user-command/bookmarks.html">ブックマーク検索コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user-command/webhistory.html">ブラウザ履歴コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/group.html">グループコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/directoryindex.html">DirectoryIndexコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/regexp.html">正規表現コマンド</a></li>
@@ -165,32 +163,36 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/calclator.html">電卓</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/uri-decode.html">URIデコード</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/env.html">環境変数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/activate-window.html">ウインドウ選択切替</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/base64-decode.html">Base64デコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/bookmarks.html">ブックマーク検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/calclator.html">電卓</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/char-escape.html">8進数/16進数/Unicodeエスケープシーケンス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/clipboard-history.html">クリップボード履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/colorcode-converter.html">カラーコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/env.html">環境変数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/eraname-converter.html">西暦和暦変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/everything.html">Everything</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/file-pathconvert.html">fileプロトコルをローカルパスに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/git-bash-pashconvert.html">git-bashパス変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/history.html">履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/ipaddress.html">IPアドレス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/mailto.html">メールを送る</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/pathfind.html">ファイル名を指定して実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/recentfiles.html">最近使ったファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/slide-jump.html">PowerPoint スライド表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/startmenu.html">スタートメニュー</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/timespan.html">簡易時間計算</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/unit-converter.html">単位変換</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/eraname-converter.html">西暦和暦変換</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/colorcode-converter.html">カラーコード</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/mailto.html">メールを送る</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/pathfind.html">ファイル名を指定して実行</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/history.html">履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/vmware-player-mru.html">VMware Workstation PlayerのVM実行履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/slide-jump.html">PowerPoint スライド表示</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/activate-window.html">ウインドウ選択切替</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/controlpanel.html">コントロールパネル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/startmenu.html">スタートメニュー</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/recentfiles.html">最近使ったファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/uri-decode.html">URIデコード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/uwpapplication.html">UWPアプリケーション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/vmware-player-mru.html">VMware Workstation PlayerのVM実行履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/webhistory.html">Web履歴検索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/windowssettings.html">Windowsの設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/clipboard-history.html">クリップボード履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/git-bash-pashconvert.html">git-bashパス変換</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adhoc-command/file-pathconvert.html">fileプロトコルをローカルパスに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/winscp.html">WinSCPセッション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-commands.html#other-features">その他の機能</a></li>
 </ul>
 </li>

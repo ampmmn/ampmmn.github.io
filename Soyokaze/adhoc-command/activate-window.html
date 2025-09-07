@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ウインドウ選択切替 &mdash; Soyokaze 0.43.0</title>
+  <title>ウインドウ選択切替 &mdash; Soyokaze 0.44.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="コントロールパネル" href="controlpanel.html" />
-    <link rel="prev" title="PowerPoint スライド表示" href="slide-jump.html" /> 
+    <link rel="next" title="Base64デコード" href="base64-decode.html" />
+    <link rel="prev" title="コマンドとして登録していなくても実行できる機能" href="../adhoc-commands.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,36 +59,41 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="calclator.html">電卓</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uri-decode.html">URIデコード</a></li>
-<li class="toctree-l2"><a class="reference internal" href="env.html">環境変数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="base64-decode.html">Base64デコード</a></li>
-<li class="toctree-l2"><a class="reference internal" href="char-escape.html">8進数/16進数/Unicodeエスケープシーケンス</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ipaddress.html">IPアドレス</a></li>
-<li class="toctree-l2"><a class="reference internal" href="timespan.html">簡易時間計算</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unit-converter.html">単位変換</a></li>
-<li class="toctree-l2"><a class="reference internal" href="eraname-converter.html">西暦和暦変換</a></li>
-<li class="toctree-l2"><a class="reference internal" href="colorcode-converter.html">カラーコード</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailto.html">メールを送る</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pathfind.html">ファイル名を指定して実行</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html">履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vmware-player-mru.html">VMware Workstation PlayerのVM実行履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slide-jump.html">PowerPoint スライド表示</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ウインドウ選択切替</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">使用方法</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#temporary-naming-for-window">ウインドウに一時的な名前を付ける</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-cases">想定用途</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="controlpanel.html">コントロールパネル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="startmenu.html">スタートメニュー</a></li>
-<li class="toctree-l2"><a class="reference internal" href="recentfiles.html">最近使ったファイル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uwpapplication.html">UWPアプリケーション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mmcsnapin.html">MMCスナップイン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windowssettings.html">Windowsの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base64-decode.html">Base64デコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bookmarks.html">ブックマーク検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calclator.html">電卓</a></li>
+<li class="toctree-l2"><a class="reference internal" href="char-escape.html">8進数/16進数/Unicodeエスケープシーケンス</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clipboard-history.html">クリップボード履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git-bash-pashconvert.html">git-bashパス変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorcode-converter.html">カラーコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">環境変数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eraname-converter.html">西暦和暦変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Everything</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file-pathconvert.html">fileプロトコルをローカルパスに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-bash-pashconvert.html">git-bashパス変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipaddress.html">IPアドレス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailto.html">メールを送る</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pathfind.html">ファイル名を指定して実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recentfiles.html">最近使ったファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slide-jump.html">PowerPoint スライド表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="startmenu.html">スタートメニュー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timespan.html">簡易時間計算</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit-converter.html">単位変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri-decode.html">URIデコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uwpapplication.html">UWPアプリケーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware-player-mru.html">VMware Workstation PlayerのVM実行履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhistory.html">Web履歴検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windowssettings.html">Windowsの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winscp.html">WinSCPセッション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adhoc-commands.html#other-features">その他の機能</a></li>
 </ul>
 </li>
@@ -133,12 +138,25 @@
              
   <section id="switch-window-dynamically">
 <h1>ウインドウ選択切替<a class="headerlink" href="#switch-window-dynamically" title="Link to this heading"></a></h1>
-<p>入力画面を表示した時点で表示しているウインドウタイトルの一覧を候補として表示する。<br />
-該当する候補を実行すると、対応ウインドウをアクティブにする。</p>
-<p><code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code>キーを押して実行すると、最大化表示する。</p>
+<p>画面上に表示されているウインドウを選択して切り替えるための機能。</p>
 <p>登録型のコマンドである<a class="reference internal" href="../user-command/activate-window.html"><span class="doc std std-doc">ウインドウ切替コマンド</span></a>とは別物。<br />
 <code class="docutils literal notranslate"><span class="pre">ウインドウ選択切替</span></code>はキーワードを入力した時点で存在しているウインドウのうち、合致するタイトルを持つウインドウを候補として表示する。<br />
 一方、<code class="docutils literal notranslate"><span class="pre">ウインドウ切替コマンド</span></code>はよく使うウインドウを指定して、任意のキーワードやホットキーで切り替えられるようにするためのもの。</p>
+<section id="usage">
+<h2>使用方法<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>プレフィックス(初期値は<code class="docutils literal notranslate"><span class="pre">wl</span></code>)を入力すると、画面上に表示されているウインドウの一覧を候補として表示する</p></li>
+<li><p>該当する候補を選択して実行すると、対応するウインドウに対して操作を行う</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">⏎</span></code>キーを押して実行すると、ウインドウ切替</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift-⏎</span></code>キーを押して実行すると、最大化して切替</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl-⏎</span></code>キーを押して実行すると、最小化</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift-Ctrl-⏎</span></code>キーを押して実行すると、該当するウインドウを閉じる</p></li>
+</ul>
+</li>
+<li><p>候補を選択すると、該当するウインドウを前面に出し、外枠を強調表示する</p></li>
+</ul>
+</section>
 <section id="temporary-naming-for-window">
 <h2>ウインドウに一時的な名前を付ける<a class="headerlink" href="#temporary-naming-for-window" title="Link to this heading"></a></h2>
 <p>コンテキストメニューから<code class="docutils literal notranslate"><span class="pre">ウインドウに一時的な名前を付ける</span></code>を選択すると、ウインドウに対して一時的な名前を付与することができる。</p>
@@ -159,8 +177,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="slide-jump.html" class="btn btn-neutral float-left" title="PowerPoint スライド表示" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="controlpanel.html" class="btn btn-neutral float-right" title="コントロールパネル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../adhoc-commands.html" class="btn btn-neutral float-left" title="コマンドとして登録していなくても実行できる機能" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="base64-decode.html" class="btn btn-neutral float-right" title="Base64デコード" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

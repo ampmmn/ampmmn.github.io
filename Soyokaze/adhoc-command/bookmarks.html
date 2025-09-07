@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ブックマーク検索コマンド &mdash; Soyokaze 0.43.0</title>
+  <title>ブックマーク検索 &mdash; Soyokaze 0.44.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="ブラウザ履歴コマンド" href="webhistory.html" />
-    <link rel="prev" title="Web検索コマンド" href="websearch.html" /> 
+    <link rel="next" title="電卓" href="calclator.html" />
+    <link rel="prev" title="Base64デコード" href="base64-decode.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,32 +57,46 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">ブックマーク検索コマンド</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#description">設定画面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="activate-window.html">ウインドウ選択切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base64-decode.html">Base64デコード</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ブックマーク検索</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">使用方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">設定</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#per-key-behavior">実行時の動作</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="webhistory.html">ブラウザ履歴コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="directoryindex.html">DirectoryIndexコマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regexp.html">正規表現コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="filter.html">フィルタコマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="activate-window.html">ウインドウ切替コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="align-window.html">ウインドウ整列コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="simple-dict.html">簡易辞書コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="watch-path.html">フォルダ更新検知コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="volume.html">音量調節コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="eject.html">取り外しコマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="split.html">振り分けコマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calclator.html">電卓</a></li>
+<li class="toctree-l2"><a class="reference internal" href="char-escape.html">8進数/16進数/Unicodeエスケープシーケンス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clipboard-history.html">クリップボード履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorcode-converter.html">カラーコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">環境変数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eraname-converter.html">西暦和暦変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Everything</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-pathconvert.html">fileプロトコルをローカルパスに変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-bash-pashconvert.html">git-bashパス変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipaddress.html">IPアドレス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailto.html">メールを送る</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pathfind.html">ファイル名を指定して実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recentfiles.html">最近使ったファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slide-jump.html">PowerPoint スライド表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="startmenu.html">スタートメニュー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timespan.html">簡易時間計算</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit-converter.html">単位変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri-decode.html">URIデコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uwpapplication.html">UWPアプリケーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware-player-mru.html">VMware Workstation PlayerのVM実行履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhistory.html">Web履歴検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windowssettings.html">Windowsの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winscp.html">WinSCPセッション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adhoc-commands.html#other-features">その他の機能</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -112,8 +126,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../user-commands.html">登録型のコマンド</a></li>
-      <li class="breadcrumb-item active">ブックマーク検索コマンド</li>
+          <li class="breadcrumb-item"><a href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+      <li class="breadcrumb-item active">ブックマーク検索</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -123,35 +137,31 @@
            <div itemprop="articleBody">
              
   <section id="bookmark-search-command">
-<h1>ブックマーク検索コマンド<a class="headerlink" href="#bookmark-search-command" title="Link to this heading"></a></h1>
+<h1>ブックマーク検索<a class="headerlink" href="#bookmark-search-command" title="Link to this heading"></a></h1>
 <p>Webブラウザのブックマークを検索するためのコマンド。<br />
 ブックマーク名やフォルダ、URLなどで絞り込み、該当するブックマークを候補として表示できる。</p>
-<p><img alt="" src="../_images/sample-bookmarks.png" /></p>
+<p><img alt="" src="../_images/sample-without-prefix.png" /></p>
 <p>該当する候補を選択して実行すると、ブックマークに対応するURLをブラウザで開く。</p>
 <p>Edge/Chromeに対応している。</p>
 <p>なお、<code class="docutils literal notranslate"><span class="pre">javascript:</span></code>で始まるブックマーク(ブックマークレット)については候補から除外する。</p>
-<section id="description">
-<h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/new-bookmarkcommand.png" /></p>
+<section id="usage">
+<h2>使用方法<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code><br />
-ブックマーク検索コマンドを実行するためのキーワード</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">説明</span></code><br />
-コメント表示欄に記載される文字列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Chromeのブックマークを候補として表示する</span></code><br />
-チェックすると、Chromeのブックマークを検索対象とする</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Edgeのブックマークを候補として表示する</span></code><br />
-チェックすると、Edgeのブックマークを検索対象とする</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">URL文字列を候補の絞り込みに使う</span></code><br />
-チェックすると、URL文字列(とブックマーク名)を候補の絞り込みに使う。チェックしない場合はブックマーク名のみで絞り込みする</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
-コマンドを呼び出すキーバインドを設定できる。<br />
-設定したキーを押下すると、入力欄が表示され、コマンド名が入力された(キーワードで絞り込みができる）状態になる</p>
+<li><p>入力欄にキーワードを入力すると、そのキーワードを含むブックマークを表示する</p></li>
+<li><p>アプリケーション設定でプレフィックスが設定されている場合、そのプレフィックスを入力すると機能が発動する</p>
 <ul>
-<li><p>他のコマンドにおけるホットキーはコマンド実行として作用するが、このコマンドに関しては短縮入力みたいな位置づけ</p></li>
+<li><p>以下はプレフィックスを<code class="docutils literal notranslate"><span class="pre">b</span></code>としている場合の例
+<img alt="" src="../_images/sample-with-prefix.png" /></p></li>
 </ul>
 </li>
+<li><p>アプリケーション設定で<code class="docutils literal notranslate"><span class="pre">検索を実行する最小文字数</span></code>を設定している場合、その文字数以上のキーワードを入力したときに機能が発動する</p></li>
 </ul>
+</section>
+<section id="settings">
+<h2>設定<a class="headerlink" href="#settings" title="Link to this heading"></a></h2>
+<p>機能は初期状態で有効になっている。
+機能を使わない場合は、アプリケーション設定の <code class="docutils literal notranslate"><span class="pre">拡張機能</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">ブックマーク検索</span></code> から機能を無効化することができる。</p>
+<p><img alt="" src="../_images/appsetting.png" /></p>
 </section>
 <section id="per-key-behavior">
 <h2>実行時の動作<a class="headerlink" href="#per-key-behavior" title="Link to this heading"></a></h2>
@@ -177,8 +187,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="websearch.html" class="btn btn-neutral float-left" title="Web検索コマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="webhistory.html" class="btn btn-neutral float-right" title="ブラウザ履歴コマンド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="base64-decode.html" class="btn btn-neutral float-left" title="Base64デコード" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="calclator.html" class="btn btn-neutral float-right" title="電卓" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
