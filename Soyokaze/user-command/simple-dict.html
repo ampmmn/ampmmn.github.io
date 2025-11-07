@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>簡易辞書コマンド &mdash; Soyokaze 0.44.1</title>
+  <title>簡易辞書コマンド &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="eject.html">取り外しコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="split.html">振り分けコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_extension.html">Python拡張コマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
@@ -96,6 +97,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -135,6 +140,7 @@
 <p>Excelワークブックファイル(<code class="docutils literal notranslate"><span class="pre">*.xlsx,*.xls</span></code>)の任意の範囲のデータを簡易的な辞書データ(キーと値のペアの集合)として利用するコマンド。<br />
 辞書データ(キー、値)をインクリメンタルに検索することができる。</p>
 <p>Excelファイルをデータソースにできるので、データのメンテナンスをExcelでお手軽にできるのがメリット</p>
+<p><img alt="" src="../_images/introduction4.png" /></p>
 <p>Excelを利用するため、実行環境にExcelがインストールされている必要がある。</p>
 <section id="use-cases">
 <h2>用途・活用例<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
@@ -375,6 +381,7 @@
 </ul>
 </li>
 <li><p>データソースとなるExcelファイルが更新された場合、自動で再読み込みを行う</p></li>
+<li><p>キーが空の行は候補から除外される</p></li>
 </ul>
 </section>
 <section id="restrictions">

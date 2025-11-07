@@ -21,24 +21,34 @@
   - アプリ実行時に上記ライブラリを直接利用するものではない
 
 - [Python3](https://www.python.org/)
-  - 簡易電卓機能を実現するために使用している
+  - Python拡張コマンド/簡易電卓機能を実現するために使用している
 
 - [SQLite3](https://www.sqlite.org/)
   - Windows標準搭載の`winsqlite3.dll`を利用している
 
 - [Everything SDK](https://www.voidtools.com/support/everything/sdk/)
   - `Everything`が公開しているSDKのソースコードをそのままランチャー本体に組み込んでいる
-  - 現在はEverything関連機能を無効化している。そのうち再実装するつもり
 
 - [RE2](https://github.com/google/re2)
   - コマンドの絞り込みの際の正規表現エンジンとして利用している
 
 - [Abseil](https://github.com/abseil/abseil-cpp)
   - `RE2`がライブラリに依存しているライブラリ。本アプリは直接利用していない。
+
 - [Sphinx](https://www.sphinx-doc.org/)
   - マニュアル生成で利用している
 - [sphinx_rtd_theme](https://github.com/readthedocs/sphinx_rtd_theme)
   - マニュアル生成の際のテーマ
+
+- [nanobind](https://github.com/wjakob/nanobind)
+  - Python拡張コマンドにおいて、Pythonスクリプトから本体側の機能を利用できるようにするためのバインディングで使用している。
+
+- [Snintilla,Lexilla](https://www.scintilla.org/)
+  - Python拡張コマンドにおいて、スクリプト欄を編集するコントロールとして利用している
+
+- [upx/upx](https://github.com/upx/upx)
+  - ビルド生成物(exe/dll)を圧縮してサイズ削減するツールとしてUPXを利用している
+  - UPX自体はGPLであるが、UPXを使って生成したバイナリはGPLにはならない(認識)
 
 ```
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>利用ライブラリ &mdash; Soyokaze 0.44.1</title>
+  <title>利用ライブラリ &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -63,6 +63,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul class="current">
@@ -132,7 +136,7 @@
 </li>
 <li><p><a class="reference external" href="https://www.python.org/">Python3</a></p>
 <ul>
-<li><p>簡易電卓機能を実現するために使用している</p></li>
+<li><p>Python拡張コマンド/簡易電卓機能を実現するために使用している</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://www.sqlite.org/">SQLite3</a></p>
@@ -143,7 +147,6 @@
 <li><p><a class="reference external" href="https://www.voidtools.com/support/everything/sdk/">Everything SDK</a></p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">Everything</span></code>が公開しているSDKのソースコードをそのままランチャー本体に組み込んでいる</p></li>
-<li><p>現在はEverything関連機能を無効化している。そのうち再実装するつもり</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/google/re2">RE2</a></p>
@@ -164,6 +167,22 @@
 <li><p><a class="reference external" href="https://github.com/readthedocs/sphinx_rtd_theme">sphinx_rtd_theme</a></p>
 <ul>
 <li><p>マニュアル生成の際のテーマ</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/wjakob/nanobind">nanobind</a></p>
+<ul>
+<li><p>Python拡張コマンドにおいて、Pythonスクリプトから本体側の機能を利用できるようにするためのバインディングで使用している。</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.scintilla.org/">Snintilla,Lexilla</a></p>
+<ul>
+<li><p>Python拡張コマンドにおいて、スクリプト欄を編集するコントロールとして利用している</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/upx/upx">upx/upx</a></p>
+<ul>
+<li><p>ビルド生成物(exe/dll)を圧縮してサイズ削減するツールとしてUPXを利用している</p></li>
+<li><p>UPX自体はGPLであるが、UPXを使って生成したバイナリはGPLにはならない(認識)</p></li>
 </ul>
 </li>
 </ul>

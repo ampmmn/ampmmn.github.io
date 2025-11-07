@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>グループコマンド &mdash; Soyokaze 0.44.1</title>
+  <title>グループコマンド &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -64,6 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">グループコマンド</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">設定画面</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restrictions">制限事項</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#per-key-behavior">実行時の動作</a></li>
 </ul>
 </li>
@@ -78,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="eject.html">取り外しコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="split.html">振り分けコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_extension.html">Python拡張コマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
@@ -86,6 +88,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -122,8 +128,13 @@
              
   <section id="group-command">
 <h1>グループコマンド<a class="headerlink" href="#group-command" title="Link to this heading"></a></h1>
-<p>本アプリに登録済のコマンドを複数まとめて実行するためのコマンド<br />
-決まった順序で実行する複数の操作を呼び出す用途で使うことができる。</p>
+<p>本アプリに登録済のコマンドを複数まとめて実行するためのコマンド</p>
+<p>以下のようなケースを想定している。</p>
+<ul class="simple">
+<li><p>複数のWebサイトを一括して開く(例えば、GMailとGoogleカレンダーを同時に開く)</p></li>
+<li><p>定型作業で毎回実行しているプログラムやWebサイトをコマンド一つですべて実行する</p></li>
+<li><p>同じキーワードで複数のWeb検索を実行する</p></li>
+</ul>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p><img alt="" src="../_images/edit-groupcommand.png" /></p>
@@ -135,30 +146,41 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">説明</span></code><br />
 コメント表示欄に記載される文字列。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">グループとして実行するコマンド</span></code><br />
-グループに含まれるコマンドの一覧が表示される</p></li>
+グループに含めるサブコマンドの一覧が表示される</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code><br />
-一覧にコマンドを追加する</p></li>
+一覧にサブコマンドを追加する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code><br />
-一覧からコマンドを削除する</p></li>
+一覧からサブコマンドを削除する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">上へ移動</span></code><br />
 一覧で選択した項目を一つ上に移動する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">下へ移動</span></code><br />
 一覧で選択した項目を一つ下に移動する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">完了するまで待つ</span></code></p>
 <ul>
-<li><p>チェックすると、そのコマンドの実行が完了するまで次のコマンドを実行しない</p></li>
-<li><p>チェックしない場合、コマンドを実行したあと、完了を待たずに次のコマンドを実行する</p></li>
+<li><p>チェックすると、サブコマンドの実行が完了するまで次のサブコマンドを実行しない</p></li>
+<li><p>チェックしない場合、サブコマンドを実行したあと、完了を待たずに次のサブコマンドを実行する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">全てのコマンドに同じパラメータを渡す</span></code><br />
-コマンド実行時に、入力欄にパラメータを指定した場合、そのパラメータをグループ内の各コマンドに渡す</p></li>
+サブコマンド実行時に、入力欄にパラメータを指定した場合、そのパラメータをグループ内の各サブコマンドに渡す<br />
+(指定したキーワードで一括検索するようなケースで使う)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">繰り返し実行する</span></code><br />
-指定した回数分だけグループ内のコマンドを繰り返し実行する</p></li>
+指定した回数分だけグループ内のサブコマンドを繰り返し実行する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">実行前に確認ダイアログを出す</span></code><br />
-グループ実行時に確認するかどうかのダイアログを表示する</p></li>
+グループコマンド実行時に確認ダイアログを表示する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
 <a class="reference internal" href="../window/command-hotkey.html"><span class="doc std std-doc">コマンドを呼び出すキー</span></a>を設定できる。設定したキーを押下するとコマンドを実行できるようになる。</p></li>
 </ul>
+</section>
+<section id="restrictions">
+<h2>制限事項<a class="headerlink" href="#restrictions" title="Link to this heading"></a></h2>
+<p>グループコマンドでは下記のコマンド種別をサブコマンドに含めても正しく動作しない。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="filter.html"><span class="doc std std-doc">フィルタコマンド</span></a></p></li>
+<li><p><a class="reference internal" href="simple-dict.html"><span class="std std-doc">簡易辞書コマンド</span></a></p></li>
+<li><p><a class="reference internal" href="directoryindex.html"><span class="doc std std-doc">DirectoryIndexコマンド</span></a></p></li>
+</ul>
+<p>上記のコマンド種別はコマンドを実行したタイミングで追加の入力を要するものであるため、グループコマンドによる一括実行する動作と組みあわせることができない。</p>
 </section>
 <section id="per-key-behavior">
 <h2>実行時の動作<a class="headerlink" href="#per-key-behavior" title="Link to this heading"></a></h2>

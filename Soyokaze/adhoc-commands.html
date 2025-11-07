@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>コマンドとして登録していなくても実行できる機能 &mdash; Soyokaze 0.44.1</title>
+  <title>コマンドとして登録していなくても実行できる機能 &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -21,7 +21,7 @@
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
     <link rel="next" title="ウインドウ選択切替" href="adhoc-command/activate-window.html" />
-    <link rel="prev" title="エイリアスコマンド" href="user-command/alias.html" /> 
+    <link rel="prev" title="Python拡張コマンド" href="user-command/py_extension.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -76,6 +76,8 @@
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/ipaddress.html">IPアドレス</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/mailto.html">メールを送る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/onenote.html">OneNoteページ検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/outlook-folder.html">Outlookフォルダ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/pathfind.html">ファイル名を指定して実行</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/recentfiles.html">最近使ったファイル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/slide-jump.html">PowerPoint スライド表示</a></li>
@@ -89,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/windowssettings.html">Windowsの設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/winscp.html">WinSCPセッション</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/vscode.html">Visual Studio Code履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-features">その他の機能</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#logging">ログ出力</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#continuous-worktime-warning">【試作】連続稼働を警告する</a></li>
@@ -101,6 +104,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -158,6 +165,8 @@
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/ipaddress.html">IPアドレス</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/mailto.html">メールを送る</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-command/onenote.html">OneNoteページ検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-command/outlook-folder.html">Outlookフォルダ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/pathfind.html">ファイル名を指定して実行</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/recentfiles.html">最近使ったファイル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/slide-jump.html">PowerPoint スライド表示</a></li>
@@ -171,6 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/windowssettings.html">Windowsの設定</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/winscp.html">WinSCPセッション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adhoc-command/worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-command/vscode.html">Visual Studio Code履歴</a></li>
 </ul>
 </div>
 <section id="other-features">
@@ -195,7 +205,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="user-command/alias.html" class="btn btn-neutral float-left" title="エイリアスコマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user-command/py_extension.html" class="btn btn-neutral float-left" title="Python拡張コマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="adhoc-command/activate-window.html" class="btn btn-neutral float-right" title="ウインドウ選択切替" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>通常コマンド &mdash; Soyokaze 0.44.1</title>
+  <title>通常コマンド &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -80,6 +80,7 @@
 <li class="toctree-l2"><a class="reference internal" href="eject.html">取り外しコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="split.html">振り分けコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_extension.html">Python拡張コマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
@@ -88,6 +89,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -208,6 +213,20 @@ PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">キーワードが完全一致し、かつ、候補が一つのときに自動でコマンドを実行する</span></code><br />
 入力欄に入力したキーワードがコマンド名に完全一致し、他の候補がない場合に、コマンド実行を自動確定(実行)する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">条件に合致するウインドウが存在する場合にパスを起動せずにウインドウをアクティブにする</span></code><br />
+指定条件(ウインドウクラス名/ウインドウタイトル)に該当するウインドウが存在する場合に、それをアクティブにして、<code class="docutils literal notranslate"><span class="pre">パス</span></code>で設定したファイルを実行しない。</p>
+<ul>
+<li><p>想定用途: アプリを複数起動させずに使いたい場合に用いる。(アプリがすでに起動済の場合は新しいプロセスを起動せずに、既存のウインドウに切り替える)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code><br />
+ウインドウのタイトルを指定する。指定しなかった場合はウインドウクラスのみで判断する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code><br />
+ウインドウクラス名を指定する。指定しなかった場合はウインドウタイトルのみで判断する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">正規表現を使用する</span></code><br />
+チェックすると、<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>の文字列を正規表現パターンとして扱う</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">テスト</span></code><br />
+指定した条件に該当するウインドウを探す。ウインドウが見つかると、そのプログラムのタスクバージョンのアイコンが点滅する。</p></li>
 </ul>
 </section>
 <section id="per-key-behavior">
@@ -225,7 +244,10 @@ PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code></p></td>
 <td><p>パス(ファイルが存在するディレクトリ)を開く</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Shift-Ctrl-Enter</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Alt-Ctrl-Enter</span></code></p></td>
+<td><p>プロパティを開く</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Shift-Ctrl-Enter</span></code></p></td>
 <td><p>管理者権限で実行する</p></td>
 </tr>
 </tbody>

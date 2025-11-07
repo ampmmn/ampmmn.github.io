@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>アプリケーション設定 &mdash; Soyokaze 0.44.1</title>
+  <title>アプリケーション設定 &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -75,14 +75,20 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#appearance">表示</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#appearance-colors">表示＞配色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#externaltool">外部ツール</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">制限事項</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#extensions">拡張機能</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extensions-switch-window">拡張機能＞ウインドウ切替</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extensions-clipboard-history">拡張機能＞クリップボード履歴</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-path-conversion">拡張機能＞パス変換</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extension-onenote">拡張機能＞OneNote</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-bookmarks">拡張機能＞ブックマーク検索</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-webhistory">拡張機能＞Web履歴検索</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-everything">拡張機能＞Everything</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-winscp">拡張機能＞WinSCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extension-vscode">拡張機能＞Visual Studio Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging">その他</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#others">その他の設定画面</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#application-hotkey">アプリ表示用ホットキー</a></li>
@@ -109,6 +115,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -153,9 +163,9 @@
 </ul>
 <section id="app">
 <h2>基本<a class="headerlink" href="#app" title="Link to this heading"></a></h2>
-<p>ランチャーの基本動作にかかわる設定をする画面<br />
+<p>ランチャーの基本動作に関する設定画面<br />
 主に入力画面を表示する際の動作の設定を行う。</p>
-<p><img alt="" src="../_images/setting.png" /></p>
+<p><img alt="" src="../_images/setting1.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ランチャー呼び出しキー</span></code></p>
 <ul>
@@ -332,7 +342,7 @@ Ctrl+A</p></li>
     migemo.dll
 </pre></div>
 </div>
-<p>なお、バージョン0.44.1現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
+<p>なお、バージョン0.47.0現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
 </section>
 <section id="keyword-input-key-config">
 <h2>入力＞キー割り当て<a class="headerlink" href="#keyword-input-key-config" title="Link to this heading"></a></h2>
@@ -773,21 +783,70 @@ Ctrl+A</p></li>
 </li>
 </ul>
 </section>
+<section id="externaltool">
+<h2>外部ツール<a class="headerlink" href="#externaltool" title="Link to this heading"></a></h2>
+<p>本アプリから利用する外部ツールに関する設定画面。</p>
+<p><img alt="" src="../_images/settingpage.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ブックマーク検索／Web履歴検索においてEdge以外のWebブラウザも利用する</span></code><br />
+チェックすると、ブックマーク検索／Web履歴検索機能において、外部ツールを利用できる</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Chromeを使う</span></code><br />
+外部ツールとしてChromeを使う</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">別のWebブラウザを指定する</span></code><br />
+外部ツールとしてChrome以外のWebブラウザを使用する場合はこちらを選択する。<br />
+こちらを選択した場合、下記の項目を指定する必要がある。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">アプリ表示名</span></code><br />
+この外部ツールを使うコマンドが候補欄に表示されるときに使う表示名を指定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">実行ファイルパス</span></code><br />
+ブラウザの実行ファイルのパスを指定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code><br />
+ブラウザ起動時のコマンドラインパラメータを指定する。<br />
+<code class="docutils literal notranslate"><span class="pre">$target</span></code>というキーワードを実際のURLに置き換える。<br />
+(基本的にはここを変更する必要はない)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">設定データフォルダ</span></code><br />
+指定したWebブラウザのブックマークや履歴の情報が保存されたフォルダのパスを指定する。<br />
+関連機能: <a class="reference internal" href="../adhoc-command/bookmarks.html"><span class="doc std std-doc">ブックマーク検索</span></a>、<a class="reference internal" href="../adhoc-command/webhistory.html"><span class="doc std std-doc">Web履歴検索</span></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">コマンドからURLを開くとき、既定のブラウザではなく、上記のWebブラウザを使う</span></code><br />
+チェックすると、URLを参照するコマンドを実行したときや、入力欄にURLを直接入力したときに、ここで設定したWebブラウザが使われる。</p></li>
+</ul>
+<section id="id1">
+<h3>制限事項<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>ブックマーク検索機能とWeb履歴検索機能はChromiumベースのWebブラウザに対応している</p>
+<ul>
+<li><p>これらの機能で参照する設定データのフォルダは下記の構造を想定している<br />
+この構造になっていないWebブラウザについては、ブックマーク検索とWeb履歴検索を利用することはできない</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;設定データフォルダ&gt;\
+  Defailt\            設定データフォルタ直下にDefaultという名前のフォルダがあり、
+    Bookmarks         その下にBookmarks、History という名前のファイルがある
+    History
+    ...
+</pre></div>
+</div>
+</section>
+</section>
 <section id="extensions">
 <h2>拡張機能<a class="headerlink" href="#extensions" title="Link to this heading"></a></h2>
 <p><img alt="" src="../_images/setting6.png" /></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">簡易電卓機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">有効にする</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pythonを利用する拡張機能の設定</span></code></p>
 <ul>
-<li><p>チェックすると、入力画面に入力したテキストを数式として評価して、その計算結果を表示する<br />
+<li><p><code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">DLLへのパス</span></code><br />
+PCにインストールした<code class="docutils literal notranslate"><span class="pre">Python3</span></code>の本体DLLへのパスを指定する<br />
+(Python3.12以降の<code class="docutils literal notranslate"><span class="pre">python3.dll</span></code>へのパスを指定する)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">簡易電卓機能を有効にする</span></code><br />
+チェックすると、入力画面に入力したテキストを数式として評価して、その計算結果を表示する<br />
 <img alt="" src="../_images/calculator.png" /></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code>キーを押すと、計算結果をクリップボードにコピーする</p></li>
-<li><p><a class="reference external" href="https://www.python.org/">Python3</a>が必要</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">簡易電卓機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">DLLのパス</span></code></p>
-<ul>
-<li><p>PCにインストールした<code class="docutils literal notranslate"><span class="pre">Python3</span></code>の本体DLLへのパスを指定する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">システム関連の機能</span></code></p>
@@ -847,7 +906,7 @@ Ctrl+A</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ExcelやLibreOffice</span> <span class="pre">Calcのシート名による選択を有効にする</span></code><br />
 入力画面を表示した時点で開いているExcel / LibreOffice Calcのシート名の一覧を候補として検索し、それを実行したら該当するシートをアクティブにする</p>
 <ul>
-<li><p>機能を利用するためにはExcel(デスクトップ版) または LibreOfficeがインストールされている必要がある</p></li>
+<li><p>機能を利用するためには製品版Excel(デスクトップ版) または LibreOfficeがインストールされている必要がある</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
@@ -857,13 +916,23 @@ Ctrl+A</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PowerPointのスライドタイトルによる選択を有効にする</span></code><br />
 入力画面を表示した時点でアクティブなPowerPointプレゼンテーションのスライドタイトルを候補として検索し、それを実行したら該当するシートをアクティブにする</p>
 <ul>
-<li><p>機能を利用するためにはPowerPoint(デスクトップ版)がインストールされている必要がある</p></li>
+<li><p>機能を利用するためには製品版PowerPoint(デスクトップ版)がインストールされている必要がある</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
 <code class="docutils literal notranslate"><span class="pre">PowerPointのスライドタイトルによる選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
 キーワードを入力した時点で、スライドの一覧が表示される
 初期値は<code class="docutils literal notranslate"><span class="pre">pj</span></code> (<code class="docutils literal notranslate"><span class="pre">p</span></code>owerpoint <code class="docutils literal notranslate"><span class="pre">j</span></code>ump の略)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Outlookのフォルダ選択を有効にする</span></code><br />
+入力画面を表示した時点で起動しているOutlookのメールフォルダ名の一覧を候補として検索し、それを実行したら該当するフォルダを選択する</p>
+<ul>
+<li><p>機能を利用するためには製品版Outlook(デスクトップ版)がインストールされている必要がある</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">Outlookのフォルダ選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
+キーワードを入力した時点で、フォルダの一覧が表示される
+初期値は<code class="docutils literal notranslate"><span class="pre">ol</span></code> (<code class="docutils literal notranslate"><span class="pre">o</span></code>ut<code class="docutils literal notranslate"><span class="pre">l</span></code>ook の略)</p></li>
 </ul>
 </section>
 <section id="extensions-clipboard-history">
@@ -940,6 +1009,19 @@ Ctrl+A</p></li>
 </li>
 </ul>
 </section>
+<section id="extension-onenote">
+<h2>拡張機能＞OneNote<a class="headerlink" href="#extension-onenote" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/appsetting1.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
+チェックすると、<a class="reference internal" href="../adhoc-command/onenote.html"><span class="doc std std-doc">OneNoteページ検索</span></a>機能が有効になる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
+検索を開始するためのキーワードを指定する。<br />
+空欄にすると、検索が常に有効になる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">検索を実行する最小文字数</span></code><br />
+その文字数以上のキーワードを入力したときに検索を行う。0を指定すると常に検索を行う。</p></li>
+</ul>
+</section>
 <section id="extension-bookmarks">
 <h2>拡張機能＞ブックマーク検索<a class="headerlink" href="#extension-bookmarks" title="Link to this heading"></a></h2>
 <p><img alt="" src="../_images/appsetting.png" /></p>
@@ -951,17 +1033,17 @@ Ctrl+A</p></li>
 空欄にすると、検索が常に有効になる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">検索を実行する最小文字数</span></code><br />
 その文字数以上のキーワードを入力したときに検索を行う。0を指定すると常に検索を行う。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Chromeのブックマークを候補として表示する</span></code><br />
-チェックすると、Chromeのブックマークを検索対象とする</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Edgeのブックマークを候補として表示する</span></code><br />
-チェックすると、Edgeのブックマークを検索対象とする</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Edgeのお気に入りを候補として表示する</span></code><br />
+チェックすると、Edgeのお気に入りを検索対象とする</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Webブラウザ(外部ツール)のブックマークを候補として表示する</span></code><br />
+チェックすると、<a class="reference internal" href="#externaltool"><span class="xref myst">外部ツール</span></a>で指定したWebブラウザのブックマークを検索対象とする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">URL文字列を候補の絞り込みに使う</span></code><br />
 チェックすると、URL文字列(とブックマーク名)を候補の絞り込みに使う。チェックしない場合はブックマーク名のみで絞り込みする</p></li>
 </ul>
 </section>
 <section id="extension-webhistory">
 <h2>拡張機能＞Web履歴検索<a class="headerlink" href="#extension-webhistory" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/appsetting1.png" /></p>
+<p><img alt="" src="../_images/appsetting3.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
 チェックすると、<a class="reference internal" href="../adhoc-command/webhistory.html"><span class="doc std std-doc">Web履歴検索</span></a>機能が有効になる。</p></li>
@@ -970,10 +1052,10 @@ Ctrl+A</p></li>
 空欄にすると、検索が常に有効になる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">検索を実行する最小文字数</span></code><br />
 その文字数以上のキーワードを入力したときに検索を行う。0を指定すると常に検索を行う。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Chromeの履歴を候補として表示する</span></code><br />
-チェックすると、Chromeの閲覧履歴から入力キーワードに該当するものを候補として表示する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Edgeの履歴を候補として表示する</span></code><br />
 チェックすると、Edgeの閲覧履歴から入力キーワードに該当するものを候補として表示する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Webブラウザ(外部ツール)の履歴を候補として表示する</span></code><br />
+チェックすると、<a class="reference internal" href="#externaltool"><span class="xref myst">外部ツール</span></a>で指定したWebブラウザの履歴を検索対象とする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">検索の上限件数</span></code><br />
 候補の上限件数を設定する。多くするほどQuery処理に時間がかかる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Migemoを検索を利用する</span></code><br />
@@ -1015,14 +1097,28 @@ Ctrl+A</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
 チェックすると、<a class="reference internal" href="../adhoc-command/winscp.html"><span class="doc std std-doc">WinSCPのセッション一覧を表示する</span></a>機能が有効になる。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
-検索を開始するためのキーワードを指定する。<br />
-空欄にすると、ブックマーク検索が常に有効になる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ポータブル版のWinSCPを利用する</span></code><br />
 インストール版のWinSCPではなく、ポータブル版のWinSCPを使用している場合に使用する設定。<br />
 チェックすると、<code class="docutils literal notranslate"><span class="pre">WinSCP.exeのパス</span></code>欄が有効になる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">WinSCP.exeのパス</span></code><br />
 ポータブル版のWinSCPを使用している場合の<code class="docutils literal notranslate"><span class="pre">WinSCP.exe</span></code>のパスを指定する。</p></li>
+</ul>
+</section>
+<section id="extension-vscode">
+<h2>拡張機能＞Visual Studio Code<a class="headerlink" href="#extension-vscode" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/appsetting2.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
+チェックすると、<a class="reference internal" href="../adhoc-command/vscode.html"><span class="doc std std-doc">Visual Studio Code履歴</span></a>機能が有効になる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
+機能発動のためのキーワードを指定する。<br />
+空欄にすると、キーワードを含む要素が常に候補として表示される。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">検索を実行する最小文字数</span></code><br />
+その文字数以上のキーワードを入力したときのみ、機能が発動する。<br />
+0を指定した場合は文字数の制限をしない。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">候補にフルパスを表示する</span></code><br />
+チェックすると候補欄に表示するファイルパスをフルパスで表示する。<br />
+チェックしなかった場合はファイル名のみを表示する。</p></li>
 </ul>
 </section>
 <section id="logging">

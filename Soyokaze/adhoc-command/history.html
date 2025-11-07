@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>履歴 &mdash; Soyokaze 0.44.1</title>
+  <title>履歴 &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -76,6 +76,8 @@
 <li class="toctree-l2"><a class="reference internal" href="ipaddress.html">IPアドレス</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailto.html">メールを送る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onenote.html">OneNoteページ検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outlook-folder.html">Outlookフォルダ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pathfind.html">ファイル名を指定して実行</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recentfiles.html">最近使ったファイル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slide-jump.html">PowerPoint スライド表示</a></li>
@@ -89,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="windowssettings.html">Windowsの設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="winscp.html">WinSCPセッション</a></li>
 <li class="toctree-l2"><a class="reference internal" href="worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vscode.html">Visual Studio Code履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adhoc-commands.html#other-features">その他の機能</a></li>
 </ul>
 </li>
@@ -97,6 +100,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -133,8 +140,12 @@
              
   <section id="history">
 <h1>履歴<a class="headerlink" href="#history" title="Link to this heading"></a></h1>
-<p>コマンドとして登録していないURL、プログラム実行、実行時引数を伴うコマンド実行は履歴として登録される。
-履歴として登録されたものは、次回以降のキーワード入力の際に部分一致で候補にあがるようになる。</p>
+<p>以下のコマンド実行は履歴として登録される。</p>
+<ul class="simple">
+<li><p>実行時引数を伴うコマンド実行</p></li>
+<li><p><a class="reference internal" href="pathfind.html"><span class="std std-doc">ファイル名を指定して実行</span></a>で実行されたファイル</p></li>
+</ul>
+<p>履歴として登録されたものは、次回以降のキーワード入力の際に部分一致で候補として表示される。</p>
 <p>機能を利用するには、<a class="reference internal" href="../window/app-settings.html#keyword-input-history"><span class="std std-ref">アプリ設定</span></a>で機能を有効にする必要がある。</p>
 <p><img alt="" src="../_images/history.png" /></p>
 <p>なお、この機能は履歴を登録したときの「文字列」を登録するだけなので、

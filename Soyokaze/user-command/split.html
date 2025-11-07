@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>振り分けコマンド &mdash; Soyokaze 0.44.1</title>
+  <title>振り分けコマンド &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -79,6 +79,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_extension.html">Python拡張コマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
@@ -87,6 +88,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -123,11 +128,20 @@
              
   <section id="split-command">
 <h1>振り分けコマンド<a class="headerlink" href="#split-command" title="Link to this heading"></a></h1>
-<p>コマンドを実行したときの<code class="docutils literal notranslate"><span class="pre">Enter</span></code>キーの押下状態(修飾キーの組み合わせ)に応じて、異なるコマンドを実行できるようにする</p>
-<p>このコマンドを使うと、<code class="docutils literal notranslate"><span class="pre">Enter</span></code>キーのみを押してコマンドを実行した場合と、<code class="docutils literal notranslate"><span class="pre">Shift-Enter</span></code>キーや<code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code>キーを押した場合で異なるコマンドを実行させることができる</p>
+<p>コマンドを実行したときの<code class="docutils literal notranslate"><span class="pre">⏎</span></code>キーの押下状態(修飾キーの組み合わせ)に応じて、異なるコマンドを実行できるようにする</p>
+<p><img alt="" src="../_images/introduction5.png" /></p>
+<p>このコマンドを使うと、<code class="docutils literal notranslate"><span class="pre">⏎</span></code>キーのみを押してコマンドを実行した場合と、<code class="docutils literal notranslate"><span class="pre">Shift-⏎</span></code>キーや<code class="docutils literal notranslate"><span class="pre">Ctrl-⏎</span></code>キーを押した場合で異なるコマンドを実行させることができる</p>
 <p><img alt="" src="../_images/splitter.svg" /></p>
-<p><a class="reference internal" href="filter.html"><span class="doc std std-doc">フィルタコマンド</span></a> と組み合わせて使用することを想定している。<br />
-一つのフィルタコマンドに対して、キーの押し方によって異なるアクションを割り当てることができる。</p>
+<ul class="simple">
+<li><p>主な用途</p>
+<ul>
+<li><p><a class="reference internal" href="filter.html"><span class="doc std std-doc">フィルタコマンド</span></a> の後段のアクションとして使う<br />
+一つのフィルタコマンドに対して、キーの押し方によって異なるアクションを割り当てることができる。</p></li>
+<li><p><a class="reference internal" href="websearch.html"><span class="doc std std-doc">Web検索コマンド</span></a>と組み合わせる
+押したキーに応じて異なる検索を行う</p></li>
+</ul>
+</li>
+</ul>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p><img alt="" src="../_images/edit-keysplittercommand.png" /></p>
@@ -144,19 +158,15 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">キー別割り当てコマンド</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code>や<code class="docutils literal notranslate"><span class="pre">Shift-Enter</span></code>など、キー操作ごとに割り当てるコマンドの一覧が表示されるリスト</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">⏎</span></code>や<code class="docutils literal notranslate"><span class="pre">Shift-⏎</span></code>など、キー操作ごとに割り当てるコマンドの一覧が表示されるリスト</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code></p>
-<ul>
-<li><p>キーとコマンドの関連付けを追加するボタン</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code></p>
-<ul>
-<li><p>既存のキーとコマンドの関連付けを削除するためのボタン</p></li>
-</ul>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code><br />
+キーとコマンドの関連付けを追加するボタン</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code><br />
+既存の関連付けを編集するボタン</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code><br />
+既存のキーとコマンドの関連付けを削除するためのボタン</p></li>
 </ul>
 </section>
 <section id="remarks">

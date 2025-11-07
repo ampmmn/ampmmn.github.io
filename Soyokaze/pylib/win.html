@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winモジュール &mdash; Soyokaze 0.47.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="高度な使い方" href="../others/advanced-usage.html" />
+    <link rel="prev" title="Keyモジュール" href="key.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">Appモジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key.html">Keyモジュール</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Winモジュール</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#methods">メソッド</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#find">find</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#window-class">Windowクラス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties">プロパティ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exists">exists</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">メソッド</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#maximize">maximize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#minimize">minimize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#restore">restore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hide">hide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#show">show</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activate">activate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move">move</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resize">resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setpos">setpos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#click">click</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../pylib.html">Python用モジュールのリファレンス</a></li>
+      <li class="breadcrumb-item active">Winモジュール</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="win-module">
+<h1>Winモジュール<a class="headerlink" href="#win-module" title="Link to this heading"></a></h1>
+<p>ウインドウに関する機能を提供するモジュール。<br />
+importしなくても使うことができる。</p>
+<section id="methods">
+<h2>メソッド<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<section id="find">
+<h3>find<a class="headerlink" href="#find" title="Link to this heading"></a></h3>
+<p>ウインドウクラスやタイトルを指定して、条件に合致するウインドウを取得する。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># ウインドウクラス名が&quot;Notepad&quot;のウインドウを得る</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+
+<span class="c1"># タイトルが&quot;Hoge&quot;のウインドウを得る</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">caption</span><span class="o">=</span><span class="s2">&quot;Hoge&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="arguments">
+<h4>引数<a class="headerlink" href="#arguments" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">class_name</span></code>(文字列)<br />
+ウインドウクラス名。省略時はNone(文字列)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">caption</span></code>(文字列)<br />
+ウインドウタイトル。省略時はNone(文字列)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code>(数値)<br />
+ウインドウが見つからなかった場合に見つかるまで待機する時間を秒単位で指定する。省略時は0.0</p></li>
+</ul>
+</section>
+<section id="return-value">
+<h4>戻り値<a class="headerlink" href="#return-value" title="Link to this heading"></a></h4>
+<p>ウインドウオブジェクトが返る。</p>
+<p>ウインドウオブジェクトの提供するメソッドは下記の例を参照のこと</p>
+</section>
+</section>
+</section>
+<section id="window-class">
+<h2>Windowクラス<a class="headerlink" href="#window-class" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">win.find()</span></code>メソッドの戻り値で得られるオブジェクト。<br />
+対応するウインドウを操作する機能を提供する。</p>
+</section>
+<section id="properties">
+<h2>プロパティ<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<section id="exists">
+<h3>exists<a class="headerlink" href="#exists" title="Link to this heading"></a></h3>
+<p>ウインドウの有無を表すBool型の値</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>
+    <span class="c1"># ウインドウは存在する</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># ウインドウは存在しない</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>メソッド<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="maximize">
+<h3>maximize<a class="headerlink" href="#maximize" title="Link to this heading"></a></h3>
+<p>ウインドウを最大化する。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># 最大化</span>
+<span class="n">w</span><span class="o">.</span><span class="n">maximize</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id2">
+<h4>引数<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p>なし</p>
+</section>
+<section id="id3">
+<h4>戻り値<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="minimize">
+<h3>minimize<a class="headerlink" href="#minimize" title="Link to this heading"></a></h3>
+<p>ウインドウを最小化する。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># 最小化</span>
+<span class="n">w</span><span class="o">.</span><span class="n">minimize</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id4">
+<h4>引数<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>なし</p>
+</section>
+<section id="id5">
+<h4>戻り値<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="restore">
+<h3>restore<a class="headerlink" href="#restore" title="Link to this heading"></a></h3>
+<p>最大化/最小化状態にあるウインドウを通常表示の状態に戻す。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># 通常表示にする</span>
+<span class="n">w</span><span class="o">.</span><span class="n">restore</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id6">
+<h4>引数<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>なし</p>
+</section>
+<section id="id7">
+<h4>戻り値<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="hide">
+<h3>hide<a class="headerlink" href="#hide" title="Link to this heading"></a></h3>
+<p>ウインドウを非表示にする。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># ウインドウを隠す</span>
+<span class="n">w</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id8">
+<h4>引数<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<p>なし</p>
+</section>
+<section id="id9">
+<h4>戻り値<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="show">
+<h3>show<a class="headerlink" href="#show" title="Link to this heading"></a></h3>
+<p>ウインドウを表示する。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># ウインドウを表示</span>
+<span class="n">w</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id10">
+<h4>引数<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<p>なし</p>
+</section>
+<section id="id11">
+<h4>戻り値<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="activate">
+<h3>activate<a class="headerlink" href="#activate" title="Link to this heading"></a></h3>
+<p>ウインドウを前面に出しフォーカスを設定する。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># ウインドウを前面に出す</span>
+<span class="n">w</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id12">
+<h4>引数<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>なし</p>
+</section>
+<section id="id13">
+<h4>戻り値<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="move">
+<h3>move<a class="headerlink" href="#move" title="Link to this heading"></a></h3>
+<p>ウインドウを指定した座標値に移動する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># 移動</span>
+<span class="n">w</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id14">
+<h4>引数<a class="headerlink" href="#id14" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>x(整数値)<br />
+X座標値</p></li>
+<li><p>y(整数値)<br />
+Y座標値</p></li>
+</ul>
+</section>
+<section id="id15">
+<h4>戻り値<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="resize">
+<h3>resize<a class="headerlink" href="#resize" title="Link to this heading"></a></h3>
+<p>ウインドウを指定したサイズに変更する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># サイズ変更</span>
+<span class="n">w</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id16">
+<h4>引数<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>width(整数値)<br />
+ウインドウの幅</p></li>
+<li><p>height(整数値)<br />
+ウインドウの高さ</p></li>
+</ul>
+</section>
+<section id="id17">
+<h4>戻り値<a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="setpos">
+<h3>setpos<a class="headerlink" href="#setpos" title="Link to this heading"></a></h3>
+<p>ウインドウの移動とリサイズを同時に行う。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># 移動とリサイズ</span>
+<span class="n">w</span><span class="o">.</span><span class="n">setpos</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id18">
+<h4>引数<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>insert_after<br />
+Zオーダー変更用の引数。現在は非サポート。</p></li>
+<li><p>x(整数値)<br />
+X座標値</p></li>
+<li><p>y(整数値)<br />
+Y座標値</p></li>
+<li><p>width(整数値)<br />
+ウインドウの幅</p></li>
+<li><p>height(整数値)<br />
+ウインドウの高さ</p></li>
+</ul>
+</section>
+<section id="id19">
+<h4>戻り値<a class="headerlink" href="#id19" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+<section id="click">
+<h3>click<a class="headerlink" href="#click" title="Link to this heading"></a></h3>
+<p>ウインドウ上をクリックする</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># メモ帳のウインドウを得る</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_name</span><span class="o">=</span><span class="s2">&quot;Notepad&quot;</span><span class="p">)</span>
+<span class="c1"># クリック</span>
+<span class="n">w</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id20">
+<h4>引数<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>x(整数値)<br />
+クリック位置を表すX座標値。ウインドウのクライアント領域座標単位で指定する。</p></li>
+<li><p>y(整数値)<br />
+クリック位置を表すY座標値。ウインドウのクライアント領域座標単位で指定する。</p></li>
+</ul>
+</section>
+<section id="id21">
+<h4>戻り値<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>True: 成功</p></li>
+<li><p>False: 失敗</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="key.html" class="btn btn-neutral float-left" title="Keyモジュール" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../others/advanced-usage.html" class="btn btn-neutral float-right" title="高度な使い方" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

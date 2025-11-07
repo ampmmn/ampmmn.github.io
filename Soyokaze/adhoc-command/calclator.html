@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>電卓 &mdash; Soyokaze 0.44.1</title>
+  <title>電卓 &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -81,6 +81,8 @@
 <li class="toctree-l2"><a class="reference internal" href="ipaddress.html">IPアドレス</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailto.html">メールを送る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mmcsnapin.html">MMCスナップイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onenote.html">OneNoteページ検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outlook-folder.html">Outlookフォルダ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pathfind.html">ファイル名を指定して実行</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recentfiles.html">最近使ったファイル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slide-jump.html">PowerPoint スライド表示</a></li>
@@ -94,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="windowssettings.html">Windowsの設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="winscp.html">WinSCPセッション</a></li>
 <li class="toctree-l2"><a class="reference internal" href="worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vscode.html">Visual Studio Code履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adhoc-commands.html#other-features">その他の機能</a></li>
 </ul>
 </li>
@@ -102,6 +105,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -140,7 +147,7 @@
 <h1>電卓<a class="headerlink" href="#calculator" title="Link to this heading"></a></h1>
 <p>入力欄に数式を入れると、計算結果をコメント欄に表示する。<br />
 Enterキーを押下すると、計算結果をクリップボードにコピーできる。</p>
-<p>利用するにはPythonが必要。(<a class="reference internal" href="../window/app-settings.html#extensions"><span class="std std-ref">設定画面</span></a>)</p>
+<p>利用するにはPython(3.12以降)が必要。(<a class="reference internal" href="../window/app-settings.html#extensions"><span class="std std-ref">設定画面</span></a>)</p>
 <p><img alt="" src="../_images/calculator1.png" /></p>
 <section id="id1">
 <h2>利用可能な演算子<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
@@ -196,6 +203,10 @@ Enterキーを押下すると、計算結果をクリップボードにコピー
 <h2>基数別表示<a class="headerlink" href="#radix-based-number-display" title="Link to this heading"></a></h2>
 <p>計算結果が整数になる場合は、2進数/8進数/10進数/16進数それぞれの結果が表示される。</p>
 <p><img alt="" src="../_images/calculator21.png" /></p>
+<ul class="simple">
+<li><p>一つ目の項の基数を優先して表示する。<br />
+例えば、<code class="docutils literal notranslate"><span class="pre">0x10+1</span></code>という式の場合、16進数の結果(<code class="docutils literal notranslate"><span class="pre">0x11</span></code>)が先に表示される。</p></li>
+</ul>
 </section>
 </section>
 

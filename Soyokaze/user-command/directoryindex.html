@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DirectoryIndexコマンド &mdash; Soyokaze 0.44.1</title>
+  <title>DirectoryIndexコマンド &mdash; Soyokaze 0.47.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -65,6 +65,8 @@
 <li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">DirectoryIndexコマンド</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">設定画面</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-candidates-are-enumerated">コマンドの動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restrictions">制限事項</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#per-key-behavior">実行時の動作</a></li>
 </ul>
 </li>
@@ -78,6 +80,7 @@
 <li class="toctree-l2"><a class="reference internal" href="eject.html">取り外しコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="split.html">振り分けコマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alias.html">エイリアスコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_extension.html">Python拡張コマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
@@ -86,6 +89,10 @@
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
@@ -122,9 +129,9 @@
              
   <section id="directoryindex-command">
 <h1>DirectoryIndexコマンド<a class="headerlink" href="#directoryindex-command" title="Link to this heading"></a></h1>
-<p>(試作)</p>
-<p>Directory Index(Webサーバーのインデックスページ)上のディレクトリやファイルを表示するコマンド<br />
-ランチャーのUI上からディレクトリやファイルをインクリメンタルに絞り込んで、階層をたどることができる</p>
+<p>Directory Index(Webサーバーのインデックスページ)上のディレクトリやファイルを表示するコマンド。<br />
+ディレクトリやファイルをアプリのUI上からインクリメンタルに絞り込んで、階層をたどることができる。<br />
+操作に慣れると、ブラウザで階層をたどるよりも所望のコンテンツのパスに早く到達できる。</p>
 <ul class="simple">
 <li><p>例:</p>
 <ul>
@@ -190,6 +197,28 @@
 <a class="reference internal" href="../window/command-hotkey.html"><span class="doc std std-doc">コマンドを呼び出すキー</span></a>を設定できる。設定したキーを押下するとコマンドを実行できるようになる。</p></li>
 </ul>
 </section>
+<section id="how-candidates-are-enumerated">
+<h2>コマンドの動作<a class="headerlink" href="#how-candidates-are-enumerated" title="Link to this heading"></a></h2>
+<p>このコマンドではURLから得られたHTMLコンテンツを解析して、以下の方法で候補を抽出する。</p>
+<ul class="simple">
+<li><p>コンテンツの<code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>要素に含まれる<code class="docutils literal notranslate"><span class="pre">href</span></code>属性(リンク先)の値を候補として列挙する</p></li>
+<li><p>リンク先は相対パスである必要がある。絶対URLを除外する。</p>
+<ul>
+<li><p>同じページの階層を辿ることを目的としたコマンドであるため、別ドメインへの遷移を許可しない</p></li>
+</ul>
+</li>
+<li><p>候補が選択されたら、その候補が示すURLに起動して再度HTMLを取得/解析する</p>
+<ul>
+<li><p>このコマンドは「現在位置」という状態を持つ</p></li>
+<li><p>入力欄がクローズされたとき、状態はリセットされる</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="restrictions">
+<h2>制限事項<a class="headerlink" href="#restrictions" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">起点URL</span></code>としてDirectory Indexではなく通常のコンテンツを返すURLを指定することもできるが、その際の結果がどうなるかは無保証</p>
+</section>
 <section id="per-key-behavior">
 <h2>実行時の動作<a class="headerlink" href="#per-key-behavior" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -207,6 +236,9 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code></p></td>
 <td><p>選択した候補のリンク先URLをクリップボードにコピーする</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Shift-Ctrl-Enter</span></code></p></td>
+<td><p>現在の階層をブラウザで開く</p></td>
 </tr>
 </tbody>
 </table>
