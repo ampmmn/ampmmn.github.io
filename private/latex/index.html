@@ -291,7 +291,6 @@ function copyAsPNG() {
         new ClipboardItem({ 'image/png': blob })
       ]);
     });
-    URL.revokeObjectURL(url);
 	};
 	image.src = 'data:image/svg+xml;charset=utf-8;base64,' + btoa(unescape(encodeURIComponent(svgData)));
 }
