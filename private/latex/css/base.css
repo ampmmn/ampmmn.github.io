@@ -1,0 +1,146 @@
+
+html {
+  overflow-x: hidden;
+  font-size: 15px;
+}
+
+body {
+  background: #fafaff;
+  padding-top: 30px;
+  padding-bottom: 80px;
+  overflow-x: hidden;
+}
+
+body.bootstrap4 {
+  padding-top: 0px;
+}
+
+h2 {
+  padding-top: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+
+.navbar {
+  background-color: #d2e6ff !important;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+div.jumbotron h1 {
+  text-shadow: 1px 1px 0 #eeeeee, -1px 1px 0 #eeeeee, 1px -1px 0 #eeeeee, -1px -1px 0 #eeeeee;
+}
+
+.no-wrap {
+  display: inline-block;
+}
+
+.social-buttons div {
+  float: left !important;
+  line-height: 1;
+  margin-left: 4px;
+}
+
+
+.ad-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* height: 90px; */
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99998;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+}
+.ad-close {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2147483647;
+}
+.ad-fixed-left {
+  position: fixed;
+  left: 0;
+  top: 100px;
+  display: none;
+}
+.ad-fixed-right {
+  position: fixed;
+  right: 0;
+  top: 100px;
+  display: none;
+}
+.ad-bigbanner-pc-area {
+  text-align: center;
+  margin: 8px;
+}
+#smarttag-instream {
+  margin-bottom: 0.8rem;
+}
+@media (min-width: 601px) {
+  .ad-instream-pc-area {
+    width: 320px;
+  }
+}
+@media (max-width: 600px) {
+  .ad-instream-pc-area {
+    display: none;
+  }
+}
+@media (min-width: 1540px) {
+  .ad-fixed-left, .ad-fixed-right {
+    display: block;
+  }
+}
+#div-gpt-ad-1593164128223-0, #div-gpt-ad-1598864110380-0 {
+  height: 90px;
+}
+#div-gpt-ad-1593164164007-0 {
+  width: 300px;
+}
+
+.bottom-link {
+  display: flex;
+}
+.bottom-link div {
+  flex: auto;
+}
+
+.back-link {
+  margin-bottom: 1em;
+}
+.back-link a {
+  background: no-repeat left center url("../img/left-arrow.png");
+  padding-left: 18px;
+}
+
+.next-link {
+  text-align: right;
+}
+.next-link a {
+  background: no-repeat right center url("../img/right-arrow.png");
+  padding-right: 18px;
+}
+
+.privacy-area {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.privacy-area div {
+  margin-left: 1rem;
+}
+

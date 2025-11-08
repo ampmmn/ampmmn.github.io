@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LaTeX</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link href="css/base.css" rel="stylesheet">
+	<link href="css/convenienttool.css" rel="stylesheet">
+	<style type="text/css">
+		.expression-input {
+			font-family: monospace;
+		}
+	</style>
+</head>
+
+<body class="bootstrap4">
+
+	<div class="container">
+
+		<div class="page-header">
+			<h1>数式描画 (LaTeX)</h1>
+		</div>
+
+		<form method="post" action="#" class="form-horizontal" onsubmit="draw(); return false;" onreset="document.forms[0].exp.focus()">
+
+			<div class="form-group row">
+				<label for="exp" class="col-form-label col-sm-1">式</label>
+				<div class="col-sm-11">
+					<textarea id="exp" name="exp" value="" class="form-control" placeholder="LaTeX形式の数式をここに入力" rows="10" oninput="onChangeText()"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="offset-sm-1 col-sm-11">
+					<button type="submit" class="btn btn-primary">描画</button>
+					<button type="reset" class="btn">リセット</button>
+					<div class="form-check form-check-inline">
+						<input type="checkbox" id="realtime" checked="checked" class="form-check-input" onclick="toggleRealtime()">
+						<label for="realtime" class="form-check-label">リアルタイムに描画する</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="offset-sm-1 col-sm-11">
+					<p id="latex" class="alert alert-primary result"></p>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="offset-sm-1 col-sm-11">
+					<button type="button" class="btn btn-secondary" onclick="saveAsPNG()">数式を画像ファイルでダウンロード</button>
+					<a id="hiddenLinkPNG" download="expresssion.png" style="display: none;">数式を画像ファイルでダウンロード</a>
+					<button type="button" class="btn btn-secondary" onclick="copyAsPNG()">数式をクリップボードにコピー</button>
+					<!--
+					<button type="button" class="btn btn-secondary" onclick="saveAsSVG()">数式をSVGファイルでダウンロード</button>
+					<a id="hiddenLinkSVG" download="expresssion.svg" style="display: none;">数式をSVGファイルでダウンロード</a>
+					-->
+				</div>
+			</div>
+
+		</form>
+
+		<div class="d-flex">
+			<div class="flex-fill ad-left-content">
+
+				<h2>使用方法</h2>
+
+				<p>
+					「式」のテキストボックスにLaTeX形式の式を入力して「描画」ボタンをクリックすると、
+					下にLaTeXフォントで数式が描画されます。<br>
+					「数式を画像ファイルでダウンロード」ボタンをクリックすると、描画した数式をPNG形式でダウンロードできます。<br>
+					「数式をSVGファイルでダウンロード」ボタンをクリックすると、描画した数式をSVG形式でダウンロードできます。
+				</p>
+
+
+				<h2>式の入力</h2>
+
+				<p>
+					LaTeX形式の数式がほぼそのまま入力できます。<br>
+					以下に、いくつか例を示します。
+				</p>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>種類</th>
+							<th>入力する式</th>
+							<th>描画結果</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>改行あり</td>
+							<td class="expression-input"> <pre>\begin{align}
+    a &amp;= b + c \\
+    d &amp;= e - f
+\end{align}</pre></td>
+							<td>\[
+    \begin{align}
+      a &= b + c \\
+      d &= e - f
+			\end{align} \]</td>
+						</tr>
+						<tr>
+							<td>上付き文字（指数等）</td>
+							<td class="expression-input">y = x^{2}</td>
+							<td>\[ y = x^{2} \]</td>
+						</tr>
+						<tr>
+							<td>下付き文字（添字等）</td>
+							<td class="expression-input">{}_4 C _r</td>
+							<td>\[ {}_4 C _r \]</td>
+						</tr>
+						<tr>
+							<td>分数</td>
+							<td class="expression-input">\frac{3}{4-a}</td>
+							<td>\[ \frac{3}{4-a} \]</td>
+						</tr>
+						<tr>
+							<td>括弧</td>
+							<td class="expression-input">2 \left( \frac{3}{4-a} \right) x</td>
+							<td>\[ 2 \left( \frac{3}{4-a} \right) x \]</td>
+						</tr>
+						<tr>
+							<td>三角関数</td>
+							<td class="expression-input">\sin \left( x + \frac{\pi}{2} \right)</td>
+							<td>\[ \sin \left( x + \frac{\pi}{2} \right) \]</td>
+						</tr>
+						<tr>
+							<td>対数</td>
+							<td class="expression-input">\log \left( x \right)</td>
+							<td>\[ \log \left( x \right) \]</td>
+						</tr>
+						<tr>
+							<td>積分</td>
+							<td class="expression-input">\int_{0}^{\infty} e^{-x}</td>
+							<td>\[ \int_{0}^{\infty} e^{-x} \]</td>
+						</tr>
+						<tr>
+							<td>平方根</td>
+							<td class="expression-input">\sqrt{1 + x^{2}}</td>
+							<td>\[ \sqrt{1 + x^{2}} \]</td>
+						</tr>
+						<tr>
+							<td>3乗根</td>
+							<td class="expression-input">\sqrt[3]{1 + x^{2}}</td>
+							<td>\[ \sqrt[3]{1 + x^{2}} \]</td>
+						</tr>
+						<tr>
+							<td>総和</td>
+							<td class="expression-input">\sum_{k=1}^{n} n^{k}</td>
+							<td>\[ \sum_{k=1}^{n} n^{k} \]</td>
+						</tr>
+						<tr>
+							<td>総乗</td>
+							<td class="expression-input">\prod_{k=1}^{n} k^{n}</td>
+							<td>\[ \prod_{k=1}^{n} k^{n} \]</td>
+						</tr>
+						<tr>
+							<td>行列</td>
+							<td class="expression-input">
+								A = \\begin{pmatrix}<br>
+									a_{11} & \\ldots & a_{1n} \\\\<br>
+									\\vdots & \\ddots & \vdots \\\\<br>
+									a_{m1} & \\ldots & a_{mn}<br>
+								\\end{pmatrix}
+							</td>
+							<td>\[ A = \begin{pmatrix}
+								a_{11} & \ldots & a_{1n} \\
+								\vdots & \ddots & \vdots \\
+								a_{m1} & \ldots & a_{mn}
+							\end{pmatrix} \]</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div> <!-- d-flex -->
+
+	</div> <!-- /container -->
+
+	<script type="text/javascript" src="../common/js/common.js"></script>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+	<script type="text/javascript">
+var oldExpression = '';
+
+/**
+* 文字が変更された場合に実行される。
+*/
+function onChangeText() {
+if (document.forms[0].realtime.checked) {
+	var newExpression = document.forms[0].exp.value;
+	if (newExpression !== oldExpression) {
+		// 変更があれば変換する
+		draw();
+		oldExpression = newExpression;
+	}
+}
+}
+
+/**
+* リセットボタンが押下された場合に実行される。
+*/
+function onReset() {
+document.getElementById('latex').innerHTML = '';
+document.forms[0].exp.focus();
+oldExpression = '';
+setTimeout(toggleRealtime, 100);
+}
+
+/**
+* 「リアルタイムに変換する」チェックボックスがクリックされた場合に実行される。
+*/
+function toggleRealtime() {
+if (document.forms[0].realtime.checked) {
+	draw();
+}
+}
+
+function draw() {
+var expression = document.getElementById('exp').value.trim();
+var latexElement = document.getElementById('latex');
+latexElement.innerHTML = '';
+var options = MathJax.getMetricsFor(latexElement);
+options.display = true;
+MathJax.texReset();
+MathJax.tex2svgPromise(expression, options).then(function(node) {
+	latexElement.appendChild(node);
+	MathJax.startup.document.clear();
+	MathJax.startup.document.updateDocument();
+}).catch(function(err) {
+	latexElement.appendChild(document.createElement('pre')).appendChild(document.createTextNode(err.message));
+}).then(function() {
+});
+}
+
+function saveAsPNG() {
+	let svg = document.getElementById('latex').querySelector('svg');
+	let svgData = new XMLSerializer().serializeToString(svg);
+	let canvas = document.createElement('canvas');
+	canvas.width = svg.width.baseVal.value;
+	canvas.height = svg.height.baseVal.value;
+	let ctx = canvas.getContext('2d');
+	let image = new Image();
+	image.onload = function() {
+		ctx.drawImage(image, 0, 0);
+		let link = document.getElementById('hiddenLinkPNG');
+		link.href = canvas.toDataURL();
+		link.click();
+	};
+	image.src = 'data:image/svg+xml;charset=utf-8;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+}
+
+function saveAsSVG() {
+	let svg = document.getElementById('latex').querySelector('svg');
+	let svgData = new XMLSerializer().serializeToString(svg);
+	if (!svgData.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+		svgData = svgData.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+	}
+	if (!svgData.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)) {
+		svgData = svgData.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+	}
+	svgData = '<?xml version="1.0" standalone="no"?>\r\n' + svgData;
+	let link = document.getElementById('hiddenLinkSVG');
+	link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
+	link.click();
+}
+
+function copyAsPNG() {
+	let svg = document.getElementById('latex').querySelector('svg');
+	let svgData = new XMLSerializer().serializeToString(svg);
+	if (!svgData.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+		svgData = svgData.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+	}
+	if (!svgData.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)) {
+		svgData = svgData.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+	}
+	svgData = '<?xml version="1.0" standalone="no"?>\r\n' + svgData;
+
+  const svgBlob = new Blob([svgData], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(svgBlob);
+
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    canvas.getContext('2d').drawImage(img, 0, 0);
+    canvas.toBlob((blob) => {
+      navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob })
+      ]);
+    });
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+}
+
+		document.forms[0].exp.focus();
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
