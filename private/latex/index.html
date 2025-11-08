@@ -282,6 +282,11 @@ function copyAsPNG() {
 	canvas.width = svg.width.baseVal.value;
 	canvas.height = svg.height.baseVal.value;
 	let ctx = canvas.getContext('2d');
+
+	// fill background.
+	ctx.fillStyle = 'white';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 	let image = new Image();
 	image.onload = function() {
 		ctx.drawImage(image, 0, 0);
