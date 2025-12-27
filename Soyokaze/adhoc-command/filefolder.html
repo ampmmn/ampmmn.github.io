@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WinSCPセッション &mdash; Soyokaze 0.49.0</title>
+  <title>ファイルとフォルダ &mdash; Soyokaze 0.49.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Excel/Libre Office Calcワークシート切替" href="worksheet-jump.html" />
-    <link rel="prev" title="Windowsの設定" href="windowssettings.html" /> 
+    <link rel="next" title="git-bashパス変換" href="git-bash-pashconvert.html" />
+    <link rel="prev" title="fileプロトコルをローカルパスに変換" href="file-pathconvert.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -71,7 +71,7 @@
 <li class="toctree-l2"><a class="reference internal" href="eraname-converter.html">西暦和暦変換</a></li>
 <li class="toctree-l2"><a class="reference internal" href="everything.html">Everything</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file-pathconvert.html">fileプロトコルをローカルパスに変換</a></li>
-<li class="toctree-l2"><a class="reference internal" href="filefolder.html">ファイルとフォルダ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ファイルとフォルダ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-bash-pashconvert.html">git-bashパス変換</a></li>
 <li class="toctree-l2"><a class="reference internal" href="history.html">履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ipaddress.html">IPアドレス</a></li>
@@ -90,11 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="vmware-player-mru.html">VMware Workstation PlayerのVM実行履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webhistory.html">Web履歴検索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="windowssettings.html">Windowsの設定</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">WinSCPセッション</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#usage">使用方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#settings">設定</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="winscp.html">WinSCPセッション</a></li>
 <li class="toctree-l2"><a class="reference internal" href="worksheet-jump.html">Excel/Libre Office Calcワークシート切替</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vscode.html">Visual Studio Code履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adhoc-commands.html#other-features">その他の機能</a></li>
@@ -134,7 +130,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
-      <li class="breadcrumb-item active">WinSCPセッション</li>
+      <li class="breadcrumb-item active">ファイルとフォルダ</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -143,39 +139,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="winscp">
-<h1>WinSCPセッション<a class="headerlink" href="#winscp" title="Link to this heading"></a></h1>
-<p>WinSCPのサイトマネージャに登録されているセッション一覧を候補として表示する。</p>
-<p><img alt="" src="../_images/winscp-introduction2.png" /></p>
-<p><img alt="" src="../_images/winscp-introduction.png" /></p>
-<p>実行すると、WinScpアプリケーションを起動し、接続を開始する。</p>
-<section id="usage">
-<h2>使用方法<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>WinSCPがインストールされていること</p>
-<ul>
-<li><p>ポータブル版の場合、どこに実行ファイルがあるかを検出できないため、アプリケーション設定でパスを指定する必要がある</p></li>
-</ul>
-</li>
-<li><p>WinSCPのサイトマネージャに登録された接続先の情報を候補として表示する</p></li>
-<li><p>発動のためのキーワード(プレフィックス)は無い<br />
-サイトマネージャーに登録した名前を入力すると、該当するセッションが候補に表示される</p></li>
-</ul>
-</section>
-<section id="settings">
-<h2>設定<a class="headerlink" href="#settings" title="Link to this heading"></a></h2>
-<p>機能は初期状態で有効になっている。
-機能を使わない場合は、アプリケーション設定の <code class="docutils literal notranslate"><span class="pre">拡張機能</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">WinSCP</span></code> から機能を無効化することができる。</p>
-<p><img alt="" src="../_images/winscp-appsetting.png" /></p>
-</section>
+  <section id="files-and-folders">
+<h1>ファイルとフォルダ<a class="headerlink" href="#files-and-folders" title="Link to this heading"></a></h1>
+<p>入力欄にファイルまたはフォルダの絶対パスを入力して実行すると、その対象を開く。<br />
+パスがフォルダの場合、末尾にパス区切り文字（<code class="docutils literal notranslate"><span class="pre">\</span></code>）を入力すると、そのフォルダ直下にある要素を候補として表示する。</p>
+<p><img alt="" src="../_images/introduction.png" /></p>
+<p>パスを途中まで入力した状態で <code class="docutils literal notranslate"><span class="pre">Tab</span></code> キーを押すと、パスを補完する。<br />
+フォルダを選択した状態で<code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code>キーを押下すると、そのフォルダ直下のファイルやフォルダをさらに表示する。</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="windowssettings.html" class="btn btn-neutral float-left" title="Windowsの設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="worksheet-jump.html" class="btn btn-neutral float-right" title="Excel/Libre Office Calcワークシート切替" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="file-pathconvert.html" class="btn btn-neutral float-left" title="fileプロトコルをローカルパスに変換" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="git-bash-pashconvert.html" class="btn btn-neutral float-right" title="git-bashパス変換" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

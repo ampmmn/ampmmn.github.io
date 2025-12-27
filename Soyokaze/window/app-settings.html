@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>アプリケーション設定 &mdash; Soyokaze 0.47.0</title>
+  <title>アプリケーション設定 &mdash; Soyokaze 0.49.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -73,6 +73,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#restrictions">制限事項</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#command-execute-files-and-folders">実行＞ファイルとフォルダ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#appearance">表示</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#appearance-colors">表示＞配色</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#externaltool">外部ツール</a><ul>
@@ -342,7 +343,7 @@ Ctrl+A</p></li>
     migemo.dll
 </pre></div>
 </div>
-<p>なお、バージョン0.47.0現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
+<p>なお、バージョン0.49.0現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
 </section>
 <section id="keyword-input-key-config">
 <h2>入力＞キー割り当て<a class="headerlink" href="#keyword-input-key-config" title="Link to this heading"></a></h2>
@@ -371,6 +372,11 @@ Ctrl+A</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">補完</span></code></p>
 <ul>
 <li><p>入力画面での入力内容を補完するキーを割り当てる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">単語単位削除</span></code></p>
+<ul>
+<li><p>入力画面で単語単位の削除をするキーを割り当てる</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">メニュー表示</span></code></p>
@@ -628,6 +634,16 @@ Ctrl+A</p></li>
 </li>
 </ul>
 </section>
+</section>
+<section id="command-execute-files-and-folders">
+<h2>実行＞ファイルとフォルダ<a class="headerlink" href="#command-execute-files-and-folders" title="Link to this heading"></a></h2>
+<p>コマンド種別<code class="docutils literal notranslate"><span class="pre">ファイル</span></code> <code class="docutils literal notranslate"><span class="pre">フォルダ</span></code>に対して、別のコマンドを関連付けるための設定画面。<br />
+コマンドを登録しておくと、選択中の候補が<code class="docutils literal notranslate"><span class="pre">ファイル</span></code> <code class="docutils literal notranslate"><span class="pre">フォルダ</span></code>の場合に、任意のキー入力からコマンドを実行してファイルを開くことができる。</p>
+<p><img alt="" src="../_images/settings.png" /></p>
+<p>上記の場合、<code class="docutils literal notranslate"><span class="pre">Ctrl-E</span></code>で<code class="docutils literal notranslate"><span class="pre">vim</span></code>というコマンド、<code class="docutils literal notranslate"><span class="pre">Ctrl-S</span></code>で<code class="docutils literal notranslate"><span class="pre">stirling</span></code>というコマンドを実行できる。<br />
+コマンド種別<code class="docutils literal notranslate"><span class="pre">ファイル</span></code>または<code class="docutils literal notranslate"><span class="pre">フォルダ</span></code>の候補が選択されている状態で、登録したキー入力をすると、対応するコマンドを実行することができる。</p>
+<p>設定したコマンドは下記の通り、ガイド欄に表示される。<br />
+<img alt="" src="../_images/example1.png" /></p>
 </section>
 <section id="appearance">
 <h2>表示<a class="headerlink" href="#appearance" title="Link to this heading"></a></h2>
