@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>アプリケーション設定 &mdash; Soyokaze 0.49.0</title>
+  <title>アプリケーション設定 &mdash; Soyokaze 0.53.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -65,8 +65,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#keyword-input">入力</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#keyword-input-key-config">入力＞キー割り当て</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#keyword-input-history">入力＞履歴</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comand-execute">実行</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comand-execute-path">実行＞パス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-execute">実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-execute-path">実行＞パス</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#command-execute-exclude-files">実行＞除外するファイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#command-execute-priority">実行＞優先度</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#example">優先度の例</a></li>
@@ -88,6 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#extension-bookmarks">拡張機能＞ブックマーク検索</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-webhistory">拡張機能＞Web履歴検索</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-everything">拡張機能＞Everything</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extension-uiautomation">拡張機能＞UI要素</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-winscp">拡張機能＞WinSCP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-vscode">拡張機能＞Visual Studio Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging">その他</a></li>
@@ -175,7 +176,7 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">入力画面を非表示にして起動する</span></code></p>
 <ul>
-<li><p>チェックすると、起動直後に入力画面を表示しない</p></li>
+<li><p>起動直後に入力画面を表示しない</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">入力画面を最前面に表示</span></code></p>
@@ -190,24 +191,24 @@
 前回と同じ位置に入力画面を表示する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">マウスカーソル位置</span></code><br />
 入力画面を表示するタイミングでのマウスカーソル位置に入力画面を表示する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">アクティブウインドウの中央</span></code><br />
-アクティブなウインドウの中央に表示する<br />
+<li><p><code class="docutils literal notranslate"><span class="pre">アクティブウインドウのモニター中央</span></code><br />
+アクティブなウインドウが表示されているモニターの中央位置に入力画面を表示する<br />
 ただし、アクティブなウインドウがない場合は前回と同じ位置に表示する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">すでにアクティブなときに呼び出しキーを押したら隠れる</span></code></p>
 <ul>
-<li><p>チェックすると、ランチャー呼び出しキーを押すたびに入力画面の表示/非表示が切り替わる</p></li>
+<li><p>ランチャー呼び出しキーを押すたびに入力画面の表示/非表示が切り替わる</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">フォーカスを失ったらウインドウを隠す</span></code></p>
 <ul>
-<li><p>チェックすると、入力画面がフォーカスを失ったときに、入力画面を非表示にする</p></li>
+<li><p>入力画面がフォーカスを失ったときに、入力画面を非表示にする</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">隠れるときに入力文字列を消去しない</span></code></p>
 <ul>
-<li><p>チェックすると、コマンドを実行せずに入力画面を非表示にする際に入力文字列を消去しない</p>
+<li><p>コマンドを実行せずに入力画面を非表示にする際に入力文字列を消去しない</p>
 <ul>
 <li><p>入力画面を次回再表示した際に、前回入力していた内容が維持される</p></li>
 </ul>
@@ -254,23 +255,23 @@ Ctrl+A</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">「送る」から登録できるようにする</span></code></p>
 <ul>
-<li><p>チェックすると、本アプリにコマンドを登録するためのメニューが、エクスプローラのコンテキストメニューの「送る」に追加される
+<li><p>本アプリにコマンドを登録するためのメニューが、エクスプローラのコンテキストメニューの「送る」に追加される
 <img alt="" src="../_images/sendto.png" /></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">スタートメニューに登録する</span></code></p>
 <ul>
-<li><p>チェックすると、本アプリを起動するためのメニューがスタートメニューに登録される</p></li>
+<li><p>本アプリを起動するためのメニューがスタートメニューに登録される</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">デスクトップに登録する</span></code></p>
 <ul>
-<li><p>チェックすると、本アプリを起動するためのショートカットがデスクトップに配置される</p></li>
+<li><p>本アプリを起動するためのショートカットがデスクトップに配置される</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">スタートアップに登録する</span></code></p>
 <ul>
-<li><p>チェックすると、Windowsにログオン(サインイン)した後に自動で本アプリを起動する</p></li>
+<li><p>Windowsにログオン(サインイン)した後に自動で本アプリを起動する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">作成したショートカットをすべて削除する</span></code></p>
@@ -312,14 +313,14 @@ Ctrl+A</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">入力画面を表示するときにIMEをオフにする</span></code></p>
 <ul>
-<li><p>チェックすると、入力画面を表示したタイミングでIMEをオフにする</p></li>
+<li><p>入力画面を表示したタイミングでIMEをオフにする</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ネットワークパスを無視する</span></code></p>
 <ul>
-<li><p>チェックすると、<code class="docutils literal notranslate"><span class="pre">\\(コンピュータ名)</span></code>で始まるパスを本アプリでは開かないようにする</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">\\(コンピュータ名)</span></code>で始まるパスを本アプリでは開かないようにする</p>
 <ul>
-<li><p>環境によっては、ネットワークパスの情報を参照したときに数十秒ほど固まることがあるため</p></li>
+<li><p>環境によっては、ネットワークパスの情報を参照したときに数十秒ほど応答がなくなる(フリーズする)ことがあるため</p></li>
 </ul>
 </li>
 </ul>
@@ -343,7 +344,7 @@ Ctrl+A</p></li>
     migemo.dll
 </pre></div>
 </div>
-<p>なお、バージョン0.49.0現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
+<p>なお、バージョン0.53.0現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
 </section>
 <section id="keyword-input-key-config">
 <h2>入力＞キー割り当て<a class="headerlink" href="#keyword-input-key-config" title="Link to this heading"></a></h2>
@@ -352,7 +353,7 @@ Ctrl+A</p></li>
 それらのアプリの使用感に寄せるための設定</p>
 <p><img alt="" src="../_images/appsetting-key.png" /></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">入力キーの画面割り当て</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">入力画面キーの割り当て</span></code></p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">上へ</span></code></p>
 <ul>
@@ -446,29 +447,29 @@ Ctrl+A</p></li>
 </li>
 </ul>
 </section>
-<section id="comand-execute">
-<h2>実行<a class="headerlink" href="#comand-execute" title="Link to this heading"></a></h2>
+<section id="command-execute">
+<h2>実行<a class="headerlink" href="#command-execute" title="Link to this heading"></a></h2>
 <p><img alt="" src="../_images/setting4.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">フォルダを開くファイラーを指定</span></code></p>
 <ul>
-<li><p>チェックすると、エクスプローラ以外のファイラーを使うことができる</p></li>
+<li><p>本アプリからフォルダを開く際に、エクスプローラ以外のファイル管理ソフト(ファイラー)を使いたい場合に指定する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ファイラーのパス</span></code></p>
 <ul>
-<li><p>起動する外部ファイラーの実行ファイルのパスを指定する</p></li>
+<li><p>起動するファイル管理ソフトの実行ファイルのパスを指定する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">ファイラーのパス</span></code>で指定したファイラーを起動するときのパラメータを指定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ファイラーのパス</span></code>で指定したファイル管理ソフトのを起動するときのパラメータを指定する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$target</span></code>が実際に開かれる対象(ファイルやフォルダ)のパスに置き換えられる</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">「ファイル名を指定して実行」機能を使用する</span></code></p>
 <ul>
-<li><p>チェックすると、 <a class="reference internal" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%A6%E5%AE%9F%E8%A1%8C"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドを有効にする。</p></li>
+<li><p><a class="reference internal" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%A6%E5%AE%9F%E8%A1%8C"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドを有効にする。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">未登録キーワード入力時の動作</span></code><br />
@@ -483,7 +484,7 @@ Ctrl+A</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">管理者特権で起動する</span></code></p>
 <ul>
-<li><p>ランチャーアプリを起動するときに管理者権限で起動する<br />
+<li><p>ランチャーアプリを管理者として実行する
 管理者権限で実行することにより、他の管理者権限プロセスがアクティブな状況でもランチャーのホットキーが効くようになる。<br />
 (ランチャーを通常ユーザー権限で実行している場合、管理者権限で動作するプロセス(のウインドウ)がアクティブになっている状況においてホットキーが効かない)</p></li>
 </ul>
@@ -499,8 +500,8 @@ Ctrl+A</p></li>
 </li>
 </ul>
 </section>
-<section id="comand-execute-path">
-<h2>実行＞パス<a class="headerlink" href="#comand-execute-path" title="Link to this heading"></a></h2>
+<section id="command-execute-path">
+<h2>実行＞パス<a class="headerlink" href="#command-execute-path" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../adhoc-command/pathfind.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドにおける、実行ファイルを検索するフォルダを追加で指定することができる。<br />
 検索の優先順位としては環境変数PATHで設定されたフォルダ、次に追加のディレクトリ、の順で検索を行う。<br />
 リストの上にある項目が優先される。</p>
@@ -702,25 +703,25 @@ Ctrl+A</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">操作ガイド欄を表示する</span></code></p>
 <ul>
-<li><p>チェックすると、コメント表示欄の下に操作ガイド欄を表示する<br />
+<li><p>コメント表示欄の下に操作ガイド欄を表示する<br />
 <img alt="" src="../_images/guidelabel.png" /></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">候補欄にコマンド種別を表示する</span></code></p>
 <ul>
-<li><p>チェックすると、コマンドの種別を候補リストに表示する<br />
+<li><p>コマンドの種別を候補リストに表示する<br />
 <img alt="" src="../_images/showcmdtype.png" /></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">候補欄の背景色を交互に変える</span></code></p>
 <ul>
-<li><p>チェックすると、候補欄の奇数行と偶数行の背景色を変えて表示を行う<br />
+<li><p>候補欄の奇数行と偶数行の背景色を変えて表示を行う<br />
 <img alt="" src="../_images/alternatecolor.png" /></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">候補欄の各項目のアイコンを表示する</span></code></p>
 <ul>
-<li><p>チェックすると、候補欄の項目ごとにアイコンを表示する</p></li>
+<li><p>候補欄の項目ごとにアイコンを表示する</p></li>
 <li><p>左: アイコンを表示する場合  右:表示しない場合<br />
 <img alt="" src="../_images/showicon.png" /></p></li>
 </ul>
@@ -758,8 +759,8 @@ Ctrl+A</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">システムの色設定を使用する</span></code></p>
 <ul>
-<li><p>チェックすると、Windowsのシステム設定の配色でウインドウを描画する</p></li>
-<li><p>チェックしない場合は、アプリで独自設定した色を使用する</p></li>
+<li><p>Windowsのシステム設定の配色でウインドウを描画する</p></li>
+<li><p>選択しない場合は、アプリで独自設定した色を使用する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">システムの色設定に戻す</span></code></p>
@@ -805,7 +806,7 @@ Ctrl+A</p></li>
 <p><img alt="" src="../_images/settingpage.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ブックマーク検索／Web履歴検索においてEdge以外のWebブラウザも利用する</span></code><br />
-チェックすると、ブックマーク検索／Web履歴検索機能において、外部ツールを利用できる</p>
+ブックマーク検索／Web履歴検索機能において、外部ツールを利用できる</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">Chromeを使う</span></code><br />
 外部ツールとしてChromeを使う</p></li>
@@ -829,7 +830,7 @@ Ctrl+A</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンドからURLを開くとき、既定のブラウザではなく、上記のWebブラウザを使う</span></code><br />
-チェックすると、URLを参照するコマンドを実行したときや、入力欄にURLを直接入力したときに、ここで設定したWebブラウザが使われる。</p></li>
+URLを参照するコマンドを実行したときや、入力欄にURLを直接入力したときに、ここで設定したWebブラウザが使われる。</p></li>
 </ul>
 <section id="id1">
 <h3>制限事項<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
@@ -860,7 +861,7 @@ Ctrl+A</p></li>
 PCにインストールした<code class="docutils literal notranslate"><span class="pre">Python3</span></code>の本体DLLへのパスを指定する<br />
 (Python3.12以降の<code class="docutils literal notranslate"><span class="pre">python3.dll</span></code>へのパスを指定する)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">簡易電卓機能を有効にする</span></code><br />
-チェックすると、入力画面に入力したテキストを数式として評価して、その計算結果を表示する<br />
+入力画面に入力したテキストを数式として評価して、その計算結果を表示する<br />
 <img alt="" src="../_images/calculator.png" /></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code>キーを押すと、計算結果をクリップボードにコピーする</p></li>
 </ul>
@@ -869,13 +870,13 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">コントロールパネル項目を候補として表示する</span></code></p>
 <ul>
-<li><p>チェックすると、コントロールパネル項目を候補として表示し、それを実行したら、該当するコントロールパネル項目を開く<br />
+<li><p>コントロールパネル項目を候補として表示し、それを実行したら、該当するコントロールパネル項目を開く<br />
 <img alt="" src="../_images/controlpanel-command.png" /></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">スタートメニュー／最近使ったファイルを候補として表示する</span></code></p>
 <ul>
-<li><p>チェックすると、ファイルを候補として表示・実行する</p>
+<li><p>ファイルを候補として表示・実行する</p>
 <ul>
 <li><p>スタートメニューに登録されたプログラム</p></li>
 <li><p>Windowsの<code class="docutils literal notranslate"><span class="pre">最近使ったファイル</span></code>に登録されたファイル</p></li>
@@ -885,22 +886,22 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">アプリケーション(UWPアプリなど)を候補として表示する</span></code></p>
 <ul>
-<li><p>チェックすると、実行環境にインストールされているアプリケーション(UWPアプリを含む)を候補として表示・実行する</p></li>
+<li><p>実行環境にインストールされているアプリケーション(UWPアプリを含む)を候補として表示・実行する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MMCスナップインを候補として表示する</span></code></p>
 <ul>
-<li><p>チェックすると、実行環境にインストールされている<a class="reference internal" href="../adhoc-command/mmcsnapin.html"><span class="doc std std-doc">MMCスナップイン</span></a>を候補として表示する</p></li>
+<li><p>実行環境にインストールされている<a class="reference internal" href="../adhoc-command/mmcsnapin.html"><span class="doc std std-doc">MMCスナップイン</span></a>を候補として表示する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Windowsの設定を候補として表示する</span></code></p>
 <ul>
-<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/windowssettings.html"><span class="doc std std-doc">Windows設定</span></a>の各ページ項目を候補として表示する</p></li>
+<li><p><a class="reference internal" href="../adhoc-command/windowssettings.html"><span class="doc std std-doc">Windows設定</span></a>の各ページ項目を候補として表示する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">環境変数を候補として表示する</span></code></p>
 <ul>
-<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/env.html"><span class="doc std std-doc">環境変数</span></a>の一覧を候補として表示する</p></li>
+<li><p><a class="reference internal" href="../adhoc-command/env.html"><span class="doc std std-doc">環境変数</span></a>の一覧を候補として表示する</p></li>
 </ul>
 </li>
 </ul>
@@ -958,7 +959,7 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">有効にする</span></code></p>
 <ul>
-<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/clipboard-history.html"><span class="doc std std-doc">クリップボード履歴</span></a>機能を有効にする</p></li>
+<li><p><a class="reference internal" href="../adhoc-command/clipboard-history.html"><span class="doc std std-doc">クリップボード履歴</span></a>機能を有効にする</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code></p>
@@ -994,9 +995,9 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">クリップボード履歴ではC/Migemoを使用しない</span></code></p>
 <ul>
-<li><p>チェックすると、クリップボード履歴の候補の絞り込みにおいて、C/Migemoによる正規表現マッチングを使用しない</p>
+<li><p>クリップボード履歴の候補の絞り込みにおいて、C/Migemoによる正規表現マッチングを使用しない</p>
 <ul>
-<li><p>現状のアプリの実装だと、クリップボード履歴の絞り込みにおいてC/Migemoが生成した正規表現を使ってマッチングをすると、すこし遅い感じがあるため無効化できるようにする</p></li>
+<li><p>現状のアプリの実装だと、クリップボード履歴の絞り込みにおいてC/Migemoが生成した正規表現を使ってマッチングをすると、動作が遅くなる場合があるため無効化できるようにする</p></li>
 <li><p>チェックを外した場合は<a class="reference internal" href="#keyword-input"><span class="std std-ref">入力</span></a>設定に従う</p></li>
 </ul>
 </li>
@@ -1004,7 +1005,7 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレビューウインドウを表示する</span></code></p>
 <ul>
-<li><p>チェックすると、候補欄で選択したクリップボード履歴のテキスト内容を確認するためのプレビューウインドウを表示する。</p></li>
+<li><p>候補欄で選択したクリップボード履歴のテキスト内容を確認するためのプレビューウインドウを表示する。</p></li>
 </ul>
 </li>
 </ul>
@@ -1015,12 +1016,12 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">git-bashパスをローカルパス表記に変換する</span></code></p>
 <ul>
-<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/git-bash-pashconvert.html"><span class="doc std std-doc">git-bashパス変換</span></a>を有効にする</p></li>
+<li><p><a class="reference internal" href="../adhoc-command/git-bash-pashconvert.html"><span class="doc std std-doc">git-bashパス変換</span></a>を有効にする</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">file://...をローカルパス表記に変換する</span></code></p>
 <ul>
-<li><p>チェックすると、<a class="reference internal" href="../adhoc-command/file-pathconvert.html"><span class="doc std std-doc">fileプロトコルをローカルパスに変換</span></a>を有効にする</p></li>
+<li><p><a class="reference internal" href="../adhoc-command/file-pathconvert.html"><span class="doc std std-doc">fileプロトコルをローカルパスに変換</span></a>を有効にする</p></li>
 </ul>
 </li>
 </ul>
@@ -1030,7 +1031,7 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <p><img alt="" src="../_images/appsetting1.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
-チェックすると、<a class="reference internal" href="../adhoc-command/onenote.html"><span class="doc std std-doc">OneNoteページ検索</span></a>機能が有効になる。</p></li>
+<a class="reference internal" href="../adhoc-command/onenote.html"><span class="doc std std-doc">OneNoteページ検索</span></a>機能を有効にする。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
 検索を開始するためのキーワードを指定する。<br />
 空欄にすると、検索が常に有効になる。</p></li>
@@ -1043,18 +1044,18 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <p><img alt="" src="../_images/appsetting.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
-チェックすると、<a class="reference internal" href="../adhoc-command/bookmarks.html"><span class="doc std std-doc">ブックマーク検索</span></a>機能が有効になる。</p></li>
+<a class="reference internal" href="../adhoc-command/bookmarks.html"><span class="doc std std-doc">ブックマーク検索</span></a>機能を有効にする。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
 検索を開始するためのキーワードを指定する。<br />
 空欄にすると、検索が常に有効になる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">検索を実行する最小文字数</span></code><br />
 その文字数以上のキーワードを入力したときに検索を行う。0を指定すると常に検索を行う。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Edgeのお気に入りを候補として表示する</span></code><br />
-チェックすると、Edgeのお気に入りを検索対象とする</p></li>
+Edgeのお気に入りを検索対象とする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Webブラウザ(外部ツール)のブックマークを候補として表示する</span></code><br />
-チェックすると、<a class="reference internal" href="#externaltool"><span class="xref myst">外部ツール</span></a>で指定したWebブラウザのブックマークを検索対象とする</p></li>
+<a class="reference internal" href="#externaltool"><span class="xref myst">外部ツール</span></a>で指定したWebブラウザのブックマークを検索対象とする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">URL文字列を候補の絞り込みに使う</span></code><br />
-チェックすると、URL文字列(とブックマーク名)を候補の絞り込みに使う。チェックしない場合はブックマーク名のみで絞り込みする</p></li>
+URL文字列(とブックマーク名)を候補の絞り込みに使う。選択しない場合はブックマーク名のみで絞り込みする</p></li>
 </ul>
 </section>
 <section id="extension-webhistory">
@@ -1062,22 +1063,22 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <p><img alt="" src="../_images/appsetting3.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
-チェックすると、<a class="reference internal" href="../adhoc-command/webhistory.html"><span class="doc std std-doc">Web履歴検索</span></a>機能が有効になる。</p></li>
+<a class="reference internal" href="../adhoc-command/webhistory.html"><span class="doc std std-doc">Web履歴検索</span></a>機能を有効にする。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
 検索を開始するためのキーワードを指定する。<br />
 空欄にすると、検索が常に有効になる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">検索を実行する最小文字数</span></code><br />
 その文字数以上のキーワードを入力したときに検索を行う。0を指定すると常に検索を行う。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Edgeの履歴を候補として表示する</span></code><br />
-チェックすると、Edgeの閲覧履歴から入力キーワードに該当するものを候補として表示する</p></li>
+Edgeの閲覧履歴から入力キーワードに該当するものを候補として表示する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Webブラウザ(外部ツール)の履歴を候補として表示する</span></code><br />
-チェックすると、<a class="reference internal" href="#externaltool"><span class="xref myst">外部ツール</span></a>で指定したWebブラウザの履歴を検索対象とする</p></li>
+<a class="reference internal" href="#externaltool"><span class="xref myst">外部ツール</span></a>で指定したWebブラウザの履歴を検索対象とする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">検索の上限件数</span></code><br />
 候補の上限件数を設定する。多くするほどQuery処理に時間がかかる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Migemoを検索を利用する</span></code><br />
 絞り込みの際にMigemo検索を使うかどうかを指定する。Migemo検索は(使わない場合と比べて)時間がかかるので、非力なPCだと十分な結果が得られない可能性がある。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">URL文字列を候補の絞り込みに使う</span></code><br />
-チェックすると、URL文字列も考慮した絞り込みを行う。チェックしない場合は履歴のページタイトルのみで絞り込みを行う。</p></li>
+URL文字列も考慮した絞り込みを行う。選択しない場合は履歴のページタイトルのみで絞り込みを行う。</p></li>
 </ul>
 </section>
 <section id="extension-everything">
@@ -1085,12 +1086,12 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <p><img alt="" src="../_images/everything-appsetting.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
-チェックすると、<a class="reference internal" href="../adhoc-command/everything.html"><span class="doc std std-doc">Everything検索</span></a>機能が有効になる。</p></li>
+<a class="reference internal" href="../adhoc-command/everything.html"><span class="doc std std-doc">Everything検索</span></a>機能が有効にする。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
 検索を開始するためのキーワードを指定する。<br />
 空欄にすると、Everything検索が常に有効になる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Everythingが起動していなかった場合に起動する</span></code><br />
-チェックした場合、Everythingのアプリが起動していなかった場合に起動を試みる。<br />
+Everythingのアプリが起動していなかった場合に起動を試みる。<br />
 (Everything検索を行うためにはEverythingのアプリが起動している必要がある)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Everything.exeのパス</span></code><br />
 アプリを起動する際の実行ファイルのパスを指定する。</p></li>
@@ -1107,15 +1108,38 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 </li>
 </ul>
 </section>
+<section id="extension-uiautomation">
+<h2>拡張機能＞UI要素<a class="headerlink" href="#extension-uiautomation" title="Link to this heading"></a></h2>
+<p><img alt="" src="../_images/uiautomation.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UI要素の検索機能を有効にする</span></code><br />
+<a class="reference internal" href="../adhoc-command/uiautomation.html"><span class="doc std std-doc">UI要素</span></a>機能をオンにする。<br />
+アプリ内のボタンをメニューなどを直接検索・操作できるようにする機能。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
+UI要素検索を開始するためのキーワードを指定する。<br />
+空欄の場合は、UI要素検索が常に有効になる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Win32アプリケーションのメニュー検索を有効にする</span></code><br />
+Win32アプリケーションのウインドウ上部にあるメニュー項目を候補として表示する。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">全てのウインドウのメニュー検索を有効にする</span></code><br />
+画面上に表示されているすべてのWin32アプリケーションのメニュー項目を候補に含める。
+オフの場合は、アクティブなウインドウのみを対象とする。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">デバッグ出力を有効にする</span></code><br />
+デバッグ用のコマンド <code class="docutils literal notranslate"><span class="pre">uiautomation-debug-dump</span></code>を使用可能にする。
+このコマンドを実行すると、ログ出力ディレクトリに <code class="docutils literal notranslate"><span class="pre">uiautomation.json</span></code>を生成し、UIAutomationElementの階層構造をJSON形式で保存する。</p></li>
+</ul>
+</section>
 <section id="extension-winscp">
 <h2>拡張機能＞WinSCP<a class="headerlink" href="#extension-winscp" title="Link to this heading"></a></h2>
 <p><img alt="" src="../_images/winscp-appsetting.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
-チェックすると、<a class="reference internal" href="../adhoc-command/winscp.html"><span class="doc std std-doc">WinSCPのセッション一覧を表示する</span></a>機能が有効になる。</p></li>
+<a class="reference internal" href="../adhoc-command/winscp.html"><span class="doc std std-doc">WinSCPのセッション一覧を表示する</span></a>機能を有効にする。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ポータブル版のWinSCPを利用する</span></code><br />
 インストール版のWinSCPではなく、ポータブル版のWinSCPを使用している場合に使用する設定。<br />
-チェックすると、<code class="docutils literal notranslate"><span class="pre">WinSCP.exeのパス</span></code>欄が有効になる。</p></li>
+<code class="docutils literal notranslate"><span class="pre">WinSCP.exeのパス</span></code>欄で指定した実行ファイルを用いる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">WinSCP.exeのパス</span></code><br />
 ポータブル版のWinSCPを使用している場合の<code class="docutils literal notranslate"><span class="pre">WinSCP.exe</span></code>のパスを指定する。</p></li>
 </ul>
@@ -1125,7 +1149,7 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <p><img alt="" src="../_images/appsetting2.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">機能を有効にする</span></code><br />
-チェックすると、<a class="reference internal" href="../adhoc-command/vscode.html"><span class="doc std std-doc">Visual Studio Code履歴</span></a>機能が有効になる。</p></li>
+<a class="reference internal" href="../adhoc-command/vscode.html"><span class="doc std std-doc">Visual Studio Code履歴</span></a>機能を有効にする。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
 機能発動のためのキーワードを指定する。<br />
 空欄にすると、キーワードを含む要素が常に候補として表示される。</p></li>
@@ -1182,7 +1206,7 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">連続で作業していたら警告する</span></code></p>
 <ul>
-<li><p>チェックすると、<code class="docutils literal notranslate"><span class="pre">警告を表示するまでの時間</span></code>で設定した時刻を超えて連続稼働(スクリーンロックを挟まずにPCを起動)した場合に警告メッセージを表示する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">警告を表示するまでの時間</span></code>で設定した時刻を超えて連続稼働(スクリーンロックを挟まずにPCを起動)した場合に警告メッセージを表示する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">警告を表示するまでの時間</span></code></p>
@@ -1211,7 +1235,7 @@ Ctrl+A</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">修飾キーの組み合わせ入力</span></code><br />
-修飾キー(<code class="docutils literal notranslate"><span class="pre">Alt</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> <code class="docutils literal notranslate"><span class="pre">Shift</span></code> <code class="docutils literal notranslate"><span class="pre">Win</span></code>)を二つ組み合わせ入力することによりアプリを表示する方式<br />
+修飾キー(<code class="docutils literal notranslate"><span class="pre">Alt</span></code> <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> <code class="docutils literal notranslate"><span class="pre">Shift</span></code> <code class="docutils literal notranslate"><span class="pre">Win</span></code>)を2つ組み合わせて入力することでアプリを表示する方式<br />
 同じキーを2回押す、あるいは、異なるキーを同時押しすることでアプリを起動することができる<br />
 例: <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>キーの2回押し、あるいは、<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Alt</span></code>キーの同時押し</p>
 <ul>
@@ -1336,9 +1360,6 @@ Ctrl+A</p></li>
     <p>&#169; Copyright 2023,ymgw.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

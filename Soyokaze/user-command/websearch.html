@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web検索コマンド &mdash; Soyokaze 0.49.0</title>
+  <title>Web検索コマンド &mdash; Soyokaze 0.53.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -128,7 +128,8 @@
   <section id="web-search-command">
 <h1>Web検索コマンド<a class="headerlink" href="#web-search-command" title="Link to this heading"></a></h1>
 <p>Web検索を行うためのコマンド。<br />
-GoogleやTwitterなどの検索に対して名前を付けて、その名前で検索サイトを使い分けることができる。<br />
+コマンドを実行すると、システムの既定のブラウザでWeb検索を行う。</p>
+<p>GoogleやTwitterなどの検索に対して名前を付けて、その名前で検索サイトを使い分けることができる。<br />
 例えば、Google検索に<code class="docutils literal notranslate"><span class="pre">g</span></code>という名前を付けて、<code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">(検索ワード)</span></code> で検索を実行できる。</p>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
@@ -140,13 +141,17 @@ GoogleやTwitterなどの検索に対して名前を付けて、その名前で�
 コメント表示欄に記載される文字列。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">検索URL</span></code><br />
 検索するためのURLを指定する。<br />
-<code class="docutils literal notranslate"><span class="pre">$*</span></code>を含めると、その部分が検索キーワードに置換される。</p>
+<code class="docutils literal notranslate"><span class="pre">$*</span></code>を含めると、その部分が検索キーワードに置き換えられる。</p>
 <ul>
-<li><p>例えばGoogle検索を行う場合は、<code class="docutils literal notranslate"><span class="pre">https://www.google.com/search?q=$*</span></code>と指定すればよい</p></li>
+<li><p>Google検索を行う場合は、<code class="docutils literal notranslate"><span class="pre">https://www.google.com/search?q=$*</span></code>と指定すればよい</p>
+<ul>
+<li><p>例えば「Soccer」というキーワードを指定した場合、 <code class="docutils literal notranslate"><span class="pre">https://www.google.com/search?q=Soccer</span></code> となる</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">▼</span></code><br />
-主要な検索エンジンのURLを選択し、入力することができる<br />
+主要な検索エンジンのURLを選択して、入力することができる<br />
 Google/Bing/DuckDuckGo/X/Amazon/Youtube が選択できる</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">常に検索候補として表示する</span></code><br />
 チェックすると、コマンド名を入力しなくても、検索ワードを入れるだけで候補として表示されるようになる<br />
@@ -158,11 +163,7 @@ Google/Bing/DuckDuckGo/X/Amazon/Youtube が選択できる</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
 コマンドを呼び出すキーバインドを設定できる。<br />
-設定したキーを押下すると、入力欄が表示され、コマンド名が入力された(キーワードで絞り込みができる）状態になる</p>
-<ul>
-<li><p>他のコマンドにおけるホットキーはコマンド実行として作用するが、このコマンドに関しては短縮入力みたいな位置づけ</p></li>
-</ul>
-</li>
+設定したキーを押下すると、入力欄が表示され、コマンド名が入力された(キーワードで絞り込みができる）状態になる</p></li>
 <li><p>左上のアイコン欄<br />
 アイコン欄を右クリックすると、コンテキストメニューが表示される。<br />
 <img alt="" src="../_images/websearchcommand-contextmenu.png" /></p>
@@ -211,9 +212,6 @@ Google/Bing/DuckDuckGo/X/Amazon/Youtube が選択できる</p></li>
     <p>&#169; Copyright 2023,ymgw.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

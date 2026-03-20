@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Outlookフォルダ &mdash; Soyokaze 0.49.0</title>
+  <title>Outlookフォルダ &mdash; Soyokaze 0.53.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="slide-jump.html">PowerPoint スライド表示</a></li>
 <li class="toctree-l2"><a class="reference internal" href="startmenu.html">スタートメニュー</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timespan.html">簡易時間計算</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uiautomation.html">UI要素</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit-converter.html">単位変換</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri-decode.html">URIデコード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uwpapplication.html">UWPアプリケーション</a></li>
@@ -142,9 +143,10 @@
   <section id="outlook-folder">
 <h1>Outlookフォルダ<a class="headerlink" href="#outlook-folder" title="Link to this heading"></a></h1>
 <p>起動中のOutlook上にあるメールフォルダの一覧を候補として表示する。
-該当する項目を入力画面から実行すると、Outlookのウインドウをアクティブにしたうえで、フォルダを選択する。</p>
+プレフィックス(初期設定で<code class="docutils literal notranslate"><span class="pre">ol</span></code>)を入力すると、フォルダ一覧が候補として表示される。<br />
+コマンドを実行すると、Outlookのウインドウをアクティブにしたうえで、該当するフォルダを選択する。</p>
 <p><img alt="" src="../_images/introduction3.png" /></p>
-<p>利用するには、 アプリケーション設定の<code class="docutils literal notranslate"><span class="pre">拡張機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">ウインドウ切替</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">Outlookのフォルダ選択を有効にする</span></code>をチェックする必要がある。<br />
+<p>利用するには、 <a class="reference internal" href="../window/app-settings.html"><span class="doc std std-doc">アプリケーション設定</span></a>の<code class="docutils literal notranslate"><span class="pre">拡張機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">ウインドウ切替</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">Outlookのフォルダ選択を有効にする</span></code>をチェックする必要がある。<br />
 (初期状態では機能が無効になっている)</p>
 <p><img alt="" src="../_images/setting.png" /></p>
 </section>
@@ -163,9 +165,6 @@
     <p>&#169; Copyright 2023,ymgw.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

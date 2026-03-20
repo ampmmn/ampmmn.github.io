@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>簡易辞書コマンド &mdash; Soyokaze 0.49.0</title>
+  <title>簡易辞書コマンド &mdash; Soyokaze 0.53.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -138,10 +138,10 @@
   <section id="excel-dict-command">
 <h1>簡易辞書コマンド<a class="headerlink" href="#excel-dict-command" title="Link to this heading"></a></h1>
 <p>Excelワークブックファイル(<code class="docutils literal notranslate"><span class="pre">*.xlsx,*.xls</span></code>)の任意の範囲のデータを簡易的な辞書データ(キーと値のペアの集合)として利用するコマンド。<br />
-辞書データ(キー、値)をインクリメンタルに検索することができる。</p>
-<p>Excelファイルをデータソースにできるので、データのメンテナンスをExcelでお手軽にできるのがメリット</p>
+文字を入力するたびに、辞書データ(キー、値)を即座に検索(インクリメンタル検索)することができる。</p>
+<p>Excelファイルをデータソース(データの元になるファイル)にできるので、データのメンテナンスをExcelでお手軽にできるのがメリット</p>
 <p><img alt="" src="../_images/introduction5.png" /></p>
-<p>Excelを利用するため、実行環境にExcelがインストールされている必要がある。</p>
+<p>この機能はExcelを内部的に利用するため、実行環境にExcelがインストールされている必要がある。</p>
 <section id="use-cases">
 <h2>用途・活用例<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
 <ul class="simple">
@@ -149,10 +149,10 @@
 <ul>
 <li><p>Excelで台帳管理されているものがあれば、それをそのままデータソースとして活用できる可能性がある</p>
 <ul>
-<li><p>あるいはPowerQueryを使って、加工したうえで使うとか...</p></li>
+<li><p>あるいはPowerQueryを使って、加工したうえで使うなど</p></li>
 </ul>
 </li>
-<li><p>製品開発の現場における、製品の正式名称(外向け)と開発名称(内向け)の相互変換とか</p></li>
+<li><p>製品開発の現場における、製品の正式名称(外向け)と開発名称(内向け)の相互変換</p></li>
 </ul>
 </li>
 <li><p>(<a class="reference internal" href="snippet-group.html"><span class="doc std std-doc">定型文グループコマンド</span></a>と被るが)定型文をExcelで管理して、定型文として呼び出すような使い方ができる</p>
@@ -221,7 +221,7 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">取得</span></code></p>
 <ul>
-<li><p>クリックすると、現在Excelで表示・選択している範囲の情報を、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>、<code class="docutils literal notranslate"><span class="pre">シート名</span></code>、<code class="docutils literal notranslate"><span class="pre">値のデータ範囲</span></code>に反映する</p></li>
+<li><p>クリックすると、現在Excelで表示・選択している範囲の情報を、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>、<code class="docutils literal notranslate"><span class="pre">シート名</span></code>、<code class="docutils literal notranslate"><span class="pre">値2のデータ範囲</span></code>に反映する</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">一行目をヘッダ行として扱う</span></code></p>
@@ -231,7 +231,7 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ファイル更新時に通知を行う</span></code></p>
 <ul>
-<li><p>チェックすると、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>で指定したファイルが更新されたときに、トースト通知する</p>
+<li><p>チェックすると、<code class="docutils literal notranslate"><span class="pre">Excelファイル</span></code>で指定したファイルが更新されたときに、トースト通知(画面右下にでてくる通知)する</p>
 <ul>
 <li><p>ファイルサーバ上で他の人と共有しているExcelファイルを使っている場合に、他者によるファイル更新に気づくことができる</p></li>
 <li><p>ただし、ファイルがURL経由である場合は更新検知できない</p></li>
@@ -269,7 +269,8 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">値でのマッチングも行う</span></code></p>
 <ul>
-<li><p>チェックすると、キーと値を逆転したマッチングを有効にする(値でマッチングし、キーを結果とする）</p></li>
+<li><p>チェックすると、キーと値を逆転したマッチングを有効にする(値でマッチングし、キーを結果とする）<br />
+なお、逆引き検索でヒットした場合、<code class="docutils literal notranslate"><span class="pre">$key</span></code>と<code class="docutils literal notranslate"><span class="pre">$value</span></code>も逆になる</p></li>
 </ul>
 </li>
 </ul>
@@ -287,14 +288,11 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">マクロを展開する</span></code></p>
 <ul>
-<li><p>コマンド実行時に<a class="reference internal" href="../macros.html"><span class="doc std std-doc">マクロ</span></a>を展開する</p></li>
+<li><p>コマンド実行時に本アプリ専用<a class="reference internal" href="../macros.html"><span class="doc std std-doc">マクロ</span></a>を展開する</p></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<p>なお、逆引き検索でヒットした場合、<code class="docutils literal notranslate"><span class="pre">$key</span></code>と<code class="docutils literal notranslate"><span class="pre">$value</span></code>も逆になる</p>
-<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code></p>
 <ul>
 <li><p>コマンドを呼び出すキーバインドを設定できる。<br />
@@ -395,7 +393,7 @@
 <li><p>表示する候補の上限は20件</p>
 <ul>
 <li><p>これも操作性への影響を考慮して件数を絞っている</p></li>
-<li><p>最終的にはキーワード入力で1件に絞り込むので途中の候補としては20件もあれば足りるでしょう、という考え</p></li>
+<li><p>最終的にはキーワード入力で1件に絞り込むため、中間候補としては20件程度で十分、という意図に基づいている</p></li>
 </ul>
 </li>
 </ul>
@@ -447,9 +445,6 @@
     <p>&#169; Copyright 2023,ymgw.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

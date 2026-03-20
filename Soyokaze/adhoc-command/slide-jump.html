@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PowerPoint スライド表示 &mdash; Soyokaze 0.49.0</title>
+  <title>PowerPoint スライド表示 &mdash; Soyokaze 0.53.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -84,6 +84,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">PowerPoint スライド表示</a></li>
 <li class="toctree-l2"><a class="reference internal" href="startmenu.html">スタートメニュー</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timespan.html">簡易時間計算</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uiautomation.html">UI要素</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit-converter.html">単位変換</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri-decode.html">URIデコード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uwpapplication.html">UWPアプリケーション</a></li>
@@ -141,9 +142,11 @@
              
   <section id="switch-powerpoint-slide">
 <h1>PowerPoint スライド表示<a class="headerlink" href="#switch-powerpoint-slide" title="Link to this heading"></a></h1>
-<p>入力画面を表示した時点でアクティブなPowerPointプレゼンーションのスライドタイトル一覧を候補に表示する。<br />
-該当する項目を入力画面から実行すると、対応するスライドのアクティブにする。</p>
+<p>入力画面を表示した時点でアクティブなPowerPointプレゼンーションのスライドタイトル一覧を候補として表示する機能。<br />
+プレフィックス(初期設定で<code class="docutils literal notranslate"><span class="pre">pj</span></code>)を入力すると、表示中のスライドタイトル一覧が候補として表示され、スライドタイトルで候補の絞り込みを行える。コマンド実行するとPowerPointのウインドウをアクティブにしたうえで、該当するスライドを表示する。</p>
 <p><img alt="" src="../_images/pptjump.gif" /></p>
+<p>初期設定で機能は無効化されており、<a class="reference internal" href="../window/app-settings.html"><span class="doc std std-doc">アプリケーション設定</span></a>の<code class="docutils literal notranslate"><span class="pre">拡張機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">ウインドウ切替</span></code>から有効化する必要がある。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code>キーを押して実行すると、最大化表示する。</p>
 </section>
 
 
@@ -160,9 +163,6 @@
     <p>&#169; Copyright 2023,ymgw.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>
