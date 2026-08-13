@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>アプリケーション設定 &mdash; Soyokaze 0.53.0</title>
+  <title>アプリケーション設定 &mdash; Soyokaze 0.55.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -344,7 +344,7 @@ Ctrl+A</p></li>
     migemo.dll
 </pre></div>
 </div>
-<p>なお、バージョン0.53.0現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
+<p>なお、バージョン0.55.0現在、migemo.dllと辞書データは本アプリに同梱しているため、上記の配置作業は不要。</p>
 </section>
 <section id="keyword-input-key-config">
 <h2>入力＞キー割り当て<a class="headerlink" href="#keyword-input-key-config" title="Link to this heading"></a></h2>
@@ -913,43 +913,36 @@ PCにインストールした<code class="docutils literal notranslate"><span cl
 <p>ウインドウ切替関連機能に関する設定を行う画面</p>
 <p><img alt="" src="../_images/appsetting-switchwindow.png" /></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ウインドウタイトルによる選択を有効にする</span></code><br />
-画面に表示されているウインドウのタイトルを候補として表示し、それを実行したら該当するウインドウをアクティブにする<br />
-<img alt="" src="../_images/activate_window.png" /></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
-<code class="docutils literal notranslate"><span class="pre">ウインドウタイトルによる選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
-キーワードを入力した時点で、ウインドウの一覧が表示される(上図参照)<br />
-初期値は<code class="docutils literal notranslate"><span class="pre">wl</span></code> (<code class="docutils literal notranslate"><span class="pre">w</span></code>indow<code class="docutils literal notranslate"><span class="pre">l</span></code>ist の略)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ExcelやLibreOffice</span> <span class="pre">Calcのシート名による選択を有効にする</span></code><br />
-入力画面を表示した時点で開いているExcel / LibreOffice Calcのシート名の一覧を候補として検索し、それを実行したら該当するシートをアクティブにする</p>
+入力画面を表示した時点で開いているExcel / LibreOffice Calcのシート名の一覧を候補として検索し、それを実行したら該当するシートをアクティブにする<br />
+機能を利用するためには製品版Excel(デスクトップ版) または LibreOfficeがインストールされている必要がある</p>
 <ul>
-<li><p>機能を利用するためには製品版Excel(デスクトップ版) または LibreOfficeがインストールされている必要がある</p></li>
-</ul>
-</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
-<code class="docutils literal notranslate"><span class="pre">ExcelやLibreOffice</span> <span class="pre">Calcのシート名による選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
+候補を表示するためキーワードを指定する<br />
 キーワードを入力した時点で、シートの一覧が表示される
 初期値は<code class="docutils literal notranslate"><span class="pre">xj</span></code> (e<code class="docutils literal notranslate"><span class="pre">x</span></code>cel <code class="docutils literal notranslate"><span class="pre">j</span></code>ump の略)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PowerPointのスライドタイトルによる選択を有効にする</span></code><br />
-入力画面を表示した時点でアクティブなPowerPointプレゼンテーションのスライドタイトルを候補として検索し、それを実行したら該当するシートをアクティブにする</p>
-<ul>
-<li><p>機能を利用するためには製品版PowerPoint(デスクトップ版)がインストールされている必要がある</p></li>
 </ul>
 </li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PowerPointのスライドタイトルによる選択を有効にする</span></code><br />
+入力画面を表示した時点でアクティブなPowerPointプレゼンテーションのスライドタイトルを候補として検索し、それを実行したら該当するシートをアクティブにする<br />
+機能を利用するためには製品版PowerPoint(デスクトップ版)がインストールされている必要がある</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
-<code class="docutils literal notranslate"><span class="pre">PowerPointのスライドタイトルによる選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
+候補を表示するためキーワードを指定する<br />
 キーワードを入力した時点で、スライドの一覧が表示される
 初期値は<code class="docutils literal notranslate"><span class="pre">pj</span></code> (<code class="docutils literal notranslate"><span class="pre">p</span></code>owerpoint <code class="docutils literal notranslate"><span class="pre">j</span></code>ump の略)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Outlookのフォルダ選択を有効にする</span></code><br />
-入力画面を表示した時点で起動しているOutlookのメールフォルダ名の一覧を候補として検索し、それを実行したら該当するフォルダを選択する</p>
-<ul>
-<li><p>機能を利用するためには製品版Outlook(デスクトップ版)がインストールされている必要がある</p></li>
 </ul>
 </li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Outlookのフォルダ選択を有効にする</span></code><br />
+入力画面を表示した時点で起動しているOutlookのメールフォルダ名の一覧を候補として検索し、それを実行したら該当するフォルダを選択する<br />
+機能を利用するためには製品版Outlook(デスクトップ版)がインストールされている必要がある</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">プレフィックス</span></code><br />
-<code class="docutils literal notranslate"><span class="pre">Outlookのフォルダ選択を有効にする</span></code>の候補を表示するためキーワードを指定する<br />
+候補を表示するためキーワードを指定する<br />
 キーワードを入力した時点で、フォルダの一覧が表示される
 初期値は<code class="docutils literal notranslate"><span class="pre">ol</span></code> (<code class="docutils literal notranslate"><span class="pre">o</span></code>ut<code class="docutils literal notranslate"><span class="pre">l</span></code>ook の略)</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="extensions-clipboard-history">
@@ -1202,6 +1195,12 @@ Win32アプリケーションのウインドウ上部にあるメニュー項目
 <ul>
 <li><p>デバッグ用機能。内部処理の処理時間に関するログを専用のログファイルに出力する。<br />
 出力先は<code class="docutils literal notranslate"><span class="pre">&lt;設定ファイルの保存先&gt;/per_machine/&lt;PC名&gt;/perf.log</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">リソース使用量ログを出力する</span></code></p>
+<ul>
+<li><p>デバッグ用機能。プロセスのメモリ使用量やスレッド数、GDIリソース、ユーザオブジェクトの使用量をCSV形式で出力する。<br />
+出力先は<code class="docutils literal notranslate"><span class="pre">&lt;設定ファイルの保存先&gt;/per_machine/&lt;PC名&gt;/resource_usage.csv</span></code></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">連続で作業していたら警告する</span></code></p>
