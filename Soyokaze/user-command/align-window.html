@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ウインドウ整列コマンド &mdash; Soyokaze 0.55.0</title>
+  <title>ウインドウ整列コマンド &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -59,7 +59,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
@@ -97,11 +96,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -139,7 +143,7 @@
 非表示にすることもできるので、バックグラウンドで実行する必要がある一方で表示しておきたくないウインドウを隠す、という用途で使うこともできる。</p>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/edit-alignwindowcommand.png" /></p>
+<p><img alt="" src="../_images/edit-command2.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code><br />
 入力画面からコマンドを実行するためのキーワード</p></li>
@@ -171,7 +175,7 @@
 <h2>例<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <p>電卓とペイントをあらかじめ決めた位置に並べる</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/alignwindowsample.gif"><img alt="../_images/alignwindowsample.gif" src="../_images/alignwindowsample.gif" style="width: 640px;" />
+<a class="reference internal image-reference" href="../_images/example2.gif"><img alt="../_images/example2.gif" src="../_images/example2.gif" style="width: 640px;" />
 </a>
 </figure>
 </section>
@@ -182,7 +186,7 @@
 対象とするウインドウのタイトルとウインドウクラス名を手入力するのは難しいので、画面上のアイコンを対象ウインドウにドラッグするのがおすすめ。</p>
 <section id="id1">
 <h3>設定画面<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-alignwindowitemcommand.png" /></p>
+<p><img alt="" src="../_images/edit-item-command.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">検索条件</span></code><br />
 整列対象とするウインドウの<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>を入力する。<br />
@@ -199,7 +203,7 @@
 空欄にした場合は<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>のみで検索を行う<br />
 <code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>のどちらかを指定する必要がある</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">正規表現</span></code><br />
-チェックした場合、<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>に入力した文字列を正規表現として扱う<br />
+チェックした場合、<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>に入力した文字列を正規表現として扱う。利用できる正規表現の制限については<a class="reference internal" href="../others/regular-expression.html"><span class="doc std std-doc">正規表現の制限</span></a>を参照する。
 チェックしない場合、<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>に入力した文字列の完全一致で探す</p></li>
 </ul>
 </li>

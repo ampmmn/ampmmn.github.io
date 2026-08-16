@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>候補欄のコマンド表示順序 &mdash; Soyokaze 0.55.0</title>
+  <title>候補欄のコマンド表示順序 &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="コマンドラインオプション" href="commandline-options.html" />
+    <link rel="next" title="正規表現の制限" href="regular-expression.html" />
     <link rel="prev" title="ホットキーの種別" href="hotkey.html" /> 
 </head>
 
@@ -69,6 +69,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="advanced-usage.html">高度な使い方</a></li>
@@ -83,6 +87,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -115,7 +120,7 @@
 <p>候補欄のコマンド表示順序をコマンドの一致度と優先度に基づき決定している。<br />
 入力キーワードと各コマンド名を比較し、どのように一致するかをみる。</p>
 <p>一致度が高いものを優先して表示する。<br />
-一致度が同じ場合はコマンドの<a class="reference internal" href="../window/app-settings.html#command-execute-priority"><span class="std std-ref">優先度</span></a>に従う。</p>
+一致度が同じ場合はコマンドの<a class="reference internal" href="../window/app-settings/priority.html#command-execute-priority"><span class="std std-ref">優先度</span></a>に従う。</p>
 <p>スペース区切りで複数キーワード指定された場合、個々のキーワードごとに候補の名前と部分一致比較を行い、すべてマッチするものを対象とする</p>
 <section id="match-types">
 <h2>一致度の区分<a class="headerlink" href="#match-types" title="Link to this heading"></a></h2>
@@ -146,7 +151,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="hotkey.html" class="btn btn-neutral float-left" title="ホットキーの種別" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="commandline-options.html" class="btn btn-neutral float-right" title="コマンドラインオプション" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="regular-expression.html" class="btn btn-neutral float-right" title="正規表現の制限" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

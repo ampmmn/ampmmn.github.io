@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>利用ライブラリ &mdash; Soyokaze 0.55.0</title>
+  <title>利用ライブラリ &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -68,11 +68,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">利用ライブラリ</a></li>
 </ul>
@@ -169,7 +174,7 @@
 <li><p>Python拡張コマンドにおいて、Pythonスクリプトから本体側の機能を利用できるようにするためのバインディングで使用している。</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.scintilla.org/">Snintilla,Lexilla</a></p>
+<li><p><a class="reference external" href="https://www.scintilla.org/">Scintilla,Lexilla</a></p>
 <ul>
 <li><p>Python拡張コマンドにおいて、スクリプト欄を編集するコントロールとして利用している</p></li>
 </ul>
@@ -177,7 +182,21 @@
 <li><p><a class="reference external" href="https://github.com/upx/upx">upx/upx</a></p>
 <ul>
 <li><p>ビルド生成物(exe/dll)を圧縮してサイズ削減するツールとしてUPXを利用している</p></li>
-<li><p>UPX自体はGPLであるが、UPXを使って生成したバイナリはGPLにはならない(認識)</p></li>
+<li><p>UPX自体はGPLであるが、UPXを使って生成したバイナリ(はGPLにはならない(認識)</p>
+<ul>
+<li><p>未改変UPXおよび未改変stubを使用する場合に限り、UPXの特別例外が適用される</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/simdutf/simdutf">simdutf/simdutf</a></p>
+<ul>
+<li><p>Base64のデコード、UTF-16とUTF-8の相互変換の用途で利用している</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/biojppm/rapidyaml">biojppm/rapidyaml</a></p>
+<ul>
+<li><p>YAMLファイルをパースするために利用している</p></li>
 </ul>
 </li>
 </ul>

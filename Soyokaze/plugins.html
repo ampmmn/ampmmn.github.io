@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プラグイン &mdash; Soyokaze 0.56.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="高度な使い方" href="others/advanced-usage.html" />
+    <link rel="prev" title="Winモジュール" href="pylib/win.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="window.html">画面の説明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pylib.html">Python用モジュールのリファレンス</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">プラグイン</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">動作の概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">配置とロード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">公開するAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">関数テーブル</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialize"><code class="docutils literal notranslate"><span class="pre">Initialize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query"><code class="docutils literal notranslate"><span class="pre">Query</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getmatchcount-getmatchlevel"><code class="docutils literal notranslate"><span class="pre">GetMatchCount</span></code> / <code class="docutils literal notranslate"><span class="pre">GetMatchLevel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getname-getdescription-getguide-gettypedisplayname"><code class="docutils literal notranslate"><span class="pre">GetName</span></code> / <code class="docutils literal notranslate"><span class="pre">GetDescription</span></code> / <code class="docutils literal notranslate"><span class="pre">GetGuide</span></code> / <code class="docutils literal notranslate"><span class="pre">GetTypeDisplayName</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#canexecute"><code class="docutils literal notranslate"><span class="pre">CanExecute</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execute"><code class="docutils literal notranslate"><span class="pre">Execute</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geterrorstring"><code class="docutils literal notranslate"><span class="pre">GetErrorString</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geticon"><code class="docutils literal notranslate"><span class="pre">GetIcon</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#closehandle"><code class="docutils literal notranslate"><span class="pre">CloseHandle</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finalize"><code class="docutils literal notranslate"><span class="pre">Finalize</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">本体側API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">最小実装例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#abi">文字コードとABI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">実装時の注意</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">プラグイン</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plugins">
+<h1>プラグイン<a class="headerlink" href="#plugins" title="Link to this heading"></a></h1>
+<p>本アプリは専用のプラグインDLLを読み込み、検索候補となるコマンドを追加できます。
+ここでは、C/C++でプラグインを実装するための仕様と実装方法を説明します。</p>
+<p>プラグインのAPI定義は、配布物に含まれる
+<code class="docutils literal notranslate"><span class="pre">plugin-include/soyokaze/PluginExportTable.h</span></code> が基準です。APIの追加や変更に追従するため、
+プラグインのビルドには、使用するSoyokazeと同じバージョンのヘッダを使用してください。</p>
+<p>本体のバージョンアップにより、<code class="docutils literal notranslate"><span class="pre">PluginExportTable.h</span></code>の定義は変更される場合があります。<br />
+アプリ本体はプラグインの後方互換性を維持しないため、定義が変更になった場合は追従が必要です。</p>
+<section id="id1">
+<h2>動作の概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>プラグインは、Soyokazeが入力中のキーワードを検索するときに呼び出されます。
+プラグインは入力内容を調べ、検索結果をハンドルとして返します。検索結果1件につき1つのSoyokaze上のコマンドが生成され、ユーザーがそのコマンドを実行するとプラグインの処理が呼び出されます。</p>
+<p>処理の流れは次のとおりです。</p>
+<ol class="arabic simple">
+<li><p>SoyokazeがプラグインDLLをロードする</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>を呼び出して関数テーブルを取得する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>を呼び出してプラグインを初期化する</p></li>
+<li><p>キーワード入力のたびに<code class="docutils literal notranslate"><span class="pre">Query</span></code>を呼び出す</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Query</span></code>が返した検索結果を候補として表示する</p></li>
+<li><p>コマンド実行時に<code class="docutils literal notranslate"><span class="pre">CanExecute</span></code>と<code class="docutils literal notranslate"><span class="pre">Execute</span></code>を呼び出す</p></li>
+<li><p>Soyokazeの終了時に<code class="docutils literal notranslate"><span class="pre">Finalize</span></code>を呼び出してDLLをアンロードする</p></li>
+</ol>
+<p>DLLはアプリケーションの実行中に一度だけロードされます。プラグインの追加・削除を実行中に反映することはできません。</p>
+</section>
+<section id="id2">
+<h2>配置とロード<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>プラグインは、Soyokazeの設定ファイル保存先にある<code class="docutils literal notranslate"><span class="pre">plugins</span></code>ディレクトリへ配置します。
+設定ファイル保存先はユーザーディレクトリ直下です。プラグインごとにサブディレクトリを作成してください。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ユーザーディレクトリ/
+  plugins/
+    hello/
+      hello.dll
+    another-plugin/
+      another-plugin.dll
+</pre></div>
+</div>
+<p>ロード時の規則は次のとおりです。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plugins</span></code>ディレクトリ直下のサブディレクトリを走査します</p></li>
+<li><p>各サブディレクトリの直下にある<code class="docutils literal notranslate"><span class="pre">.dll</span></code>をロード対象とします</p></li>
+<li><p>1つのサブディレクトリに複数のDLLを配置できます</p></li>
+<li><p>サブディレクトリをさらに再帰して探索することはありません</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugins</span></code>ディレクトリが存在しない場合、プラグインはロードされません</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dll</span></code>以外のファイルはロードされません</p></li>
+<li><p>32bit版はサポートしていません。x64版のSoyokazeに対応するx64 DLLを作成してください</p></li>
+</ul>
+<p>次のいずれかに該当するDLLはロードに失敗します。</p>
+<ul class="simple">
+<li><p>DLLをロードできない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>を取得できない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>がエラーを返す</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_EXPORTTABLE</span></code>の関数ポインタに<code class="docutils literal notranslate"><span class="pre">nullptr</span></code>が含まれる</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>がエラーを返す</p></li>
+</ul>
+<p>ロードに失敗したDLLは保持されず、ロード済みのDLLも終了時まで再ロードされません。</p>
+</section>
+<section id="api">
+<h2>公開するAPI<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<p>プラグインは<code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>という名前の関数をエクスポートします。
+関数の宣言はヘッダに定義されています。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">LNCRPLUGIN_API</span>
+<span class="nf">LNCRPLUGIN_Bind</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">LNCRPLUGIN_EXPORTTABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">version</span></code>にはSoyokazeが使用するプラグインバージョンが渡されます。プラグイン側では、利用している<code class="docutils literal notranslate"><span class="pre">PluginExportTable.h</span></code>の<code class="docutils literal notranslate"><span class="pre">PLUGINVERSION</span></code>に対応できるか確認してください。バージョンに対応できない場合は0以外を返します。</p>
+<p>正常に関数テーブルを設定できた場合は0を返してください。
+<code class="docutils literal notranslate"><span class="pre">table</span></code>には、プラグインが実装した<code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_EXPORTTABLE</span></code>の各関数ポインタを設定します。現在の実装では、全ての関数ポインタが設定されている必要があります。</p>
+<p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>はCリンケージでエクスポートされます。ヘッダをC++からインクルードすれば、宣言に含まれる<code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code>が適用されます。関数名を変更したり、C++の名前修飾が付いた状態でエクスポートしたりしないでください。</p>
+</section>
+<section id="id3">
+<h2>関数テーブル<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="initialize">
+<h3><code class="docutils literal notranslate"><span class="pre">Initialize</span></code><a class="headerlink" href="#initialize" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>プラグインのロード直後に一度呼び出されます。設定ファイルの読み込み、インデックスの作成、リソースの確保などをここで行います。</p>
+<p><code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>は、Soyokaze本体がプラグインへ渡す関数テーブルです。プラグインからSoyokaze本体の機能を呼び出すための窓口であり、ログ出力、トースト通知、メインウィンドウのハンドル取得に使用できます。構造体の各メンバーには、本体側の機能を呼び出すための関数ポインタが設定されています。</p>
+<p>この関数テーブルはプラグインが作成してSoyokazeへ返すものではありません。Soyokazeが<code class="docutils literal notranslate"><span class="pre">Initialize</span></code>の呼び出し時に作成し、引数としてプラグインへ渡します。プラグインで本体側APIを使用しない場合でも、<code class="docutils literal notranslate"><span class="pre">Initialize</span></code>の引数を受け取れるようにしてください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">table</span></code>が指す<code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>のデータは一時的なものです。後で使用する関数ポインタがある場合は、構造体の内容をプラグイン側でコピーして保持してください。</p>
+<p>成功時は0、初期化に失敗した場合は0以外を返します。失敗したプラグインはロードされません。</p>
+</section>
+<section id="query">
+<h3><code class="docutils literal notranslate"><span class="pre">Query</span></code><a class="headerlink" href="#query" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="nf">Query</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="n">MATCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>入力中のキーワードに対して検索を行い、検索結果を保持するハンドルを返します。検索結果がない場合は<code class="docutils literal notranslate"><span class="pre">nullptr</span></code>を返してください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ctx</span></code>はSoyokazeが管理する検索状態です。<code class="docutils literal notranslate"><span class="pre">MATCHER_FUNCTION_TABLE</span></code>の関数を呼び出すとき、必ずこの値を第1引数として渡します。<code class="docutils literal notranslate"><span class="pre">ctx</span></code>の内容をプラグイン側で解釈したり、保持したりしないでください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">table</span></code>には、次のキーワード操作関数が設定されています。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>関数</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Match</span></code></p></td>
+<td><p>指定したキーワードと一致するか調べる</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GetFirstWord</span></code></p></td>
+<td><p>入力中の最初のワードを取得する</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetWholeString</span></code></p></td>
+<td><p>入力全体を取得する</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GetWordCount</span></code></p></td>
+<td><p>入力中のワード数を取得する</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">Match</span></code>のオフセットは、<code class="docutils literal notranslate"><span class="pre">Pattern::Match</span></code>のオフセットと同じ意味です。例えば、最初のワードをプラグインのコマンド名として扱う場合は、2番目以降のワードを検索するためにオフセット1を指定します。</p>
+</section>
+<section id="getmatchcount-getmatchlevel">
+<h3><code class="docutils literal notranslate"><span class="pre">GetMatchCount</span></code> / <code class="docutils literal notranslate"><span class="pre">GetMatchLevel</span></code><a class="headerlink" href="#getmatchcount-getmatchlevel" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">GetMatchCount</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetMatchLevel</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">GetMatchCount</span></code>は検索結果の件数を返します。<code class="docutils literal notranslate"><span class="pre">index</span></code>は0から始まる検索結果の番号です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">GetMatchLevel</span></code>は検索結果の一致レベルを返します。値の意味は次のとおりです。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>値</p></th>
+<th class="head"><p>意味</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>5</p></td>
+<td><p>完全一致</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>4</p></td>
+<td><p>前方一致</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>3</p></td>
+<td><p>部分一致</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2</p></td>
+<td><p>弱い一致</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>-1</p></td>
+<td><p>不一致</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="getname-getdescription-getguide-gettypedisplayname">
+<h3><code class="docutils literal notranslate"><span class="pre">GetName</span></code> / <code class="docutils literal notranslate"><span class="pre">GetDescription</span></code> / <code class="docutils literal notranslate"><span class="pre">GetGuide</span></code> / <code class="docutils literal notranslate"><span class="pre">GetTypeDisplayName</span></code><a class="headerlink" href="#getname-getdescription-getguide-gettypedisplayname" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">GetName</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
+<span class="w">            </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
+<span class="w">            </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetGuide</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
+<span class="w">            </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetTypeDisplayName</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
+<span class="w">            </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>これらの関数は、検索結果ごとの文字列を取得します。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>関数</p></th>
+<th class="head"><p>画面上での用途</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetName</span></code></p></td>
+<td><p>候補の名前</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GetDescription</span></code></p></td>
+<td><p>候補の説明</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetGuide</span></code></p></td>
+<td><p>候補を実行するときのガイド表示</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GetTypeDisplayName</span></code></p></td>
+<td><p>コマンド種別の表示</p></td>
+</tr>
+</tbody>
+</table>
+<p>文字列はUTF-8の<code class="docutils literal notranslate"><span class="pre">char</span></code>配列として返してください。必要なバッファ長を調べるときは<code class="docutils literal notranslate"><span class="pre">buffer</span></code>に<code class="docutils literal notranslate"><span class="pre">nullptr</span></code>、<code class="docutils literal notranslate"><span class="pre">length</span></code>に0を指定します。この場合、終端の<code class="docutils literal notranslate"><span class="pre">\0</span></code>を含む必要なバイト数を返します。</p>
+<p>バッファを渡した場合は、文字列を<code class="docutils literal notranslate"><span class="pre">\0</span></code>で終端してください。バッファが不足する場合も、可能な範囲で終端文字を含めてコピーします。エラー時は-1を返します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">GetGuide</span></code>で取得した文字列は、コマンド実行時のアクション表示に使用されます。</p>
+</section>
+<section id="canexecute">
+<h3><code class="docutils literal notranslate"><span class="pre">CanExecute</span></code><a class="headerlink" href="#canexecute" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">CanExecute</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>検索結果を現在実行できるかどうかを返します。0は実行不可、0以外は実行可能です。</p>
+<p>実行不可の場合、Soyokazeは<code class="docutils literal notranslate"><span class="pre">GetErrorString</span></code>で理由を取得して表示します。</p>
+</section>
+<section id="execute">
+<h3><code class="docutils literal notranslate"><span class="pre">Execute</span></code><a class="headerlink" href="#execute" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Execute</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>検索結果を実行します。成功時は0、失敗時は0以外を返してください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">argv</span></code>には実行時引数だけが含まれます。コマンド名は含まれません。</p>
+<p>例えば、入力が次のような場合を考えます。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mygrep keyword1 keyword2
+</pre></div>
+</div>
+<p>プラグインに渡される値は次のとおりです。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>argc    = 2
+argv[0] = &quot;keyword1&quot;
+argv[1] = &quot;keyword2&quot;
+</pre></div>
+</div>
+<p>引数がない場合は<code class="docutils literal notranslate"><span class="pre">argc</span></code>が0になります。<code class="docutils literal notranslate"><span class="pre">argv</span></code>は終端の<code class="docutils literal notranslate"><span class="pre">nullptr</span></code>を持つダミー配列として渡されます。</p>
+</section>
+<section id="geterrorstring">
+<h3><code class="docutils literal notranslate"><span class="pre">GetErrorString</span></code><a class="headerlink" href="#geterrorstring" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">GetErrorString</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
+<span class="w">                   </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">CanExecute</span></code>または<code class="docutils literal notranslate"><span class="pre">Execute</span></code>が失敗したときに表示するエラー文字列を返します。文字列の取得方法は<code class="docutils literal notranslate"><span class="pre">GetName</span></code>などの文字列取得関数と同じです。</p>
+</section>
+<section id="geticon">
+<h3><code class="docutils literal notranslate"><span class="pre">GetIcon</span></code><a class="headerlink" href="#geticon" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">GetIcon</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">HICON</span><span class="o">*</span><span class="w"> </span><span class="n">icon</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>検索結果に表示するアイコンを返します。成功時は0を返し、<code class="docutils literal notranslate"><span class="pre">icon</span></code>にアイコンハンドルを設定します。失敗時は0以外を返してください。</p>
+<p>返したアイコンの所有権はプラグイン側にあります。不要になったアイコンはプラグイン側で破棄してください。通常は<code class="docutils literal notranslate"><span class="pre">Finalize</span></code>で破棄します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">GetIcon</span></code>に失敗した場合、Soyokazeはデフォルトアイコンを使用します。</p>
+</section>
+<section id="closehandle">
+<h3><code class="docutils literal notranslate"><span class="pre">CloseHandle</span></code><a class="headerlink" href="#closehandle" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">CloseHandle</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Query</span></code>が返した検索ハンドルを破棄します。検索ハンドルに確保したメモリや検索結果の内部データは、この関数で解放してください。</p>
+<p>1つの検索ハンドルに複数の検索結果を含めることができます。Soyokazeは検索結果を表示している間、ハンドルを保持します。<code class="docutils literal notranslate"><span class="pre">CloseHandle</span></code>が呼ばれるまで、ハンドルとその配下の検索結果を有効にしておいてください。</p>
+</section>
+<section id="finalize">
+<h3><code class="docutils literal notranslate"><span class="pre">Finalize</span></code><a class="headerlink" href="#finalize" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Finalize</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Soyokazeの終了時に一度呼び出されます。<code class="docutils literal notranslate"><span class="pre">Initialize</span></code>で確保したリソース、<code class="docutils literal notranslate"><span class="pre">GetIcon</span></code>で作成したアイコン、設定ファイルやインデックスなどを解放してください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Finalize</span></code>の後にプラグインDLLがアンロードされます。関数から戻った後に、プラグイン内の関数やデータを参照しないでください。</p>
+</section>
+</section>
+<section id="id4">
+<h2>本体側API<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>には、Soyokaze本体が提供する次の関数が含まれます。プラグインは<code class="docutils literal notranslate"><span class="pre">Initialize</span></code>で受け取った構造体を保存し、必要なタイミングで各関数ポインタを呼び出します。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>関数</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InfoLog</span></code></p></td>
+<td><p>情報ログを出力する</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WarnLog</span></code></p></td>
+<td><p>警告ログを出力する</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ErrorLog</span></code></p></td>
+<td><p>エラーログを出力する</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PopupMessage</span></code></p></td>
+<td><p>トースト通知を表示する</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetMainWindowHandle</span></code></p></td>
+<td><p>メインウィンドウの<code class="docutils literal notranslate"><span class="pre">HWND</span></code>を取得する</p></td>
+</tr>
+</tbody>
+</table>
+<p>ログ出力関数と<code class="docutils literal notranslate"><span class="pre">PopupMessage</span></code>は、UTF-8文字列を受け取ります。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="w"> </span><span class="n">gLauncher</span><span class="p">{};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 関数テーブルは呼び出し後も使用するため、コピーして保持する</span>
+<span class="w">    </span><span class="n">gLauncher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">table</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gLauncher</span><span class="p">.</span><span class="n">InfoLog</span><span class="p">(</span><span class="s">&quot;sample plugin initialized&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gLauncher</span><span class="p">.</span><span class="n">PopupMessage</span><span class="p">(</span><span class="s">&quot;Sample plugin is ready&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">GetMainWindowHandle</span></code>で得た<code class="docutils literal notranslate"><span class="pre">HWND</span></code>を、Windows APIを呼び出すときの親ウィンドウとして利用できます。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">HWND</span><span class="w"> </span><span class="n">mainWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gLauncher</span><span class="p">.</span><span class="n">GetMainWindowHandle</span><span class="p">();</span>
+<span class="n">MessageBoxW</span><span class="p">(</span><span class="n">mainWindow</span><span class="p">,</span><span class="w"> </span><span class="sa">L</span><span class="s">&quot;プラグインからのメッセージ&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">L</span><span class="s">&quot;Sample&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MB_OK</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>最小実装例<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>以下は、入力が<code class="docutils literal notranslate"><span class="pre">hello</span></code>のときに1件の候補を返し、実行時にログを出力する最小構成の例です。実際のDLLでは、検索結果をプラグイン固有の構造体で保持し、<code class="docutils literal notranslate"><span class="pre">Query</span></code>で動的に生成してください。</p>
+<p>この例では、説明を簡潔にするため、検索ハンドルを1件の検索結果そのものとして扱っています。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PluginExportTable.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
+
+<span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="w"> </span><span class="n">gLauncher</span><span class="p">{};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Match</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sample plugin command&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">guide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Run the sample plugin&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sample&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">CopyString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">required</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">copied</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">memcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">copied</span><span class="p">);</span>
+<span class="w">    </span><span class="n">buffer</span><span class="p">[</span><span class="n">copied</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">copied</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">gLauncher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">table</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="nf">Query</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="n">MATCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ctx</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetWholeString</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetWholeString</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">strcmp</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Match</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetMatchCount</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetMatchLevel</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetName</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CopyString</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CopyString</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetGuide</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CopyString</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">guide</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetTypeDisplayName</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CopyString</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">CanExecute</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Execute</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gLauncher</span><span class="p">.</span><span class="n">InfoLog</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">gLauncher</span><span class="p">.</span><span class="n">InfoLog</span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;hello executed&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetErrorString</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetIcon</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">HICON</span><span class="o">*</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">CloseHandle</span><span class="p">(</span><span class="n">LNCRPLUGINMATCHHANDLE</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Finalize</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// 名前空間</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LNCRPLUGIN_API</span>
+<span class="n">LNCRPLUGIN_Bind</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">LNCRPLUGIN_EXPORTTABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PLUGINVERSION</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">*</span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">Initialize</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">Query</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetMatchCount</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetMatchLevel</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">CloseHandle</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetName</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetDescription</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetGuide</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetTypeDisplayName</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">CanExecute</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">Execute</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetErrorString</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">GetIcon</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">Finalize</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>この例をDLLとしてビルドするには、Soyokazeから取得した<code class="docutils literal notranslate"><span class="pre">PluginExportTable.h</span></code>をインクルードし、x64のDLLプロジェクトとしてビルドします。生成したDLLを<code class="docutils literal notranslate"><span class="pre">plugins</span></code>配下のプラグイン用サブディレクトリに配置し、Soyokazeを再起動してください。</p>
+</section>
+<section id="abi">
+<h2>文字コードとABI<a class="headerlink" href="#abi" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">PluginExportTable.h</span></code>で定義された<code class="docutils literal notranslate"><span class="pre">char*</span></code>型の文字列はUTF-8です。Windowsのワイド文字列を扱う場合は、プラグイン側でUTF-8との変換を行ってください。</p>
+<p>プラグインとSoyokaze本体は、同じ<code class="docutils literal notranslate"><span class="pre">PluginExportTable.h</span></code>の定義、同じCPUアーキテクチャ、互換性のあるビルド環境で使用してください。32bit DLLをx64版Soyokazeからロードすることはできません。</p>
+<p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGINMATCHHANDLE</span></code>の実体はプラグイン側が定義します。ハンドルはプラグイン間で共通に見えても、異なるプラグインのハンドルを別のプラグインの関数に渡すことはできません。</p>
+</section>
+<section id="id6">
+<h2>実装時の注意<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>に渡された<code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>は、必要に応じてコピーして保持する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Query</span></code>が返したハンドルは、<code class="docutils literal notranslate"><span class="pre">CloseHandle</span></code>が呼ばれるまで有効にする</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GetMatchCount</span></code>が返す件数と、各APIに渡される<code class="docutils literal notranslate"><span class="pre">index</span></code>の範囲を一致させる</p></li>
+<li><p>文字列はUTF-8で返し、必要なバッファ長には終端文字を含める</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GetIcon</span></code>で返したアイコンはプラグイン側で破棄する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Execute</span></code>の戻り値は、成功時だけ0にする</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Finalize</span></code>から戻った後にプラグインのリソースを参照しない</p></li>
+<li><p>APIのバージョンが合わない場合は<code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>でエラーを返す</p></li>
+</ul>
+<p>プラグインはSoyokazeのプロセス内で動作します。プラグイン内で発生した未処理例外やアクセス違反は、本体の動作にも影響します。外部ファイルの読み込みやWindows APIの呼び出しなど、プラグイン固有の処理については適切にエラー処理を行ってください。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pylib/win.html" class="btn btn-neutral float-left" title="Winモジュール" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="others/advanced-usage.html" class="btn btn-neutral float-right" title="高度な使い方" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

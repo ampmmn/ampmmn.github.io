@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>電卓 &mdash; Soyokaze 0.55.0</title>
+  <title>電卓 &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -71,6 +71,7 @@
 <li class="toctree-l2"><a class="reference internal" href="clipboard-history.html">クリップボード履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="colorcode-converter.html">カラーコード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="currency-converter.html">通貨換算</a></li>
 <li class="toctree-l2"><a class="reference internal" href="env.html">環境変数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eraname-converter.html">西暦和暦変換</a></li>
 <li class="toctree-l2"><a class="reference internal" href="everything.html">Everything</a></li>
@@ -111,11 +112,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -148,8 +154,8 @@
 <h1>電卓<a class="headerlink" href="#calculator" title="Link to this heading"></a></h1>
 <p>入力欄に数式を入れると、計算結果をコメント欄に表示する。<br />
 Enterキーを押下すると、計算結果をクリップボードにコピーできる。</p>
-<p>利用するにはPython(3.12以降)が必要。(<a class="reference internal" href="../window/app-settings.html#extensions"><span class="std std-ref">設定画面</span></a>)</p>
-<p><img alt="" src="../_images/calculator1.png" /></p>
+<p>利用するにはPython(3.12以降)が必要。(<a class="reference internal" href="../window/app-settings/extensions.html#extensions"><span class="std std-ref">設定画面</span></a>)</p>
+<p><img alt="" src="../_images/basic.png" /></p>
 <section id="id1">
 <h2>利用可能な演算子<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -198,12 +204,12 @@ Enterキーを押下すると、計算結果をクリップボードにコピー
 <section id="function">
 <h2>関数<a class="headerlink" href="#function" title="Link to this heading"></a></h2>
 <p>その他、Python標準関数のうち、計算結果が文字列/数値になるものと、<a class="reference external" href="https://docs.python.org/ja/3/library/math.html">math</a>モジュールの関数を使用することができる。</p>
-<p><img alt="" src="../_images/calculator2.png" /></p>
+<p><img alt="" src="../_images/functions.png" /></p>
 </section>
 <section id="radix-based-number-display">
 <h2>基数別表示<a class="headerlink" href="#radix-based-number-display" title="Link to this heading"></a></h2>
 <p>計算結果が整数になる場合は、2進数/8進数/10進数/16進数それぞれの結果が表示される。</p>
-<p><img alt="" src="../_images/calculator21.png" /></p>
+<p><img alt="" src="../_images/radix.png" /></p>
 <ul class="simple">
 <li><p>一つ目の項の基数を優先して表示する。<br />
 例えば、<code class="docutils literal notranslate"><span class="pre">0x10+1</span></code>という式の場合、16進数の結果(<code class="docutils literal notranslate"><span class="pre">0x11</span></code>)が先に表示される。</p></li>

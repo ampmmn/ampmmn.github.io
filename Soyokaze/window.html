@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>画面の説明 &mdash; Soyokaze 0.55.0</title>
+  <title>画面の説明 &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -75,11 +75,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -117,34 +122,34 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="window/app-settings.html">アプリケーション設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#app">基本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#app-shortcut">基本＞ショートカット登録</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#app-sound-effects">基本＞効果音</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#keyword-input">入力</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#keyword-input-key-config">入力＞キー割り当て</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#keyword-input-history">入力＞履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#command-execute">実行</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#command-execute-path">実行＞パス</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#command-execute-exclude-files">実行＞除外するファイル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#command-execute-priority">実行＞優先度</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#command-execute-files-and-folders">実行＞ファイルとフォルダ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#appearance">表示</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#appearance-colors">表示＞配色</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#externaltool">外部ツール</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extensions">拡張機能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extensions-switch-window">拡張機能＞ウインドウ切替</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extensions-clipboard-history">拡張機能＞クリップボード履歴</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-path-conversion">拡張機能＞パス変換</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-onenote">拡張機能＞OneNote</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-bookmarks">拡張機能＞ブックマーク検索</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-webhistory">拡張機能＞Web履歴検索</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-everything">拡張機能＞Everything</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-uiautomation">拡張機能＞UI要素</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-winscp">拡張機能＞WinSCP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#extension-vscode">拡張機能＞Visual Studio Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#logging">その他</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#others">その他の設定画面</a></li>
-<li class="toctree-l2"><a class="reference internal" href="window/app-settings.html#key-assignment">キー割り当て</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/app.html">基本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/key-assignment.html">キー割り当て</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/shortcut.html">基本＞ショートカット登録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/sound-effects.html">基本＞効果音</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/keyword-input.html">入力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/key-config.html">入力＞キー割り当て</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/history.html">入力＞履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/command-execute.html">実行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/path.html">実行＞パス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/exclude-files.html">実行＞除外するファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/priority.html">実行＞優先度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/files-and-folders.html">実行＞ファイルとフォルダ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/appearance.html">表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/colors.html">表示＞配色</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/external-tool.html">外部ツール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/extensions.html">拡張機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/switch-window.html">拡張機能＞ウインドウ切替</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/clipboard-history.html">拡張機能＞クリップボード履歴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/path-conversion.html">拡張機能＞パス変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/onenote.html">拡張機能＞OneNote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/bookmarks.html">拡張機能＞ブックマーク検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/web-history.html">拡張機能＞Web履歴検索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/everything.html">拡張機能＞Everything</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/uiautomation.html">拡張機能＞UI要素</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/winscp.html">拡張機能＞WinSCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/vscode.html">拡張機能＞Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/logging.html">その他</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window/app-settings/others.html">その他の設定画面</a></li>
 </ul>
 </li>
 </ul>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>フォルダ更新検知コマンド &mdash; Soyokaze 0.55.0</title>
+  <title>フォルダ更新検知コマンド &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -59,7 +59,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
@@ -93,11 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -132,11 +136,11 @@
 <p>ファイルサーバ上にあるフォルダに何らかの変更があったときに、それを知ることができる。</p>
 <ul class="simple">
 <li><p>更新通知のイメージ<br />
-<img alt="" src="../_images/notify_watchpath.png" /></p></li>
+<img alt="" src="../_images/notification.png" /></p></li>
 </ul>
 <section id="id1">
 <h2>設定画面<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/edit-watchpathcommand.png" /></p>
+<p><img alt="" src="../_images/edit-command10.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code></p>
 <ul>
@@ -192,7 +196,7 @@
 <li><p>ツール作成者本人が想定する用途としてはファイルサーバ上の特定フォルダの更新検知であり、ネットワークパスで使えないと意味ないので・・</p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="../window/app-settings.html#app-shortcut"><span class="std std-ref">スタートメニューに登録</span></a>してある場合は、トーストをクリックすると、監視対象フォルダを開くことができる</p></li>
+<li><p><a class="reference internal" href="../window/app-settings/shortcut.html#app-shortcut"><span class="std std-ref">スタートメニューに登録</span></a>してある場合は、トーストをクリックすると、監視対象フォルダを開くことができる</p></li>
 </ul>
 </section>
 <section id="per-key-behavior">

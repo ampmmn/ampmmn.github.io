@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soyokaze 0.55.0 マニュアル &mdash; Soyokaze 0.55.0</title>
+  <title>Soyokaze 0.56.0 マニュアル &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -68,11 +68,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -91,7 +96,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Soyokaze 0.55.0 マニュアル</li>
+      <li class="breadcrumb-item active">Soyokaze 0.56.0 マニュアル</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -100,8 +105,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="soyokaze-0-55-0-manual">
-<h1>Soyokaze 0.55.0 マニュアル<a class="headerlink" href="#soyokaze-0-55-0-manual" title="Link to this heading"></a></h1>
+  <section id="soyokaze-0-56-0-manual">
+<h1>Soyokaze 0.56.0 マニュアル<a class="headerlink" href="#soyokaze-0-56-0-manual" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">はじめに</a><ul>
@@ -149,7 +154,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user-commands.html">登録型のコマンド</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="user-command/shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user-command/snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-command/group.html">グループコマンド</a></li>
@@ -175,6 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/clipboard-history.html">クリップボード履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/colorcode-converter.html">カラーコード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adhoc-command/currency-converter.html">通貨換算</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/env.html">環境変数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/eraname-converter.html">西暦和暦変換</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adhoc-command/everything.html">Everything</a></li>
@@ -219,7 +224,6 @@
 <li class="toctree-l2"><a class="reference internal" href="system-commands.html#maindir">maindir</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system-commands.html#manager">manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system-commands.html#new">new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system-commands.html#newsnippet">newsnippet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system-commands.html#reboot">reboot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system-commands.html#registwin">registwin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system-commands.html#reload">reload</a></li>
@@ -264,6 +268,22 @@
 </ul>
 </div>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">プラグイン</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#id1">動作の概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#id2">配置とロード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#api">公開するAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#id3">関数テーブル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#id4">本体側API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#id5">最小実装例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#abi">文字コードとABI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#id6">実装時の注意</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="others/advanced-usage.html">高度な使い方</a><ul>
@@ -280,6 +300,7 @@
 <li class="toctree-l2"><a class="reference internal" href="others/about-matching.html#match-types">一致度の区分</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -289,8 +310,8 @@
 <h2>ライセンス<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
 <p>フリーソフト</p>
 <ul class="simple">
-<li><p>本体のライセンス : <a class="reference external" href="https://github.com/ampmmn/Soyokaze/blob/main/LICENSE">MIT License</a></p></li>
-<li><p>利用ライブラリのライセンスについては <a class="reference internal" href="others/3rdlibs.html"><span class="doc std std-doc">利用ライブラリ</span></a> に記載の各リンク先を参照のこと</p>
+<li><p>本体のライセンス : <a class="reference internal" href="#./LICENSE"><span class="xref myst">MIT License</span></a></p></li>
+<li><p>利用ライブラリのライセンスについては <a class="reference internal" href="#%E5%88%A9%E7%94%A8%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA"><span class="xref myst">利用ライブラリ</span></a> に記載の各リンク先を参照のこと</p>
 <ul>
 <li><p>各ライブラリのライセンス文言の原文を本体exeと同じディレクトリの<code class="docutils literal notranslate"><span class="pre">notice.txt</span></code>にも記載している</p></li>
 </ul>

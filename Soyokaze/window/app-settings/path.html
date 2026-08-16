@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>実行＞パス &mdash; Soyokaze 0.56.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=4755f45a"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="実行＞除外するファイル" href="exclude-files.html" />
+    <link rel="prev" title="実行" href="command-execute.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Soyokaze
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">はじめに</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">使い方</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/setup.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/how_to_use.html">基本的な使い方</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">設定</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../window.html">画面の説明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../keyword-manager.html">キーワードマネージャ</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../app-settings.html">アプリケーション設定</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="app.html">基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="key-assignment.html">キー割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shortcut.html">基本＞ショートカット登録</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound-effects.html">基本＞効果音</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keyword-input.html">入力</a></li>
+<li class="toctree-l3"><a class="reference internal" href="key-config.html">入力＞キー割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="history.html">入力＞履歴</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command-execute.html">実行</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">実行＞パス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exclude-files.html">実行＞除外するファイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="priority.html">実行＞優先度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files-and-folders.html">実行＞ファイルとフォルダ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appearance.html">表示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="colors.html">表示＞配色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external-tool.html">外部ツール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html">拡張機能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="switch-window.html">拡張機能＞ウインドウ切替</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clipboard-history.html">拡張機能＞クリップボード履歴</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path-conversion.html">拡張機能＞パス変換</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onenote.html">拡張機能＞OneNote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bookmarks.html">拡張機能＞ブックマーク検索</a></li>
+<li class="toctree-l3"><a class="reference internal" href="web-history.html">拡張機能＞Web履歴検索</a></li>
+<li class="toctree-l3"><a class="reference internal" href="everything.html">拡張機能＞Everything</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uiautomation.html">拡張機能＞UI要素</a></li>
+<li class="toctree-l3"><a class="reference internal" href="winscp.html">拡張機能＞WinSCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vscode.html">拡張機能＞Visual Studio Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">その他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="others.html">その他の設定画面</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../command-hotkey.html">コマンドのホットキー設定画面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tasktray.html">タスクトレイ</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user-commands.html">登録型のコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../system-commands.html">システムコマンド</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../macros.html">マクロ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python用モジュールのリファレンス</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pylib.html">Python用モジュールのリファレンス</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins.html">プラグイン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">その他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../others/advanced-usage.html">高度な使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../others/hotkey.html">ホットキーの種別</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../others/commandline-options.html">コマンドラインオプション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../others/3rdlibs.html">利用ライブラリ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Soyokaze</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../window.html">画面の説明</a></li>
+          <li class="breadcrumb-item"><a href="../app-settings.html">アプリケーション設定</a></li>
+      <li class="breadcrumb-item active">実行＞パス</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="command-execute-path">
+<span id="id1"></span><h1>実行＞パス<a class="headerlink" href="#command-execute-path" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../../adhoc-command/pathfind.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドにおける、実行ファイルを検索するフォルダを追加で指定することができる。<br />
+検索の優先順位としては環境変数PATHで設定されたフォルダ、次に追加のディレクトリ、の順で検索を行う。<br />
+リストの上にある項目が優先される。</p>
+<p><img alt="" src="../../_images/setting13.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">環境変数PATHで設定されたディレクトリ</span></code></p>
+<ul>
+<li><p>システムの環境設定で指定されたディレクトリが表示される</p>
+<ul>
+<li><p>このリストは参照専用</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code></p>
+<ul>
+<li><p>システム設定で指定されたもの以外に検索したいディレクトリを登録する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code></p>
+<ul>
+<li><p>クリックすると、ディレクトリ選択ダイアログが表示される。選択したディレクトリが<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>に追加される</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目のパスを変更することができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を削除することができる</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">上へ</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を一つ上に移動する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">下へ</span></code></p>
+<ul>
+<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を一つ下に移動する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="command-execute.html" class="btn btn-neutral float-left" title="実行" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exclude-files.html" class="btn btn-neutral float-right" title="実行＞除外するファイル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,ymgw.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

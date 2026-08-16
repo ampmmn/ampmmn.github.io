@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>通常コマンド &mdash; Soyokaze 0.55.0</title>
+  <title>通常コマンド &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="定型文コマンド" href="snippet.html" />
+    <link rel="next" title="定型文グループ" href="snippet-group.html" />
     <link rel="prev" title="登録型のコマンド" href="../user-commands.html" /> 
 </head>
 
@@ -65,7 +65,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#per-key-behavior">実行時の動作</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
@@ -94,11 +93,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -133,7 +137,7 @@
 よく使うプログラムやファイル、URLに対して任意の名前を設定し、その名前で実行することができる。</p>
 <section id="general">
 <h2>基本<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/edit.png" /></p>
+<p><img alt="" src="../_images/edit-command7.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code><br />
 入力画面からコマンドを実行するためのキーワード</p></li>
@@ -164,13 +168,14 @@ URL(<code class="docutils literal notranslate"><span class="pre">http://...</spa
 <code class="docutils literal notranslate"><span class="pre">.exe</span></code>、<code class="docutils literal notranslate"><span class="pre">.bat</span></code>のときのみ選択可能</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
 <a class="reference internal" href="../window/command-hotkey.html"><span class="doc std std-doc">コマンドを呼び出すキー</span></a>を設定できる。設定したキーを押下すると、コマンドを実行できる。<br />
-<img alt="" src="../_images/hotkeyForCommand.png" /></p></li>
+<img alt="" src="../_images/hotkey-for-command.png" /></p></li>
 <li><p>左上のアイコン欄<br />
 アイコン欄を右クリックすると、コンテキストメニューが表示される。<br />
-<img alt="" src="../_images/websearchcommand-contextmenu.png" /></p>
+<img alt="" src="../_images/web-search-command-context-menu.png" /></p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">アイコンを変更する</span></code><br />
 選択すると、ファイルを選択するダイアログが表示される。画像ファイルを選択すると、その画像をアイコンとして使用することができる。<br />
+ローカルパスのほか、URLを直接指定することも可能<br />
 PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">URLからファビコンを取得する</span></code><br />
 <code class="docutils literal notranslate"><span class="pre">実行ファイル・URLなど</span></code>にURLが入力されているときのみ表示される。<br />
@@ -183,7 +188,7 @@ PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
 </section>
 <section id="environment">
 <h2>環境変数<a class="headerlink" href="#environment" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/shellexec-envlist.png" /></p>
+<p><img alt="" src="../_images/environment-list.png" /></p>
 <p>起動するプログラムに対して環境変数を追加定義することができる。<br />
 既存の環境変数と同じ名前を定義した場合は値を上書きする。</p>
 <ul class="simple">
@@ -191,15 +196,15 @@ PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
 追加する環境変数のリスト</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code><br />
 クリックすると、変数を追加する画面が表示される<br />
-<img alt="" src="../_images/shellexec-envadd.png" /></p></li>
+<img alt="" src="../_images/environment-add.png" /></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code><br />
 クリックすると、リスト上で選択している変数を編集する画面が表示される<br />
-<img alt="" src="../_images/shellexec-envedit.png" /></p></li>
+<img alt="" src="../_images/environment-edit.png" /></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code><br />
 クリックすると、リスト上で選択している変数を削除する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">一括追加</span></code><br />
 クリックすると、環境変数を一括で追加するための画面(下記)を表示する<br />
-<img alt="" src="../_images/shellexec-envbulkadd.png" /></p></li>
+<img alt="" src="../_images/environment-bulk-add.png" /></p></li>
 </ul>
 </section>
 <section id="others">
@@ -227,7 +232,7 @@ PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code><br />
 ウインドウクラス名を指定する。指定しなかった場合はウインドウタイトルのみで判断する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">正規表現を使用する</span></code><br />
-チェックすると、<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>の文字列を正規表現パターンとして扱う</p></li>
+チェックすると、<code class="docutils literal notranslate"><span class="pre">ウインドウタイトル</span></code>と<code class="docutils literal notranslate"><span class="pre">ウインドウクラス</span></code>の文字列を正規表現パターンとして扱う。利用できる正規表現の制限については<a class="reference internal" href="../others/regular-expression.html"><span class="doc std std-doc">正規表現の制限</span></a>を参照する。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">テスト</span></code><br />
 指定した条件に該当するウインドウを探す。ウインドウが見つかると、そのプログラムのタスクバージョンのアイコンが点滅する。</p></li>
 </ul>
@@ -263,7 +268,7 @@ PNG/JPG/GIF/BMP/ICO形式のファイルが利用可能</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../user-commands.html" class="btn btn-neutral float-left" title="登録型のコマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="snippet.html" class="btn btn-neutral float-right" title="定型文コマンド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="snippet-group.html" class="btn btn-neutral float-right" title="定型文グループ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

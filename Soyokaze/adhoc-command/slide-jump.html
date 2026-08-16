@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PowerPoint スライド表示 &mdash; Soyokaze 0.55.0</title>
+  <title>PowerPoint スライド表示 &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -66,6 +66,7 @@
 <li class="toctree-l2"><a class="reference internal" href="clipboard-history.html">クリップボード履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="colorcode-converter.html">カラーコード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="currency-converter.html">通貨換算</a></li>
 <li class="toctree-l2"><a class="reference internal" href="env.html">環境変数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eraname-converter.html">西暦和暦変換</a></li>
 <li class="toctree-l2"><a class="reference internal" href="everything.html">Everything</a></li>
@@ -106,11 +107,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -143,7 +149,7 @@
 <h1>PowerPoint スライド表示<a class="headerlink" href="#switch-powerpoint-slide" title="Link to this heading"></a></h1>
 <p>入力画面を表示した時点でアクティブなPowerPointプレゼンーションのスライドタイトル一覧を候補として表示する機能。<br />
 プレフィックス(初期設定で<code class="docutils literal notranslate"><span class="pre">pj</span></code>)を入力すると、表示中のスライドタイトル一覧が候補として表示され、スライドタイトルで候補の絞り込みを行える。コマンド実行するとPowerPointのウインドウをアクティブにしたうえで、該当するスライドを表示する。</p>
-<p><img alt="" src="../_images/pptjump.gif" /></p>
+<p><img alt="" src="../_images/example.gif" /></p>
 <p>初期設定で機能は無効化されており、<a class="reference internal" href="../window/app-settings.html"><span class="doc std std-doc">アプリケーション設定</span></a>の<code class="docutils literal notranslate"><span class="pre">拡張機能</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">ウインドウ切替</span></code>から有効化する必要がある。</p>
 <p><code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code>キーを押して実行すると、最大化表示する。</p>
 </section>

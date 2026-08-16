@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DirectoryIndexコマンド &mdash; Soyokaze 0.55.0</title>
+  <title>DirectoryIndexコマンド &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -59,7 +59,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
@@ -94,11 +93,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -140,14 +144,14 @@
 </li>
 </ul>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/sample-directoryindex2.png"><img alt="../_images/sample-directoryindex2.png" src="../_images/sample-directoryindex2.png" style="width: 321.5px; height: 201.0px;" />
+<a class="reference internal image-reference" href="../_images/example-2.png"><img alt="../_images/example-2.png" src="../_images/example-2.png" style="width: 321.5px; height: 201.0px;" />
 </a>
 </figure>
 <ul class="simple">
 <li><p>DirectoryIndexコマンドを使うと下記のような表示をすることができる</p></li>
 </ul>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/sample-directoryindex1.png"><img alt="../_images/sample-directoryindex1.png" src="../_images/sample-directoryindex1.png" style="width: 355.0px; height: 130.5px;" />
+<a class="reference internal image-reference" href="../_images/example-1.png"><img alt="../_images/example-1.png" src="../_images/example-1.png" style="width: 355.0px; height: 130.5px;" />
 </a>
 </figure>
 <ul class="simple">
@@ -155,7 +159,7 @@
 </ul>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/edit-directoryindexcommand.png" /></p>
+<p><img alt="" src="../_images/edit-command3.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code><br />
 入力画面からコマンドを実行するためのキーワード</p></li>

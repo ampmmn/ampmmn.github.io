@@ -5,11 +5,11 @@
 ファイルサーバ上にあるフォルダに何らかの変更があったときに、それを知ることができる。
 
 - 更新通知のイメージ  
-![](../image/notify_watchpath.png)
+![](../image/user-command/watch-path/notification.png)
 
 ## 設定画面
 
-![](../image/edit-watchpathcommand.png)
+![](../image/user-command/watch-path/edit-command.png)
 
 - `コマンドの名前`
   - 入力画面からコマンドを実行するためのキーワード
@@ -41,7 +41,7 @@
   - 手元で試した感じ、`ReadDirectoryChangesW`はネットワークパスの場合に安定して検知できなかっため
   - ツール作成者本人が想定する用途としてはファイルサーバ上の特定フォルダの更新検知であり、ネットワークパスで使えないと意味ないので・・
 
-- [スタートメニューに登録](/window/app-settings.md#app-shortcut)してある場合は、トーストをクリックすると、監視対象フォルダを開くことができる
+- [スタートメニューに登録](/window/app-settings/shortcut.md#app-shortcut)してある場合は、トーストをクリックすると、監視対象フォルダを開くことができる
 
 ## Per-Key Behavior
 

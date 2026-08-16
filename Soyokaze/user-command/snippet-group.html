@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>定型文グループ &mdash; Soyokaze 0.55.0</title>
+  <title>定型文グループ &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -21,7 +21,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Web検索コマンド" href="websearch.html" />
-    <link rel="prev" title="定型文コマンド" href="snippet.html" /> 
+    <link rel="prev" title="通常コマンド" href="shellexecute.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,7 +59,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">定型文グループ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">設定画面</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#per-key-behavior">実行時の動作</a></li>
@@ -92,11 +91,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -130,10 +134,10 @@
 <p>よく使う定型文をグループ化して管理し、必要なときに呼び出してクリップボードにコピーするためのコマンド</p>
 <p>入力欄にグループ名を入力すると、そのグループに属する定型文の一覧が候補として表示される。<br />
 候補を選択すると、その定型文がクリップボードにコピーされる。</p>
-<p><img alt="" src="../_images/snipgroup.png" /></p>
+<p><img alt="" src="../_images/overview.png" /></p>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/new-snippetgroupcommand.png" /></p>
+<p><img alt="" src="../_images/new-group-command.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">グループの名前</span></code><br />
 定型文グループに属する定型文の一覧を表示するためのキーワード<br />
@@ -184,7 +188,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="snippet.html" class="btn btn-neutral float-left" title="定型文コマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shellexecute.html" class="btn btn-neutral float-left" title="通常コマンド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="websearch.html" class="btn btn-neutral float-right" title="Web検索コマンド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

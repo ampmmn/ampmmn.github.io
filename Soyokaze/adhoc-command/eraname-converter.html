@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>西暦和暦変換 &mdash; Soyokaze 0.55.0</title>
+  <title>西暦和暦変換 &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -66,6 +66,7 @@
 <li class="toctree-l2"><a class="reference internal" href="clipboard-history.html">クリップボード履歴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="colorcode-converter.html">カラーコード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlpanel.html">コントロールパネル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="currency-converter.html">通貨換算</a></li>
 <li class="toctree-l2"><a class="reference internal" href="env.html">環境変数</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">西暦和暦変換</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#example">例</a></li>
@@ -109,11 +110,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -146,7 +152,7 @@
 <h1>西暦和暦変換<a class="headerlink" href="#gregorian-japanese-era-conversion" title="Link to this heading"></a></h1>
 <p>西暦(グレゴリオ暦)と和暦の相互変換機能。<br />
 変換結果をクリップボードにコピーすることができる。</p>
-<p><img alt="" src="../_images/eranamelwjcommand.png" /></p>
+<p><img alt="" src="../_images/example3.png" /></p>
 <p>令和/平成/昭和/大正/明治までを扱うことができる。</p>
 <section id="example">
 <h2>例<a class="headerlink" href="#example" title="Link to this heading"></a></h2>

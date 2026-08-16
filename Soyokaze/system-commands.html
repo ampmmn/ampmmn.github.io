@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>システムコマンド &mdash; Soyokaze 0.55.0</title>
+  <title>システムコマンド &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -76,7 +76,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#maindir">maindir</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manager">manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#new">new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#newsnippet">newsnippet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reboot">reboot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#registwin">registwin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reload">reload</a></li>
@@ -99,11 +98,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -204,7 +208,7 @@
 <section id="maindir">
 <h2>maindir<a class="headerlink" href="#maindir" title="Link to this heading"></a></h2>
 <p>本アプリの実行ファイルが置かれているフォルダをエクスプローラーまたはファイラーで表示する。</p>
-<p><a class="reference internal" href="window/app-settings.html#comand-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
+<p><a class="reference internal" href="window/app-settings/command-execute.html#command-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
 設定していない場合はエクスプローラーで開く。</p>
 </section>
 <hr class="docutils" />
@@ -216,11 +220,6 @@
 <section id="new">
 <h2>new<a class="headerlink" href="#new" title="Link to this heading"></a></h2>
 <p>新規コマンド登録画面を表示する。</p>
-</section>
-<hr class="docutils" />
-<section id="newsnippet">
-<h2>newsnippet<a class="headerlink" href="#newsnippet" title="Link to this heading"></a></h2>
-<p>現在クリップボードにあるテキストを定型文として登録するための登録画面を表示する。</p>
 </section>
 <hr class="docutils" />
 <section id="reboot">
@@ -269,7 +268,7 @@
 <section id="userdir">
 <h2>userdir<a class="headerlink" href="#userdir" title="Link to this heading"></a></h2>
 <p>設定ファイルの保存先フォルダをエクスプローラーまたはファイラーで表示する。</p>
-<p><a class="reference internal" href="window/app-settings.html#comand-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
+<p><a class="reference internal" href="window/app-settings/command-execute.html#command-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
 設定していない場合はエクスプローラーで開く。</p>
 <p>設定ファイルの保存先については <a class="reference internal" href="usage/setup.html#configuration-directory"><span class="std std-ref">アプリデータの保存フォルダ</span></a> を参照のこと</p>
 </section>
@@ -283,7 +282,7 @@
 <p>一部の<a class="reference internal" href="#"><span class="xref myst">システムコマンド</span></a>は機能を無効化することができる。<br />
 無効化すると、入力欄にコマンド名を入力しても候補として表示されなくなる。</p>
 <p>キーワードマネージャ上でシステムコマンドを選択し、<code class="docutils literal notranslate"><span class="pre">編集</span></code>ボタンを選択すると下記の画面が表示される。</p>
-<p><img alt="" src="_images/edit-builtincommand.png" /></p>
+<p><img alt="" src="_images/edit-builtin-command.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code></p>
 <ul>

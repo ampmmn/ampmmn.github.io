@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>簡易辞書コマンド &mdash; Soyokaze 0.55.0</title>
+  <title>簡易辞書コマンド &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -59,7 +59,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
@@ -102,11 +101,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -140,7 +144,7 @@
 <p>Excelワークブックファイル(<code class="docutils literal notranslate"><span class="pre">*.xlsx,*.xls</span></code>)の任意の範囲のデータを簡易的な辞書データ(キーと値のペアの集合)として利用するコマンド。<br />
 文字を入力するたびに、辞書データ(キー、値)を即座に検索(インクリメンタル検索)することができる。</p>
 <p>Excelファイルをデータソース(データの元になるファイル)にできるので、データのメンテナンスをExcelでお手軽にできるのがメリット</p>
-<p><img alt="" src="../_images/introduction5.png" /></p>
+<p><img alt="" src="../_images/introduction6.png" /></p>
 <p>この機能はExcelを内部的に利用するため、実行環境にExcelがインストールされている必要がある。</p>
 <section id="use-cases">
 <h2>用途・活用例<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
@@ -169,7 +173,7 @@
 </section>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/edit-simpledictcommand.png" /></p>
+<p><img alt="" src="../_images/edit-command8.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンド名</span></code></p>
 <ul>
@@ -303,7 +307,7 @@
 </ul>
 <section id="post-action-run-command">
 <h3>実行する処理 - 他のコマンドを実行する<a class="headerlink" href="#post-action-run-command" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-simpledictcommand-postfilter-command.png" /></p>
+<p><img alt="" src="../_images/postfilter-command1.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンド</span></code></p>
 <ul>
@@ -319,7 +323,7 @@
 </section>
 <section id="post-action-run-program">
 <h3>実行する処理 - プログラムを実行する<a class="headerlink" href="#post-action-run-program" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-simpledictcommand-postfilter-subprocess.png" /></p>
+<p><img alt="" src="../_images/postfilter-subprocess1.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">実行ファイル</span></code></p>
 <ul>
@@ -346,7 +350,7 @@
 </section>
 <section id="post-action-copy-to-clipboard">
 <h3>実行する処理 - クリップボードにコピーする<a class="headerlink" href="#post-action-copy-to-clipboard" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-simpledictcommand-postfilter-clipboard.png" /></p>
+<p><img alt="" src="../_images/postfilter-clipboard.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code></p>
 <ul>
@@ -360,13 +364,13 @@
 <h2>設定の手引き<a class="headerlink" href="#setup-guide" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Excelアプリケーションを起動し、辞書として利用したいワークシートを選択しておく<br />
-<img alt="" src="../_images/simpledict_tebiki_step1.png" /></p></li>
+<img alt="" src="../_images/tutorial-step-1.png" /></p></li>
 <li><p>Excel側でキーとして使うセル範囲を選択する。次に、本アプリ側でキー範囲取得ボタンを押す<br />
-<img alt="" src="../_images/simpledict_tebiki_step2.png" /></p></li>
+<img alt="" src="../_images/tutorial-step-2.png" /></p></li>
 <li><p>Excel側で値として使うセル範囲を選択する。次に、本アプリ側で値範囲取得ボタンを押す<br />
-<img alt="" src="../_images/simpledict_tebiki_step3.png" /></p></li>
+<img alt="" src="../_images/tutorial-step-3.png" /></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">取得内容確認</span></code>ボタンを押下し、取得されるキーと値の内容を確認する<br />
-<img alt="" src="../_images/simpledict_tebiki_step4.png" /></p></li>
+<img alt="" src="../_images/tutorial-step-4.png" /></p></li>
 <li><p>キーと値の内容に問題なければ、<code class="docutils literal notranslate"><span class="pre">選択後の処理</span></code>の設定をして、<code class="docutils literal notranslate"><span class="pre">OK</span></code>ボタンを押下してコマンドを作成する</p></li>
 </ol>
 </section>
@@ -402,11 +406,11 @@
 <h2>例<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <p>日本の上場企業の会社名をキー、証券コードを値にする</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/simple_dict_example.png"><img alt="../_images/simple_dict_example.png" src="../_images/simple_dict_example.png" style="width: 534.0px; height: 395.25px;" />
+<a class="reference internal image-reference" href="../_images/example10.png"><img alt="../_images/example10.png" src="../_images/example10.png" style="width: 534.0px; height: 395.25px;" />
 </a>
 </figure>
 <p>「せいてつ」というキーワードで会社名での絞り込みを行い、証券コードをクリップボードにコピーする
-<img alt="" src="../_images/simple_dict_example2.gif" /></p>
+<img alt="" src="../_images/example-2.gif" /></p>
 </section>
 <section id="per-key-behavior">
 <h2>実行時の動作<a class="headerlink" href="#per-key-behavior" title="Link to this heading"></a></h2>

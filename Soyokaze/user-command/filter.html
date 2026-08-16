@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>フィルタコマンド &mdash; Soyokaze 0.55.0</title>
+  <title>フィルタコマンド &mdash; Soyokaze 0.56.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -59,7 +59,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shellexecute.html">通常コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snippet.html">定型文コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="snippet-group.html">定型文グループ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websearch.html">Web検索コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group.html">グループコマンド</a></li>
@@ -104,11 +103,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../pylib.html">Python用モジュールのリファレンス</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">プラグイン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">プラグイン</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">その他</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../others/advanced-usage.html">高度な使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -147,13 +151,13 @@
 候補の一覧を候補欄に表示する(利用者は絞り込み・選択を行う)<br />
 ↓<br />
 選択した結果をもとに後段の処理を実行する</p>
-<p><img alt="" src="../_images/filtercommand.svg" /></p>
+<p><img alt="" src="../_images/diagram.svg" /></p>
 <p>登録したコマンド名を入力欄に入力すると、外部プログラムの実行を行い、得られた出力を候補欄に表示する</p>
-<p><img alt="" src="../_images/sample-filtercommand.png" /></p>
+<p><img alt="" src="../_images/example9.png" /></p>
 <p>コマンド名(上の例だと<code class="docutils literal notranslate"><span class="pre">folderselect</span></code>)をタイプした時点で、前段の処理を実行し、候補の一覧を生成・表示する</p>
 <section id="description">
 <h2>設定画面<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><img alt="" src="../_images/edit-filtercommand.png" /></p>
+<p><img alt="" src="../_images/edit-command4.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code><br />
 入力画面からコマンドを実行するためのキーワード</p></li>
@@ -202,14 +206,14 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
 <a class="reference internal" href="../window/command-hotkey.html"><span class="doc std std-doc">コマンドを呼び出すキー</span></a>を設定できる。設定したキーを押下すると、コマンドを実行できる。<br />
-<img alt="" src="../_images/hotkeyForCommand.png" /></p></li>
+<img alt="" src="../_images/hotkey-for-command.png" /></p></li>
 </ul>
 </section>
 <section id="candidate-enumeration">
 <h2>候補の生成方法<a class="headerlink" href="#candidate-enumeration" title="Link to this heading"></a></h2>
 <section id="run-program">
 <h3>プログラムを実行する<a class="headerlink" href="#run-program" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-filtercommand-prefilter-subprocess.png" /></p>
+<p><img alt="" src="../_images/prefilter-subprocess.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">実行ファイル</span></code><br />
 実行するプログラムのパスを指定する</p></li>
@@ -232,7 +236,7 @@
 </section>
 <section id="define-items-directly">
 <h3>候補を定義する<a class="headerlink" href="#define-items-directly" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-filtercommand-prefilter-constant.png" /></p>
+<p><img alt="" src="../_images/prefilter-constant.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">候補の一覧</span></code></p>
 <ul>
@@ -247,7 +251,7 @@
 <h2>実行する処理<a class="headerlink" href="#post-actions" title="Link to this heading"></a></h2>
 <section id="run-command">
 <h3>他のコマンドを実行する<a class="headerlink" href="#run-command" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-filtercommand-postfilter-command.png" /></p>
+<p><img alt="" src="../_images/postfilter-command.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">コマンド</span></code><br />
 実行するコマンドを選択する</p></li>
@@ -258,7 +262,7 @@
 </section>
 <section id="id1">
 <h3>プログラムを実行する<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-filtercommand-postfilter-subprocess.png" /></p>
+<p><img alt="" src="../_images/postfilter-subprocess.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">実行ファイル</span></code><br />
 実行するプログラムのパスを指定する</p></li>
@@ -274,7 +278,7 @@
 </section>
 <section id="copy-to-clipboard">
 <h3>クリップボードにコピーする<a class="headerlink" href="#copy-to-clipboard" title="Link to this heading"></a></h3>
-<p><img alt="" src="../_images/edit-filtercommand-postfilter-copy.png" /></p>
+<p><img alt="" src="../_images/postfilter-copy.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code><br />
 クリップボードにコピーするテキストの書式を指定する<br />
