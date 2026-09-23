@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>基本的な使い方 &mdash; Soyokaze 0.56.0</title>
+  <title>基本的な使い方 &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -75,7 +75,7 @@
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -128,14 +129,22 @@
 <section id="run-application">
 <h2>アプリを起動する<a class="headerlink" href="#run-application" title="Link to this heading"></a></h2>
 <p>soyokaze.exeを実行するとアプリが起動する。
-起動直後は<a class="reference internal" href="#open-input-window"><span class="xref myst">入力画面</span></a> が表示される。</p>
+起動直後は入力画面が表示される。</p>
+<p>最初は、次の流れで操作すると、アプリケーションを登録して起動できます。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Alt</span></code>+<code class="docutils literal notranslate"><span class="pre">Space</span></code>を押して入力画面を表示する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new</span></code>と入力してEnterキーを押す</p></li>
+<li><p>通常コマンドを選択する</p></li>
+<li><p>キーワードと、起動するアプリケーションのパスを入力して登録する</p></li>
+<li><p>登録したキーワードを入力してEnterキーを押す</p></li>
+</ol>
 <p><img alt="" src="../_images/first-screen.png" /></p>
 <p>また、タスクトレイにアイコンが表示される。</p>
 <p><img alt="" src="../_images/tasktray-icon.png" /></p>
 </section>
 <section id="exit-application">
 <h2>アプリを終了する<a class="headerlink" href="#exit-application" title="Link to this heading"></a></h2>
-<p>入力画面で<a class="reference internal" href="../system-commands.html#exit"><span class="std std-ref">exit</span></a>コマンドを実行するか、<a class="reference internal" href="../window/tasktray.html"><span class="doc std std-doc">タスクトレイ</span></a>から<code class="docutils literal notranslate"><span class="pre">終了</span></code>を選択する。</p>
+<p>入力画面で<code class="docutils literal notranslate"><span class="pre">exit</span></code>コマンドを実行するか、<a class="reference internal" href="../window/tasktray.html"><span class="doc std std-doc">タスクトレイ</span></a>から<code class="docutils literal notranslate"><span class="pre">終了</span></code>を選択する。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">exit</span></code>コマンドを実行<br />
 <img alt="" src="../_images/exit-from-command.png" /></p></li>
@@ -146,62 +155,28 @@
 <section id="open-input-window">
 <h2>入力画面を表示する<a class="headerlink" href="#open-input-window" title="Link to this heading"></a></h2>
 <p>アプリが起動している状態でランチャー呼び出しキー(デフォルト設定:<code class="docutils literal notranslate"><span class="pre">Alt</span></code>-<code class="docutils literal notranslate"><span class="pre">Space</span></code>)を押下すると、入力画面が表示される。</p>
-<p><img alt="" src="../_images/window-parts.png" /></p>
-<p>この画面でキーワードを入力し、Enterキーを押下すると、キーワードに関連付けた各種操作を実行できる。<br />
-また、Tabキーを押すと、入力中のキーワードを補完することができる。</p>
-<ul class="simple">
-<li><p>① アイコン表示欄</p>
-<ul>
-<li><p>選択している候補に関連付けられたアイコンを表示する</p></li>
-</ul>
-</li>
-<li><p>② コメント表示欄</p>
-<ul>
-<li><p>選択している候補の説明を表示する</p></li>
-<li><p>ここをドラッグしてウインドウ表示位置を変えることができる</p></li>
-</ul>
-</li>
-<li><p>③ 入力欄</p>
-<ul>
-<li><p>ここにキーワード(やパラメータ)を入力する。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Backspace</span></code>で入力中のキーワードを単語単位で削除する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code>キーを押下するとキーワードを補完する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Esc</span></code>キーを押下すると、入力中のキーワードを消去する。<br />
-入力中のキーワードが空のときは入力画面を非表示にする。</p></li>
-</ul>
-</li>
-<li><p>④ 候補リスト</p>
-<ul>
-<li><p>入力欄のキーワードに該当する候補の一覧を表示する</p></li>
-<li><p>矢印キー(↑↓）やマウスクリックで候補を変更することができる</p></li>
-<li><p>入力欄に文字が入力されていると表示される</p></li>
-</ul>
-</li>
-<li><p>⑤ ガイド</p>
-<ul>
-<li><p>コマンドを実行したときに実行される動作をキー別に表示する</p></li>
-</ul>
-</li>
-</ul>
-<p>この画面がでているときに<code class="docutils literal notranslate"><span class="pre">F1</span></code>キーを押下すると、マニュアル(このファイル)を開く。</p>
+<p><img alt="" src="../_images/input-window.png" /></p>
+<p>この画面でキーワードを入力し、Enterキーを押下すると、キーワードに関連付けた各種操作を実行できる。Tabキーを押すと、入力中のキーワードを補完することができる。</p>
+<p>入力画面の各部、キー操作、パラメータ入力時に表示される追加候補については、<a class="reference internal" href="../window/input-window.html"><span class="doc std std-doc">入力画面</span></a>を参照のこと。</p>
 </section>
 <section id="run-command">
 <h2>コマンドを実行する<a class="headerlink" href="#run-command" title="Link to this heading"></a></h2>
 <p>入力画面にキーワードを入力して<code class="docutils literal notranslate"><span class="pre">Enter⏎</span></code>キーを押下すると、キーワードに応じてコマンドを実行することができる。</p>
+<p>候補が複数表示された場合は、矢印キーまたはマウスで実行したい候補を選択してからEnterキーを押します。候補が表示されない場合は、キーワードの入力内容、コマンドが有効になっているか、検索対象の設定を確認してください。</p>
 <p><img alt="" src="../_images/run-keyword.png" /></p>
 </section>
 <section id="register-command">
 <h2>コマンドを登録する<a class="headerlink" href="#register-command" title="Link to this heading"></a></h2>
 <p>セットアップ直後はコマンドが何も登録されていないため、
 後述の方法によりコマンドを登録する必要がある。<br />
-なお、<a class="reference internal" href="../adhoc-commands.html"><span class="doc std std-doc">コマンドとして登録していなくても実行できる機能</span></a>もある。</p>
+なお、<a class="reference internal" href="../adhoc-commands.html"><span class="doc std std-doc">登録しなくても使える機能</span></a>もある。</p>
 <p>本アプリでは以下の方法でコマンドを登録することができる。</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-new-command"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">new</span></code>コマンドで登録する</span></a></p></li>
-<li><p><a class="reference internal" href="#use-registwin-command"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">registwin</span></code>コマンドで登録する</span></a></p></li>
-<li><p><a class="reference internal" href="#capture-window"><span class="xref myst">対象ウインドウをDrag&amp;Dropする</span></a></p></li>
-<li><p><a class="reference internal" href="#sendto"><span class="xref myst">コンテキストメニューの<code class="docutils literal notranslate"><span class="pre">送る</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">コマンドとして登録する</span></code></span></a></p></li>
-<li><p><a class="reference internal" href="#drag-drop-file-and-folders"><span class="xref myst">エクスプローラのアイコンをDrag&amp;Dropする</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new</span></code>コマンドで登録する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">registwin</span></code>コマンドで登録する</p></li>
+<li><p>対象ウインドウをDrag&amp;Dropする</p></li>
+<li><p>コンテキストメニューの<code class="docutils literal notranslate"><span class="pre">送る</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">コマンドとして登録する</span></code></p></li>
+<li><p>エクスプローラのアイコンをDrag&amp;Dropする</p></li>
 </ul>
 <p>各方法の詳細について後述する。</p>
 <section id="use-new-command">
@@ -214,6 +189,12 @@
 ↓※ 通常コマンドのコマンド編集画面<br />
 <img alt="" src="../_images/new-normal-command.png" /></p>
 <p>コマンド編集画面で新規登録キーワードや紐づけるプログラムへのパスなどの情報を入力し、OKを押すと、コマンドとして登録される。</p>
+<p>例えば、メモ帳を<code class="docutils literal notranslate"><span class="pre">memo</span></code>というキーワードで起動する場合は、次のように入力します。</p>
+<ul class="simple">
+<li><p>コマンドの名前: <code class="docutils literal notranslate"><span class="pre">memo</span></code></p></li>
+<li><p>実行ファイル・URLなど: <code class="docutils literal notranslate"><span class="pre">notepad.exe</span></code></p></li>
+</ul>
+<p>登録後に入力画面で<code class="docutils literal notranslate"><span class="pre">memo</span></code>と入力してEnterキーを押すと、メモ帳が起動します。</p>
 </section>
 <section id="use-registwin-command">
 <h3>registerwinコマンドで登録する<a class="headerlink" href="#use-registwin-command" title="Link to this heading"></a></h3>
@@ -229,7 +210,7 @@
 </section>
 <section id="sendto">
 <h3>コンテキストメニューの<code class="docutils literal notranslate"><span class="pre">送る</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">コマンドとして登録する</span></code><a class="headerlink" href="#sendto" title="Link to this heading"></a></h3>
-<p>アプリケーション設定の<a class="reference internal" href="../window/app-settings/shortcut.html#app-shortcut"><span class="std std-ref">基本＞ショートカット登録</span></a> から<code class="docutils literal notranslate"><span class="pre">「送る」から登録できるようにする</span></code>をチェックしている場合、エクスプローラの<code class="docutils literal notranslate"><span class="pre">送る</span></code>に登録用のメニュー項目が表示される。</p>
+<p>アプリケーション設定の<a class="reference internal" href="../window/app-settings/shortcut.html"><span class="doc std std-doc">ショートカット設定</span></a>から<code class="docutils literal notranslate"><span class="pre">「送る」から登録できるようにする</span></code>をチェックしている場合、エクスプローラの<code class="docutils literal notranslate"><span class="pre">送る</span></code>に登録用のメニュー項目が表示される。</p>
 <p>登録したいファイルをエクスプローラ上で右クリックして、<code class="docutils literal notranslate"><span class="pre">送る</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">コマンドとして登録する</span></code>を選択すると、そのファイルを登録するためのコマンド編集画面が表示される<br />
 ↓<br />
 <img alt="" src="../_images/send-to.png" /></p>

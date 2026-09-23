@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>利用ライブラリ &mdash; Soyokaze 0.56.0</title>
+  <title>利用ライブラリ &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -57,7 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -78,6 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">利用ライブラリ</a></li>
 </ul>
@@ -179,16 +180,6 @@
 <li><p>Python拡張コマンドにおいて、スクリプト欄を編集するコントロールとして利用している</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/upx/upx">upx/upx</a></p>
-<ul>
-<li><p>ビルド生成物(exe/dll)を圧縮してサイズ削減するツールとしてUPXを利用している</p></li>
-<li><p>UPX自体はGPLであるが、UPXを使って生成したバイナリ(はGPLにはならない(認識)</p>
-<ul>
-<li><p>未改変UPXおよび未改変stubを使用する場合に限り、UPXの特別例外が適用される</p></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><p><a class="reference external" href="https://github.com/simdutf/simdutf">simdutf/simdutf</a></p>
 <ul>
 <li><p>Base64のデコード、UTF-16とUTF-8の相互変換の用途で利用している</p></li>
@@ -197,6 +188,12 @@
 <li><p><a class="reference external" href="https://github.com/biojppm/rapidyaml">biojppm/rapidyaml</a></p>
 <ul>
 <li><p>YAMLファイルをパースするために利用している</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pato/mathypad">pato/mathypad</a></p>
+<ul>
+<li><p>電卓の単位付き計算機能のために利用している</p></li>
+<li><p>オリジナル版ではC/C++向けのシンボルを公開していないため、利用するためのAPI層を独自追加し、Windows向けにビルドしたものを利用している</p></li>
 </ul>
 </li>
 </ul>

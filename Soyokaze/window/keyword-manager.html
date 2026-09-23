@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>キーワードマネージャ &mdash; Soyokaze 0.56.0</title>
+  <title>キーワードマネージャ &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -21,7 +21,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="アプリケーション設定" href="app-settings.html" />
-    <link rel="prev" title="画面の説明" href="../window.html" /> 
+    <link rel="prev" title="入力画面" href="input-window.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,6 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">設定</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../window.html">画面の説明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="input-window.html">入力画面</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">キーワードマネージャ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">概要</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#description">画面の説明</a></li>
@@ -72,7 +73,7 @@
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -93,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -125,7 +127,8 @@
 <h1>キーワードマネージャ<a class="headerlink" href="#keyword-manager" title="Link to this heading"></a></h1>
 <section id="overview">
 <h2>概要<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
-<p>本アプリに登録したコマンドの管理(追加/編集/削除)をするための画面。</p>
+<p>本アプリに登録したコマンドを追加、編集、複製、削除するための画面です。</p>
+<p>登録したコマンドのキーワードを変更したい場合や、不要になったコマンドを無効にしたい場合も、この画面を使用します。</p>
 <p>下記のいずれかの操作を行うと、キーワードマネージャーを表示することができる。</p>
 <ul class="simple">
 <li><p>入力画面で<code class="docutils literal notranslate"><span class="pre">edit</span></code>コマンドを実行する</p></li>
@@ -142,7 +145,7 @@
 入力した文字列でリストの表示項目を絞り込める<br />
 空白区切りで複数ワードを指定できる(AND検索)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">新規作成</span></code><br />
-コマンドを新規登録する。<a class="reference internal" href="#command-type"><span class="std std-ref">コマンドの種別を選択する画面</span></a>を表示する</p></li>
+コマンドを新規登録する。コマンドの種別を選択する画面を表示する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code><br />
 リスト上で選択したコマンドを設定を変更する。編集画面が表示される。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">複製</span></code><br />
@@ -151,6 +154,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code><br />
 リスト上で選択したコマンドを削除する</p></li>
 </ul>
+<p>新規作成や編集が終わったら、編集画面の<code class="docutils literal notranslate"><span class="pre">OK</span></code>を押して内容を反映します。変更を反映せずに閉じたい場合は<code class="docutils literal notranslate"><span class="pre">キャンセル</span></code>を押します。</p>
+<p>コマンドが候補に表示されない場合は、リスト上でそのコマンドが無効になっていないか、フィルター欄に不要な文字が残っていないかを確認してください。</p>
 </section>
 </section>
 <section id="copy-and-paste">
@@ -158,7 +163,8 @@
 <p>リスト上でコマンドを選択して、<code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code>でコマンドをクリップボードにコピーし、
 <code class="docutils literal notranslate"><span class="pre">Ctrl-V</span></code>で貼り付けることができる。</p>
 <p>リモートデスクトップを経由して複数のPC間で本アプリを使用している場合、
-クリップボード経由で一方のアプリ側で定義しているコマンドをもう一方のアプリ側に移すことができる。</p>
+クリップボード経由で一方のアプリ側で定義しているコマンドをもう一方のアプリ側に移すことができます。</p>
+<p>コピーしたコマンドには、実行ファイルのパスやURLなどの設定も含まれます。貼り付け後は、移行先の環境に同じファイルやフォルダが存在するか確認してください。</p>
 </section>
 <section id="command-type">
 <h2>コマンド種類選択<a class="headerlink" href="#command-type" title="Link to this heading"></a></h2>
@@ -173,7 +179,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../window.html" class="btn btn-neutral float-left" title="画面の説明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="input-window.html" class="btn btn-neutral float-left" title="入力画面" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="app-settings.html" class="btn btn-neutral float-right" title="アプリケーション設定" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

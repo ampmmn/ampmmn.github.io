@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>プラグイン &mdash; Soyokaze 0.56.0</title>
+  <title>プラグイン &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -58,7 +58,7 @@
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user-commands.html">登録型のコマンド</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -76,7 +76,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#id2">配置とロード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#api">公開するAPI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">関数テーブル</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#initialize"><code class="docutils literal notranslate"><span class="pre">Initialize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initialize"><code class="docutils literal notranslate"><span class="pre">Initialize</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">プラグイン情報</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#query"><code class="docutils literal notranslate"><span class="pre">Query</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#getmatchcount-getmatchlevel"><code class="docutils literal notranslate"><span class="pre">GetMatchCount</span></code> / <code class="docutils literal notranslate"><span class="pre">GetMatchLevel</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#getname-getdescription-getguide-gettypedisplayname"><code class="docutils literal notranslate"><span class="pre">GetName</span></code> / <code class="docutils literal notranslate"><span class="pre">GetDescription</span></code> / <code class="docutils literal notranslate"><span class="pre">GetGuide</span></code> / <code class="docutils literal notranslate"><span class="pre">GetTypeDisplayName</span></code></a></li>
@@ -88,10 +91,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#finalize"><code class="docutils literal notranslate"><span class="pre">Finalize</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">本体側API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">最小実装例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">本体側API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">最小実装例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#abi">文字コードとABI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">実装時の注意</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">実装時の注意</a></li>
 </ul>
 </li>
 </ul>
@@ -101,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -145,7 +149,7 @@
 <ol class="arabic simple">
 <li><p>SoyokazeがプラグインDLLをロードする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>を呼び出して関数テーブルを取得する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>を呼び出してプラグインを初期化する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>を呼び出してプラグインを初期化し、プラグイン情報を取得する</p></li>
 <li><p>キーワード入力のたびに<code class="docutils literal notranslate"><span class="pre">Query</span></code>を呼び出す</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Query</span></code>が返した検索結果を候補として表示する</p></li>
 <li><p>コマンド実行時に<code class="docutils literal notranslate"><span class="pre">CanExecute</span></code>と<code class="docutils literal notranslate"><span class="pre">Execute</span></code>を呼び出す</p></li>
@@ -155,12 +159,19 @@
 </section>
 <section id="id2">
 <h2>配置とロード<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>プラグインは、Soyokazeの設定ファイル保存先にある<code class="docutils literal notranslate"><span class="pre">plugins</span></code>ディレクトリへ配置します。
-設定ファイル保存先はユーザーディレクトリ直下です。プラグインごとにサブディレクトリを作成してください。</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ユーザーディレクトリ/
+<p>プラグインは、次のいずれかの<code class="docutils literal notranslate"><span class="pre">plugins</span></code>ディレクトリへ配置します。</p>
+<ul class="simple">
+<li><p>Soyokazeの実行ファイルがあるディレクトリ</p></li>
+<li><p>Soyokazeの設定ファイル保存先（ユーザーディレクトリ直下）</p></li>
+</ul>
+<p>実行ファイルがあるディレクトリの<code class="docutils literal notranslate"><span class="pre">plugins</span></code>から先にロードされます。プラグインごとにサブディレクトリを作成してください。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>実行ファイルのディレクトリ/
   plugins/
     hello/
       hello.dll
+
+ユーザーディレクトリ/
+  plugins/
     another-plugin/
       another-plugin.dll
 </pre></div>
@@ -181,6 +192,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>を取得できない</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>がエラーを返す</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_EXPORTTABLE</span></code>の関数ポインタに<code class="docutils literal notranslate"><span class="pre">nullptr</span></code>が含まれる</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>の第2引数から取得したプラグイン情報をJSONとして解析できない</p></li>
+<li><p>プラグイン情報の<code class="docutils literal notranslate"><span class="pre">pluginApiVersion</span></code>がSoyokazeの<code class="docutils literal notranslate"><span class="pre">PLUGINVERSION</span></code>と一致しない</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>がエラーを返す</p></li>
 </ul>
 <p>ロードに失敗したDLLは保持されず、ロード済みのDLLも終了時まで再ロードされません。</p>
@@ -202,14 +215,32 @@
 <h2>関数テーブル<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <section id="initialize">
 <h3><code class="docutils literal notranslate"><span class="pre">Initialize</span></code><a class="headerlink" href="#initialize" title="Link to this heading"></a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">plugin_info</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>プラグインのロード直後に一度呼び出されます。設定ファイルの読み込み、インデックスの作成、リソースの確保などをここで行います。</p>
+<p><code class="docutils literal notranslate"><span class="pre">plugin_info</span></code>には、プラグインの情報を表すJSON文字列へのポインタを設定してください。JSON文字列の所有権はプラグイン側にあり、Soyokaze本体は文字列を解放しません。Soyokaze本体は受け取ったJSONをコピーして管理します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>は、Soyokaze本体がプラグインへ渡す関数テーブルです。プラグインからSoyokaze本体の機能を呼び出すための窓口であり、ログ出力、トースト通知、メインウィンドウのハンドル取得に使用できます。構造体の各メンバーには、本体側の機能を呼び出すための関数ポインタが設定されています。</p>
 <p>この関数テーブルはプラグインが作成してSoyokazeへ返すものではありません。Soyokazeが<code class="docutils literal notranslate"><span class="pre">Initialize</span></code>の呼び出し時に作成し、引数としてプラグインへ渡します。プラグインで本体側APIを使用しない場合でも、<code class="docutils literal notranslate"><span class="pre">Initialize</span></code>の引数を受け取れるようにしてください。</p>
 <p><code class="docutils literal notranslate"><span class="pre">table</span></code>が指す<code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>のデータは一時的なものです。後で使用する関数ポインタがある場合は、構造体の内容をプラグイン側でコピーして保持してください。</p>
 <p>成功時は0、初期化に失敗した場合は0以外を返します。失敗したプラグインはロードされません。</p>
+<section id="id4">
+<h4>プラグイン情報<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>プラグイン情報はJSONオブジェクトで指定します。<code class="docutils literal notranslate"><span class="pre">pluginApiVersion</span></code>は必須で、プラグインのビルドに使用した<code class="docutils literal notranslate"><span class="pre">PluginExportTable.h</span></code>の<code class="docutils literal notranslate"><span class="pre">PLUGINVERSION</span></code>と一致させてください。<code class="docutils literal notranslate"><span class="pre">pluginId</span></code>にはプラグインを識別する一意な文字列を指定してください。その他のキーは表示や管理に使用されます。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;プラグイン表示名&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pluginId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;プラグインを識別する一意な文字列&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pluginVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pluginApiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pluginDescription&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;プラグインの概要&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pluginDeveloper&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;制作者名など&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pluginLicenseName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;プラグインのライセンス&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;プラグインに関するURL&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>上記以外のキーを追加することもできます。Soyokaze本体が認識しないキーは無視されます。JSONとして解析できない場合や、<code class="docutils literal notranslate"><span class="pre">pluginApiVersion</span></code>がSoyokaze本体の<code class="docutils literal notranslate"><span class="pre">PLUGINVERSION</span></code>と異なる場合、プラグインはロードされません。</p>
+</section>
 </section>
 <section id="query">
 <h3><code class="docutils literal notranslate"><span class="pre">Query</span></code><a class="headerlink" href="#query" title="Link to this heading"></a></h3>
@@ -355,7 +386,7 @@ argv[1] = &quot;keyword2&quot;
 </pre></div>
 </div>
 <p>検索結果に表示するアイコンを返します。成功時は0を返し、<code class="docutils literal notranslate"><span class="pre">icon</span></code>にアイコンハンドルを設定します。失敗時は0以外を返してください。</p>
-<p>返したアイコンの所有権はプラグイン側にあります。不要になったアイコンはプラグイン側で破棄してください。通常は<code class="docutils literal notranslate"><span class="pre">Finalize</span></code>で破棄します。</p>
+<p>返したアイコンの所有権はプラグイン側にあります。アプリ側はアイコンハンドルの解放を行わないため、プラグイン側で適切に解放してください。通常は<code class="docutils literal notranslate"><span class="pre">Finalize</span></code>で破棄します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">GetIcon</span></code>に失敗した場合、Soyokazeはデフォルトアイコンを使用します。</p>
 </section>
 <section id="closehandle">
@@ -375,8 +406,8 @@ argv[1] = &quot;keyword2&quot;
 <p><code class="docutils literal notranslate"><span class="pre">Finalize</span></code>の後にプラグインDLLがアンロードされます。関数から戻った後に、プラグイン内の関数やデータを参照しないでください。</p>
 </section>
 </section>
-<section id="id4">
-<h2>本体側API<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>本体側API<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>には、Soyokaze本体が提供する次の関数が含まれます。プラグインは<code class="docutils literal notranslate"><span class="pre">Initialize</span></code>で受け取った構造体を保存し、必要なタイミングで各関数ポインタを呼び出します。</p>
 <table class="docutils align-default">
 <thead>
@@ -400,19 +431,46 @@ argv[1] = &quot;keyword2&quot;
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetMainWindowHandle</span></code></p></td>
 <td><p>メインウィンドウの<code class="docutils literal notranslate"><span class="pre">HWND</span></code>を取得する</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LoadIconFromPath</span></code></p></td>
+<td><p>ファイルパスに関連付けられたアイコンを取得する</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LoadExtensionIcon</span></code></p></td>
+<td><p>ファイル拡張子に関連付けられたアイコンを取得する</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HasIcon</span></code></p></td>
+<td><p>アイコンが本体側で管理されているか確認する</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OpenFolder</span></code></p></td>
+<td><p>設定されたファイラーでフォルダを開く</p></td>
+</tr>
 </tbody>
 </table>
-<p>ログ出力関数と<code class="docutils literal notranslate"><span class="pre">PopupMessage</span></code>は、UTF-8文字列を受け取ります。</p>
+<p>アイコン関連の関数の宣言は次のとおりです。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">HICON</span><span class="w"> </span><span class="nf">LoadIconFromPath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<span class="n">HICON</span><span class="w"> </span><span class="nf">LoadExtensionIcon</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fileExt</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">HasIcon</span><span class="p">(</span><span class="n">HICON</span><span class="w"> </span><span class="n">icon</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">OpenFolder</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>ログ出力関数と<code class="docutils literal notranslate"><span class="pre">PopupMessage</span></code>は、UTF-8文字列を受け取ります。
+<code class="docutils literal notranslate"><span class="pre">LoadIconFromPath</span></code>と<code class="docutils literal notranslate"><span class="pre">LoadExtensionIcon</span></code>の引数もUTF-8文字列です。取得したアイコンは本体側が所有するため、プラグイン側で破棄しないでください。
+<code class="docutils literal notranslate"><span class="pre">HasIcon</span></code>は、本体側で管理されているアイコンの場合に1、それ以外の場合に0を返します。
+<code class="docutils literal notranslate"><span class="pre">OpenFolder</span></code>の引数はUTF-8文字列です。設定されたファイラーが利用できない場合はExplorerでフォルダを開きます。戻り値は成功時に0、失敗時に0以外です。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="w"> </span><span class="n">gLauncher</span><span class="p">{};</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">gPluginInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span><span class="s">{</span>
+<span class="s">  &quot;pluginId&quot;: &quot;sample-plugin&quot;,</span>
+<span class="s">  &quot;pluginApiVersion&quot;: 102</span>
+<span class="s">}</span><span class="dl">)</span><span class="s">&quot;</span><span class="p">;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">plugin_info</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">plugin_info</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 関数テーブルは呼び出し後も使用するため、コピーして保持する</span>
 <span class="w">    </span><span class="n">gLauncher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">table</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">plugin_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gPluginInfo</span><span class="p">;</span>
 <span class="w">    </span><span class="n">gLauncher</span><span class="p">.</span><span class="n">InfoLog</span><span class="p">(</span><span class="s">&quot;sample plugin initialized&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="n">gLauncher</span><span class="p">.</span><span class="n">PopupMessage</span><span class="p">(</span><span class="s">&quot;Sample plugin is ready&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -425,8 +483,8 @@ argv[1] = &quot;keyword2&quot;
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h2>最小実装例<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>最小実装例<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <p>以下は、入力が<code class="docutils literal notranslate"><span class="pre">hello</span></code>のときに1件の候補を返し、実行時にログを出力する最小構成の例です。実際のDLLでは、検索結果をプラグイン固有の構造体で保持し、<code class="docutils literal notranslate"><span class="pre">Query</span></code>で動的に生成してください。</p>
 <p>この例では、説明を簡潔にするため、検索ハンドルを1件の検索結果そのものとして扱っています。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PluginExportTable.h&quot;</span>
@@ -437,6 +495,13 @@ argv[1] = &quot;keyword2&quot;
 <span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
 
 <span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="w"> </span><span class="n">gLauncher</span><span class="p">{};</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">gPluginInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span><span class="s">{</span>
+<span class="s">  &quot;displayName&quot;: &quot;Sample Plugin&quot;,</span>
+<span class="s">  &quot;pluginId&quot;: &quot;sample-plugin&quot;,</span>
+<span class="s">  &quot;pluginVersion&quot;: &quot;1.0.0&quot;,</span>
+<span class="s">  &quot;pluginApiVersion&quot;: 102,</span>
+<span class="s">  &quot;pluginDescription&quot;: &quot;Sample plugin command&quot;</span>
+<span class="s">}</span><span class="dl">)</span><span class="s">&quot;</span><span class="p">;</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">Match</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span>
@@ -458,12 +523,13 @@ argv[1] = &quot;keyword2&quot;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">copied</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">)</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="n">LAUNCHER_FUNCTION_TABLE</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">plugin_info</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">plugin_info</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">gLauncher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">table</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">plugin_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gPluginInfo</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -553,6 +619,7 @@ argv[1] = &quot;keyword2&quot;
 
 <span class="w">    </span><span class="o">*</span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="n">Initialize</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">Finalize</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="n">Query</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="n">GetMatchCount</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="n">GetMatchLevel</span><span class="p">,</span>
@@ -565,7 +632,6 @@ argv[1] = &quot;keyword2&quot;
 <span class="w">        </span><span class="o">&amp;</span><span class="n">Execute</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="n">GetErrorString</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="n">GetIcon</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">Finalize</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -579,14 +645,16 @@ argv[1] = &quot;keyword2&quot;
 <p>プラグインとSoyokaze本体は、同じ<code class="docutils literal notranslate"><span class="pre">PluginExportTable.h</span></code>の定義、同じCPUアーキテクチャ、互換性のあるビルド環境で使用してください。32bit DLLをx64版Soyokazeからロードすることはできません。</p>
 <p><code class="docutils literal notranslate"><span class="pre">LNCRPLUGINMATCHHANDLE</span></code>の実体はプラグイン側が定義します。ハンドルはプラグイン間で共通に見えても、異なるプラグインのハンドルを別のプラグインの関数に渡すことはできません。</p>
 </section>
-<section id="id6">
-<h2>実装時の注意<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>実装時の注意<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Initialize</span></code>に渡された<code class="docutils literal notranslate"><span class="pre">LAUNCHER_FUNCTION_TABLE</span></code>は、必要に応じてコピーして保持する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Query</span></code>が返したハンドルは、<code class="docutils literal notranslate"><span class="pre">CloseHandle</span></code>が呼ばれるまで有効にする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GetMatchCount</span></code>が返す件数と、各APIに渡される<code class="docutils literal notranslate"><span class="pre">index</span></code>の範囲を一致させる</p></li>
 <li><p>文字列はUTF-8で返し、必要なバッファ長には終端文字を含める</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GetIcon</span></code>で返したアイコンはプラグイン側で破棄する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GetIcon</span></code>で返したアイコンはプラグイン側で適切に解放する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LoadIconFromPath</span></code>と<code class="docutils literal notranslate"><span class="pre">LoadExtensionIcon</span></code>で返したアイコンは本体側で管理されるため、プラグイン側で破棄しない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HasIcon</span></code>の戻り値は、管理対象の場合が1、管理対象外の場合が0</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Execute</span></code>の戻り値は、成功時だけ0にする</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Finalize</span></code>から戻った後にプラグインのリソースを参照しない</p></li>
 <li><p>APIのバージョンが合わない場合は<code class="docutils literal notranslate"><span class="pre">LNCRPLUGIN_Bind</span></code>でエラーを返す</p></li>

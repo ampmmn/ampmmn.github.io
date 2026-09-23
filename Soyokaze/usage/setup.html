@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>インストール &mdash; Soyokaze 0.56.0</title>
+  <title>インストール &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -50,7 +50,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">インストール</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">動作環境</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#doanload">ダウンロード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download">ダウンロード</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">インストール</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#uninstallation">アンインストール</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update-procedure">バージョンアップ</a></li>
@@ -69,7 +69,7 @@
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -90,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -128,36 +129,38 @@
 <li><p>Windows10 64bit</p></li>
 </ul>
 </section>
-<section id="doanload">
-<h2>ダウンロード<a class="headerlink" href="#doanload" title="Link to this heading"></a></h2>
-<p>GitHubの<a class="reference external" href="https://github.com/ampmmn/Soyokaze/releases/latest">最新版リリースページ</a>から入手することができる<br />
-Assets欄にある<code class="docutils literal notranslate"><span class="pre">.7z</span></code>形式のファイルが実行ファイル一式をダウンロードする</p>
+<section id="download">
+<h2>ダウンロード<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>GitHubの<a class="reference external" href="https://github.com/ampmmn/Soyokaze/releases/latest">最新版リリースページ</a>からダウンロードします。</p>
+<p>Assets欄にある<code class="docutils literal notranslate"><span class="pre">.zip</span></code>形式のファイルが、実行ファイル一式をまとめたアーカイブです。ダウンロードしたファイルは、7-Zipなどの解凍ソフトで展開してください。</p>
 </section>
 <hr class="docutils" />
 <section id="id1">
 <h2>インストール<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>zip(7z)をファイルを展開して任意のフォルダに展開する</p></li>
-<li><p>展開先フォルダにあるsoyokaze.exeを実行する</p></li>
-<li><p>設定はユーザーフォルダ(たいていは C:/Users/(ユーザー名))直下の .soyokaze フォルダに保存される<br />
-初回実行時に .soyokazeフォルダを作成する</p></li>
+<li><p>ダウンロードした<code class="docutils literal notranslate"><span class="pre">.zip</span></code>ファイルを、任意のフォルダに展開する</p></li>
+<li><p>展開したフォルダを開き、soyokaze.exe を実行する</p></li>
+<li><p>初回起動時に、設定ファイルの保存先が自動的に作成される</p></li>
 </ol>
+<p>本アプリは、展開したフォルダから実行できます。スタートメニューなどから起動したい場合は、必要に応じてショートカットを作成してください。</p>
+<p>初期状態では、設定はユーザーフォルダ（通常は<code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;ユーザー名&gt;</span></code>）直下の .soyokaze フォルダに保存されます。</p>
 </section>
 <hr class="docutils" />
 <section id="uninstallation">
 <h2>アンインストール<a class="headerlink" href="#uninstallation" title="Link to this heading"></a></h2>
 <p>アンインストーラはないため、以下すべてを手動で行う。</p>
 <ol class="arabic simple">
-<li><p>タスクトレイ上のコンテキストメニュー-<code class="docutils literal notranslate"><span class="pre">アプリケーションの設定</span></code>-<code class="docutils literal notranslate"><span class="pre">基本</span></code>-<code class="docutils literal notranslate"><span class="pre">ショートカット設定</span></code>を表示し、<code class="docutils literal notranslate"><span class="pre">作成したショートカットをすべてを削除する</span></code>を押下する</p></li>
+<li><p>作成したショートカットがある場合は、タスクトレイのメニューから<code class="docutils literal notranslate"><span class="pre">アプリケーションの設定</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">基本</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">ショートカット設定</span></code>を開き、ショートカットを削除する</p></li>
 <li><p>アプリを終了する</p></li>
-<li><p>インストール時に展開したフォルダごと削除する</p></li>
-<li><p><a class="reference internal" href="#configuration-directory"><span class="xref myst">設定フォルダ</span></a> (C:/Users/(ユーザー名)/.soyokaze)を削除する</p></li>
+<li><p>インストール時に展開したフォルダを削除する</p></li>
+<li><p>設定フォルダ（通常は C:\Users&lt;ユーザー名&gt;.soyokaze ）を削除する</p></li>
 </ol>
 </section>
 <hr class="docutils" />
 <section id="update-procedure">
 <h2>バージョンアップ<a class="headerlink" href="#update-procedure" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
+<li><p>新しいバージョンのアーカイブをダウンロードして展開する</p></li>
 <li><p>本アプリを実行している場合は終了する</p></li>
 <li><p>実行ファイルを置いたフォルダ内のファイルをすべて上書きする</p></li>
 </ol>

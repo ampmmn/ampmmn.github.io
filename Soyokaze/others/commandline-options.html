@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>コマンドラインオプション &mdash; Soyokaze 0.56.0</title>
+  <title>コマンドラインオプション &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -21,7 +21,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="利用ライブラリ" href="3rdlibs.html" />
-    <link rel="prev" title="正規表現の制限" href="regular-expression.html" /> 
+    <link rel="prev" title="パラメータ候補リストについて" href="extra-popup-list.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,7 +58,7 @@
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user-commands.html">登録型のコマンド</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -79,6 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -109,7 +110,7 @@
   <section id="command-line-options">
 <h1>コマンドラインオプション<a class="headerlink" href="#command-line-options" title="Link to this heading"></a></h1>
 <ul class="simple">
-<li><p>/ChangeDir=<em>ディレクトリ</em></p>
+<li><p>/ChangeDir=<em>ディレクトリ</em> または --cd=<em>ディレクトリ</em></p>
 <ul>
 <li><p>カレントディレクトリを指定したディレクトリに変更する</p></li>
 </ul>
@@ -120,7 +121,7 @@
 <li><p>例: <code class="docutils literal notranslate"><span class="pre">/Runcommand=chrome</span></code> または <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">chrome</span></code></p></li>
 </ul>
 </li>
-<li><p>/Hide</p>
+<li><p>/Hide または --hide</p>
 <ul>
 <li><p>起動中(かつ表示中)の入力画面を非表示にする</p></li>
 <li><p>bluewindにはこのオプションの対となる<code class="docutils literal notranslate"><span class="pre">/Activate</span></code>というのがあったが、<code class="docutils literal notranslate"><span class="pre">/Activate</span></code>はとくに実装していない</p>
@@ -135,14 +136,14 @@
 <li><p>そのファイルを登録する(コマンド登録画面を表示する)</p></li>
 </ul>
 </li>
-<li><p>/Paste</p></li>
+<li><p>/Paste または --paste=<em>文字列</em></p></li>
 <li><p>後続のパラメータを入力欄に入力した状態で起動する</p>
 <ul>
-<li><p>例 : <code class="docutils literal notranslate"><span class="pre">/Paste</span> <span class="pre">c:\</span></code><br />
+<li><p>例 : <code class="docutils literal notranslate"><span class="pre">/Paste</span> <span class="pre">c:\</span></code> または <code class="docutils literal notranslate"><span class="pre">--paste=c:\</span></code>
 →入力欄に <code class="docutils literal notranslate"><span class="pre">c:\</span></code>という文字列が入力される</p></li>
 </ul>
 </li>
-<li><p>/SelStart=</p>
+<li><p>/SelStart=<em>位置</em> または --sel-start=<em>位置</em></p>
 <ul>
 <li><p>カーソル位置を指定する。</p>
 <ul>
@@ -152,7 +153,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">/Paste</span></code>や<code class="docutils literal notranslate"><span class="pre">/SelLength</span></code>と組み合わせ使う</p></li>
 </ul>
 </li>
-<li><p>/SelLength=</p>
+<li><p>/SelLength=<em>長さ</em> または --sel-length=<em>長さ</em></p>
 <ul>
 <li><p>選択範囲の長さを指定する。</p>
 <ul>
@@ -177,7 +178,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="regular-expression.html" class="btn btn-neutral float-left" title="正規表現の制限" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="extra-popup-list.html" class="btn btn-neutral float-left" title="パラメータ候補リストについて" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="3rdlibs.html" class="btn btn-neutral float-right" title="利用ライブラリ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

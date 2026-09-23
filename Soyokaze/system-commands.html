@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>システムコマンド &mdash; Soyokaze 0.56.0</title>
+  <title>システムコマンド &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -58,7 +58,7 @@
 <p class="caption" role="heading"><span class="caption-text">コマンド</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user-commands.html">登録型のコマンド</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">システムコマンド</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cd">cd</a></li>
@@ -108,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="others/extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -142,8 +143,16 @@
 <p>システムコマンドとは、本アプリに最初から登録済のキーワードのこと。</p>
 <p>削除することはできないが、名前を変更することはできる。<br />
 また、一部のコマンドについては無効化することができる。<br />
-無効化すると、<a class="reference internal" href="usage/how_to_use.html#open-input-window"><span class="std std-ref">入力画面</span></a>でキーワードを入力しても候補として表示されず実行もできなくなる。</p>
+無効化すると、入力画面でキーワードを入力しても候補として表示されず実行もできなくなる。</p>
 <p>名前の変更や無効化は<a class="reference internal" href="window/keyword-manager.html"><span class="doc std std-doc">キーワードマネージャ</span></a>で設定することができる。</p>
+<p>最初に覚えると便利なシステムコマンドは次のとおりです。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">new</span></code>: 新しいコマンドを登録する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edit</span></code>: 登録済みコマンドを管理する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setting</span></code>: アプリケーション設定を開く</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exit</span></code>: 本アプリを終了する</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">shutdown</span></code>、<code class="docutils literal notranslate"><span class="pre">reboot</span></code>、<code class="docutils literal notranslate"><span class="pre">logoff</span></code>、<code class="docutils literal notranslate"><span class="pre">emptyrecyclebin</span></code>などは、実行するとWindowsやファイルに影響するコマンドです。誤操作が心配な場合は、キーワードマネージャで無効にするか、<code class="docutils literal notranslate"><span class="pre">実行前に確認する</span></code>を有効にしてください。</p>
 </section>
 <hr class="docutils" />
 <section id="cd">
@@ -187,7 +196,8 @@
 <section id="emptyrecyclebin">
 <h2>emptyrecyclebin<a class="headerlink" href="#emptyrecyclebin" title="Link to this heading"></a></h2>
 <p>ごみ箱を空にする。<br />
-コマンド設定にて、空にする前の確認の有無を設定することができる。(初期状態は確認なし)</p>
+コマンド設定にて、空にする前の確認の有無を設定することができる。(初期状態は確認なし)
+削除したファイルは、通常の方法では元に戻せません。必要なファイルがごみ箱に残っていないことを確認してから実行してください。</p>
 </section>
 <hr class="docutils" />
 <section id="exit">
@@ -208,7 +218,7 @@
 <section id="maindir">
 <h2>maindir<a class="headerlink" href="#maindir" title="Link to this heading"></a></h2>
 <p>本アプリの実行ファイルが置かれているフォルダをエクスプローラーまたはファイラーで表示する。</p>
-<p><a class="reference internal" href="window/app-settings/command-execute.html#command-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
+<p>アプリケーション設定で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
 設定していない場合はエクスプローラーで開く。</p>
 </section>
 <hr class="docutils" />
@@ -225,6 +235,7 @@
 <section id="reboot">
 <h2>reboot<a class="headerlink" href="#reboot" title="Link to this heading"></a></h2>
 <p>PCを再起動する。</p>
+<p>実行中のアプリケーションによっては、保存していないデータが失われる可能性があります。</p>
 </section>
 <hr class="docutils" />
 <section id="registwin">
@@ -253,6 +264,7 @@
 <section id="shutdown">
 <h2>shutdown<a class="headerlink" href="#shutdown" title="Link to this heading"></a></h2>
 <p>システムをシャットダウンする。</p>
+<p>実行前に、保存していないデータがないことを確認してください。</p>
 </section>
 <hr class="docutils" />
 <section id="standby">
@@ -268,9 +280,9 @@
 <section id="userdir">
 <h2>userdir<a class="headerlink" href="#userdir" title="Link to this heading"></a></h2>
 <p>設定ファイルの保存先フォルダをエクスプローラーまたはファイラーで表示する。</p>
-<p><a class="reference internal" href="window/app-settings/command-execute.html#command-execute"><span class="std std-ref">アプリケーション設定</span></a> で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
+<p>アプリケーション設定で外部ファイラーを設定している場合は外部ファイラーで開く。<br />
 設定していない場合はエクスプローラーで開く。</p>
-<p>設定ファイルの保存先については <a class="reference internal" href="usage/setup.html#configuration-directory"><span class="std std-ref">アプリデータの保存フォルダ</span></a> を参照のこと</p>
+<p>設定ファイルの保存先については、インストールの<a class="reference internal" href="usage/setup.html"><span class="doc std std-doc">設定ファイルの保存先</span></a>を参照してください。</p>
 </section>
 <hr class="docutils" />
 <section id="version">
@@ -279,7 +291,7 @@
 </section>
 <section id="edit-system-command">
 <h2>システムコマンドの編集<a class="headerlink" href="#edit-system-command" title="Link to this heading"></a></h2>
-<p>一部の<a class="reference internal" href="#"><span class="xref myst">システムコマンド</span></a>は機能を無効化することができる。<br />
+<p>一部のシステムコマンドは機能を無効化することができる。<br />
 無効化すると、入力欄にコマンド名を入力しても候補として表示されなくなる。</p>
 <p>キーワードマネージャ上でシステムコマンドを選択し、<code class="docutils literal notranslate"><span class="pre">編集</span></code>ボタンを選択すると下記の画面が表示される。</p>
 <p><img alt="" src="_images/edit-builtin-command.png" /></p>

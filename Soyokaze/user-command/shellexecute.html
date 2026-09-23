@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>通常コマンド &mdash; Soyokaze 0.56.0</title>
+  <title>通常コマンド &mdash; Soyokaze 0.58.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -82,7 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="py_extension.html">Python拡張コマンド</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">コマンドとして登録していなくても実行できる機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adhoc-commands.html">登録しなくても使える機能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system-commands.html">システムコマンド</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">マクロ</span></p>
@@ -103,6 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../others/hotkey.html">ホットキーの種別</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/about-matching.html">候補欄のコマンド表示順序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/regular-expression.html">正規表現の制限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/extra-popup-list.html">パラメータ候補リストについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/commandline-options.html">コマンドラインオプション</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/3rdlibs.html">利用ライブラリ</a></li>
 </ul>
@@ -135,6 +136,8 @@
 <h1>通常コマンド<a class="headerlink" href="#shell-execute-command" title="Link to this heading"></a></h1>
 <p>通常コマンドはファイルやURLを関連付けられたプログラムで表示するためのコマンドである。<br />
 よく使うプログラムやファイル、URLに対して任意の名前を設定し、その名前で実行することができる。</p>
+<p>例えば、メモ帳を<code class="docutils literal notranslate"><span class="pre">memo</span></code>というキーワードで起動する場合は、<code class="docutils literal notranslate"><span class="pre">コマンドの名前</span></code>に<code class="docutils literal notranslate"><span class="pre">memo</span></code>、<code class="docutils literal notranslate"><span class="pre">実行ファイル・URLなど</span></code>に<code class="docutils literal notranslate"><span class="pre">notepad.exe</span></code>を指定します。登録後に入力画面で<code class="docutils literal notranslate"><span class="pre">memo</span></code>と入力してEnterキーを押すと、メモ帳を起動できます。</p>
+<p>このページには詳細な設定項目も含まれています。まずはコマンド名と実行ファイル・URLなどだけを設定し、必要になったときにパラメータやホットキーなどを追加してください。</p>
 <section id="general">
 <h2>基本<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
 <p><img alt="" src="../_images/edit-command7.png" /></p>
@@ -158,14 +161,16 @@ URL(<code class="docutils literal notranslate"><span class="pre">http://...</spa
 <li><p>そのほかに<a class="reference internal" href="../macros.html"><span class="doc std std-doc">マクロ</span></a>を利用することが可能</p></li>
 </ul>
 </li>
+</ul>
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">browser</span></code>というコマンドのパラメータに<code class="docutils literal notranslate"><span class="pre">$*</span></code>を指定すると、入力画面で<code class="docutils literal notranslate"><span class="pre">browser</span> <span class="pre">https://example.com</span></code>と入力したとき、URLがそのまま実行ファイルに渡されます。</p>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">作業フォルダ</span></code><br />
 実行するときのカレントディレクトリを指定する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">表示方法</span></code><br />
 通常表示/最大表示/最小表示 を選ぶことができる<br />
 起動するプログラムによっては指定が効かないこともある</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">管理者権限で実行</span></code><br />
-チェックすると、管理者権限でプロセスを起動する<br />
-<code class="docutils literal notranslate"><span class="pre">.exe</span></code>、<code class="docutils literal notranslate"><span class="pre">.bat</span></code>のときのみ選択可能</p></li>
+チェックすると、管理者権限でプロセスを起動する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
 <a class="reference internal" href="../window/command-hotkey.html"><span class="doc std std-doc">コマンドを呼び出すキー</span></a>を設定できる。設定したキーを押下すると、コマンドを実行できる。<br />
 <img alt="" src="../_images/hotkey-for-command.png" /></p></li>
