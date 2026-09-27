@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>キーワードマネージャ &mdash; Soyokaze 0.58.1</title>
+  <title>キーワードマネージャ &mdash; Soyokaze 0.60.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -58,6 +58,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">キーワードマネージャ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">概要</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#description">画面の説明</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#import-and-export">インポートとエクスポート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#export">エクスポート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import">インポート</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#copy-and-paste">クリップボードを経由したコマンドのインポートとエクスポート</a></li>
@@ -153,9 +158,45 @@
 (選択中のコマンドの設定内容をもとに、別のコマンドを作ることができる)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code><br />
 リスト上で選択したコマンドを削除する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">インポート</span></code></p>
+<ul>
+<li><p>ファイルからコマンドを読み込み、追加するコマンドを選択して登録する</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">エクスポート</span></code></p>
+<ul>
+<li><p>リスト上で選択したユーザーコマンドをファイルに保存する</p></li>
+</ul>
+</li>
 </ul>
 <p>新規作成や編集が終わったら、編集画面の<code class="docutils literal notranslate"><span class="pre">OK</span></code>を押して内容を反映します。変更を反映せずに閉じたい場合は<code class="docutils literal notranslate"><span class="pre">キャンセル</span></code>を押します。</p>
 <p>コマンドが候補に表示されない場合は、リスト上でそのコマンドが無効になっていないか、フィルター欄に不要な文字が残っていないかを確認してください。</p>
+</section>
+</section>
+<section id="import-and-export">
+<h2>インポートとエクスポート<a class="headerlink" href="#import-and-export" title="Link to this heading"></a></h2>
+<section id="export">
+<h3>エクスポート<a class="headerlink" href="#export" title="Link to this heading"></a></h3>
+<p>エクスポートしたいユーザーコマンドをリスト上で選択し、<code class="docutils literal notranslate"><span class="pre">エクスポート</span></code>を押します。保存先を指定すると、選択したコマンドをファイルに保存します。</p>
+</section>
+<section id="import">
+<h3>インポート<a class="headerlink" href="#import" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">インポート</span></code>を押して、コマンドが保存されたファイルを選択します。読み込み可能なコマンドが一覧に表示されます。インポート対象の選択画面では、最初はすべてのコマンドが選択されています。必要に応じて選択を変更し、<code class="docutils literal notranslate"><span class="pre">OK</span></code>を押してください。</p>
+<p><img alt="" src="../_images/import-command-selection.png" /></p>
+<p>同じ名前のコマンドがすでに登録されている場合の処理は、選択画面でまとめて指定します。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">上書きする</span></code></p>
+<ul>
+<li><p>登録済みコマンドをインポートした内容で置き換えます。既存コマンドのホットキー設定は維持されます。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">名前を変更して追加する</span></code></p>
+<ul>
+<li><p>インポートしたコマンドを追加します。名前が重複する場合は、<code class="docutils literal notranslate"><span class="pre">-1</span></code>、<code class="docutils literal notranslate"><span class="pre">-2</span></code>のような番号を付け、未使用の名前で登録します。初期設定はこちらです。</p></li>
+</ul>
+</li>
+</ul>
+<p>読み込みに対応していないコマンドはインポート対象から除外され、除外した項目がある場合は通知されます。</p>
 </section>
 </section>
 <section id="copy-and-paste">

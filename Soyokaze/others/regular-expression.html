@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>正規表現の制限 &mdash; Soyokaze 0.58.1</title>
+  <title>正規表現の制限 &mdash; Soyokaze 0.60.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -125,7 +125,7 @@
 </ul>
 <p>対応していない構文を含むパターンは、正規表現エラーとして扱われます。</p>
 <p>なお、<a class="reference internal" href="../user-command/regexp.html"><span class="std std-doc">正規表現コマンド</span></a>や<a class="reference internal" href="../user-command/filter.html"><span class="std std-doc">フィルターコマンド</span></a>の置換処理はこの制限の対象外です。これらでは従来の正規表現処理を使用し、キャプチャ文字列の参照方法も従来どおり<code class="docutils literal notranslate"><span class="pre">$1</span></code>、<code class="docutils literal notranslate"><span class="pre">$2</span></code>の形式です。</p>
-<p>Watch Pathコマンドの<code class="docutils literal notranslate"><span class="pre">除外フィルタ</span></code>は、指定されたワイルドカードから内部で正規表現を生成します。利用者が正規表現を直接指定するものではありません。</p>
+<p>フォルダ更新検知コマンドの<code class="docutils literal notranslate"><span class="pre">除外フィルタ</span></code>は、指定されたワイルドカードから内部で正規表現を生成します。利用者が正規表現を直接指定するものではありません。</p>
 </section>
 
 

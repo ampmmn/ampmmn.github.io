@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>通常コマンド &mdash; Soyokaze 0.58.1</title>
+  <title>通常コマンド &mdash; Soyokaze 0.60.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -149,10 +149,12 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">コメント表示欄のテキストを検索に使用する</span></code><br />
 チェックすると、<code class="docutils literal notranslate"><span class="pre">コマンドの説明</span></code>に入力したテキストもコマンドの絞り込みに使用する<br />
 例えば上の図の場合、「起動」と入力した場合にも、コマンドが候補にあがるようになる</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">実行ファイル・URLなど</span></code><br />
+<li><p><code class="docutils literal notranslate"><span class="pre">実行ファイル・フォルダ・URL</span></code><br />
 実行ファイル(<code class="docutils literal notranslate"><span class="pre">*.exe</span></code>)を指定すると、その実行ファイルが実行される<br />
 URL(<code class="docutils literal notranslate"><span class="pre">http://...</span></code> <code class="docutils literal notranslate"><span class="pre">https://...</span></code>)を指定すると、ブラウザでそのURLを表示する<br />
 その他の拡張子のファイルを指定した場合、拡張子に関連付けられたプログラムでそのファイルを開く</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">管理者権限で実行</span></code><br />
+チェックすると、管理者権限でプロセスを起動する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">パラメータ</span></code><br />
 実行ファイル(.exe)を指定したときに、実行ファイルに渡すパラメータを指定する</p>
 <ul>
@@ -164,13 +166,13 @@ URL(<code class="docutils literal notranslate"><span class="pre">http://...</spa
 </ul>
 <p>例えば、<code class="docutils literal notranslate"><span class="pre">browser</span></code>というコマンドのパラメータに<code class="docutils literal notranslate"><span class="pre">$*</span></code>を指定すると、入力画面で<code class="docutils literal notranslate"><span class="pre">browser</span> <span class="pre">https://example.com</span></code>と入力したとき、URLがそのまま実行ファイルに渡されます。</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">パラメータ候補リストを使用する</span></code><br />
+チェックすると、パラメータに<code class="docutils literal notranslate"><span class="pre">$*</span></code>または<code class="docutils literal notranslate"><span class="pre">$1</span></code>〜<code class="docutils literal notranslate"><span class="pre">$9</span></code>を指定した場合に、このコマンドの実行時引数に対する候補リストをポップアップ表示する。詳細は<a class="reference internal" href="../window/input-window.html#parameter-candidate-popup"><span class="std std-ref">パラメータ候補リスト</span></a>を参照。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">作業フォルダ</span></code><br />
 実行するときのカレントディレクトリを指定する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">表示方法</span></code><br />
 通常表示/最大表示/最小表示 を選ぶことができる<br />
 起動するプログラムによっては指定が効かないこともある</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">管理者権限で実行</span></code><br />
-チェックすると、管理者権限でプロセスを起動する</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ホットキー</span></code><br />
 <a class="reference internal" href="../window/command-hotkey.html"><span class="doc std std-doc">コマンドを呼び出すキー</span></a>を設定できる。設定したキーを押下すると、コマンドを実行できる。<br />
 <img alt="" src="../_images/hotkey-for-command.png" /></p></li>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>インストール &mdash; Soyokaze 0.58.1</title>
+  <title>インストール &mdash; Soyokaze 0.60.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -140,10 +140,10 @@
 <ol class="arabic simple">
 <li><p>ダウンロードした<code class="docutils literal notranslate"><span class="pre">.zip</span></code>ファイルを、任意のフォルダに展開する</p></li>
 <li><p>展開したフォルダを開き、soyokaze.exe を実行する</p></li>
-<li><p>初回起動時に、設定ファイルの保存先が自動的に作成される</p></li>
+<li><p>初回起動時に表示される画面で、設定ファイルの保存先を選択する</p></li>
 </ol>
 <p>本アプリは、展開したフォルダから実行できます。スタートメニューなどから起動したい場合は、必要に応じてショートカットを作成してください。</p>
-<p>初期状態では、設定はユーザーフォルダ（通常は<code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;ユーザー名&gt;</span></code>）直下の .soyokaze フォルダに保存されます。</p>
+<p>設定ファイルは、初回起動時に選択した保存先に保存されます。</p>
 </section>
 <hr class="docutils" />
 <section id="uninstallation">
@@ -153,7 +153,7 @@
 <li><p>作成したショートカットがある場合は、タスクトレイのメニューから<code class="docutils literal notranslate"><span class="pre">アプリケーションの設定</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">基本</span></code>&gt;<code class="docutils literal notranslate"><span class="pre">ショートカット設定</span></code>を開き、ショートカットを削除する</p></li>
 <li><p>アプリを終了する</p></li>
 <li><p>インストール時に展開したフォルダを削除する</p></li>
-<li><p>設定フォルダ（通常は C:\Users&lt;ユーザー名&gt;.soyokaze ）を削除する</p></li>
+<li><p>設定フォルダがインストール先とは別に存在する場合は削除する（通常モードではユーザーフォルダ直下の .soyokaze フォルダ）</p></li>
 </ol>
 </section>
 <hr class="docutils" />
@@ -168,11 +168,17 @@
 <hr class="docutils" />
 <section id="configuration-directory">
 <h2>アプリデータの保存フォルダ<a class="headerlink" href="#configuration-directory" title="Link to this heading"></a></h2>
-<p>アプリ初回起動時に ユーザーフォルダ直下(通常は <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;ユーザー名&gt;</span></code>)に .soyokaze フォルダを作成し、このフォルダ内に設定ファイル一式を保存する。</p>
+<p>初回起動時に通常モードとポータブルモードのどちらで設定を保存するか選択する。選択画面は、ユーザーフォルダ直下の .soyokaze フォルダと、実行ファイルと同じフォルダの <code class="docutils literal notranslate"><span class="pre">profile</span></code> フォルダがどちらも存在しない場合に表示される。</p>
+<p><img alt="" src="../_images/first-start.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">このPCに設定を保存</span></code>: ユーザーフォルダ直下(通常は <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;ユーザー名&gt;</span></code>)の .soyokaze フォルダに保存する。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">アプリと同じフォルダに設定を保存</span></code>: 実行ファイルと同じフォルダに <code class="docutils literal notranslate"><span class="pre">profile</span></code> フォルダを作成し、その中に保存する。</p></li>
+</ul>
+<p>選択画面でキャンセルすると、アプリは起動しない。</p>
 <section id="portable-mode">
 <h3>ポータブル版<a class="headerlink" href="#portable-mode" title="Link to this heading"></a></h3>
-<p>exeと同じフォルダ階層に<code class="docutils literal notranslate"><span class="pre">profile</span></code>というフォルダが存在する場合、ポータブル版として動作する。<br />
-この場合、設定ファイル一式を<code class="docutils literal notranslate"><span class="pre">profile</span></code>フォルダ内に作成する。</p>
+<p>実行ファイルと同じフォルダに<code class="docutils literal notranslate"><span class="pre">profile</span></code>フォルダが存在する場合、ポータブルモードとして動作する。通常モードとポータブルモードの保存先が両方存在する場合は、ポータブルモードを優先する。
+既存の保存先がある場合、初回起動時の選択画面は表示せず、その保存先を引き継ぐ。</p>
 </section>
 </section>
 </section>
