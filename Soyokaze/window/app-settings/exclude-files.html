@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>実行＞除外するファイル &mdash; Soyokaze 0.60.0</title>
+  <title>実行＞除外する項目 &mdash; Soyokaze 0.61.0</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -66,7 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="history.html">入力＞履歴</a></li>
 <li class="toctree-l3"><a class="reference internal" href="command-execute.html">実行</a></li>
 <li class="toctree-l3"><a class="reference internal" href="path.html">実行＞パス</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">実行＞除外するファイル</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">実行＞除外する項目</a></li>
 <li class="toctree-l3"><a class="reference internal" href="priority.html">実行＞優先度</a></li>
 <li class="toctree-l3"><a class="reference internal" href="files-and-folders.html">実行＞ファイルとフォルダ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="appearance.html">表示</a></li>
@@ -140,7 +140,7 @@
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../window.html">画面の説明</a></li>
           <li class="breadcrumb-item"><a href="../app-settings.html">アプリケーション設定</a></li>
-      <li class="breadcrumb-item active">実行＞除外するファイル</li>
+      <li class="breadcrumb-item active">実行＞除外する項目</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -149,29 +149,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="command-execute-exclude-files">
-<span id="id1"></span><h1>実行＞除外するファイル<a class="headerlink" href="#command-execute-exclude-files" title="Link to this heading"></a></h1>
-<p><a class="reference internal" href="../../adhoc-command/pathfind.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> コマンドにおいて、対象外とするファイルを指定することができる。</p>
+  <section id="command-execute-exclude-items">
+<span id="command-execute-exclude-files"></span><h1>実行＞除外する項目<a class="headerlink" href="#command-execute-exclude-items" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../../adhoc-command/pathfind.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ファイル名を指定して実行</span></code></span></a> やアプリ、スタートメニューの候補から、表示したくない項目を除外できる。</p>
 <p><img alt="" src="../../_images/setting8.png" /></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">除外するファイル</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">除外するファイルパス</span></code></p>
 <ul>
-<li><p>ここで登録したファイルが候補としてマッチした場合でも、候補に表示しないようにする。</p></li>
+<li><p>登録したパスに一致するファイルを候補に表示しない。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">追加</span></code></p>
 <ul>
-<li><p>クリックすると、ファイル選択ダイアログが表示される。選択したファイルが<code class="docutils literal notranslate"><span class="pre">除外するファイル</span></code>に追加される</p></li>
+<li><p>クリックすると、ファイル選択ダイアログが表示される。選択したファイルが<code class="docutils literal notranslate"><span class="pre">除外するファイルパス</span></code>に追加される。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">編集</span></code></p>
 <ul>
-<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目のパスを変更することができる</p></li>
+<li><p>選択したファイルパスを変更する。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">削除</span></code></p>
 <ul>
-<li><p>クリックすると、<code class="docutils literal notranslate"><span class="pre">追加のディレクトリ</span></code>リスト上の選択項目を削除することができる</p></li>
+<li><p>選択したファイルパスを削除する。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">項目名の除外パターン</span></code></p>
+<ul>
+<li><p>項目の表示名に対して、登録したパターンを大文字・小文字を区別せず部分一致で照合する。一致した項目は候補に表示しない。</p></li>
+<li><p>正規表現を使用できる。たとえば <code class="docutils literal notranslate"><span class="pre">^Copilot$</span></code> は、表示名が <code class="docutils literal notranslate"><span class="pre">Copilot</span></code> と一致する項目を除外する。</p></li>
+<li><p>無効な正規表現は追加・編集時に登録できない。</p></li>
 </ul>
 </li>
 </ul>
