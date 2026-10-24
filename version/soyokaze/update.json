@@ -1,4 +1,4 @@
 {
-  "latest" : { "version": "0.62.0", "date": "2026-10-18", "url": "https://github.com/ampmmn/Soyokaze/releases/latest" },
-  "0.*" : { "version": "0.62.0", "date": "2026-10-18", "url": "https://github.com/ampmmn/Soyokaze/releases/tag/0.62.0" }
+  "latest" : { "version": "0.63.0", "date": "2026-10-24", "url": "https://github.com/ampmmn/Soyokaze/releases/latest" },
+  "0.*" : { "version": "0.63.0", "date": "2026-10-24", "url": "https://github.com/ampmmn/Soyokaze/releases/tag/0.63.0" }
 }

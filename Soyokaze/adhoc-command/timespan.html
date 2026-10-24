@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>簡易時間計算 &mdash; Soyokaze 0.62.0</title>
+  <title>簡易時間計算 &mdash; Soyokaze 0.63.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -156,16 +156,31 @@
 <h1>簡易時間計算<a class="headerlink" href="#timespan" title="Link to this heading"></a></h1>
 <section id="id1">
 <h2>時間差<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">HH:MM-HH:MM</span></code>の型式で入力すると、時間間隔を分単位で表示する。<br />
+<p><code class="docutils literal notranslate"><span class="pre">HH:MM-HH:MM</span></code>の形式で入力すると、時間間隔を表示する。
 コマンドを実行すると時間をクリップボードにコピーする。</p>
 <p>例: <code class="docutils literal notranslate"><span class="pre">13:43-12:50</span></code> → <code class="docutils literal notranslate"><span class="pre">53分</span></code></p>
+<p>年月日を含む日時同士の差も計算できる。左右の日時は<code class="docutils literal notranslate"><span class="pre">-</span></code>で区切る。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span> <span class="pre">hh:mm</span></code>または<code class="docutils literal notranslate"><span class="pre">YYYY/MM/DD</span> <span class="pre">hh:mm</span></code>で年月日と時刻を指定する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MM/DD</span> <span class="pre">hh:mm</span></code>は実行年の日付として扱う。指定日が過去でも翌年には繰り越さない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hh:mm</span></code>は実行日当日の時刻として扱う</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">now</span></code>または「拡張機能」で設定した日時プレフィックスは、実行時の現在日時として扱う</p></li>
+<li><p>平年に指定した<code class="docutils literal notranslate"><span class="pre">2/29</span></code>は<code class="docutils literal notranslate"><span class="pre">3/1</span></code>として扱う</p></li>
+</ul>
+<p>例:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">2026/10/30</span> <span class="pre">15:00</span> <span class="pre">-</span> <span class="pre">now</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">now</span> <span class="pre">-</span> <span class="pre">2026/09/01</span> <span class="pre">12:00</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2026-10-30</span> <span class="pre">15:00</span> <span class="pre">-</span> <span class="pre">10/10</span> <span class="pre">14:17</span></code></p></li>
+</ul>
+<p>時間・分・秒の候補を表示する。差の絶対値が24時間を超える場合は、日数を小数2桁で表示する候補も追加する。たとえば25時間は<code class="docutils literal notranslate"><span class="pre">1.04</span> <span class="pre">日</span></code>となる。</p>
 <p><img alt="" src="../_images/example9.png" /></p>
 </section>
 <section id="id2">
 <h2>日時<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>「拡張機能」の<code class="docutils literal notranslate"><span class="pre">時刻と日付</span></code>が有効な場合に利用できる。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code>(プレフィックス)のみを入力すると、以下を候補として表示する</p>
+<li><p>設定したプレフィックス(既定値: <code class="docutils literal notranslate"><span class="pre">date</span></code>)のみを入力すると、以下を候補として表示する</p>
 <ul>
 <li><p>日時: <code class="docutils literal notranslate"><span class="pre">2026/10/10</span> <span class="pre">14:17</span></code></p></li>
 <li><p>日付: <code class="docutils literal notranslate"><span class="pre">2026/10/10</span></code></p></li>
@@ -180,8 +195,9 @@
 </ul>
 </li>
 <li><p>候補を実行すると、表示した文字列をクリップボードにコピーする</p></li>
-<li><p>プレフィックスは「拡張機能」の設定で変更できる。同じプレフィックスを他のコマンドと設定した場合は、両方の候補が表示される</p></li>
+<li><p>プレフィックスは「拡張機能」の設定で変更できる。時間差の入力では、設定したプレフィックスと<code class="docutils literal notranslate"><span class="pre">now</span></code>のどちらも現在日時の別名として使える。同じプレフィックスを他のコマンドと設定した場合は、両方の候補が表示される</p></li>
 </ul>
+<p><img alt="" src="../_images/example21.png" /></p>
 </section>
 </section>
 
